@@ -1,0 +1,155 @@
+html, body {
+  margin: 0;
+  height: 100%;
+  background: #101418;
+  color: #eeeeee;
+  font-family: sans-serif;
+  overflow: hidden;
+}
+
+#content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding-top: 3vw;
+  transition: transform .15s;
+}
+
+.notice {
+  margin: 0 4vw 1vw;
+  padding: .6vw 1vw;
+  background: #5a4a10;
+  font-size: 1.2vw;
+}
+
+.row {
+  overflow: hidden;
+  padding: 1vw 0;
+}
+
+.row-title {
+  font-size: 1.6vw;
+  margin: 0 4vw .6vw;
+}
+
+.strip {
+  position: relative;
+  white-space: nowrap;
+  padding-left: 4vw;
+  transition: transform .15s;
+}
+
+.tile {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 1.2vw;
+  white-space: normal;
+}
+
+.wide {
+  width: 24vw;
+}
+
+.poster {
+  width: 12vw;
+}
+
+.icon {
+  width: 14vw;
+}
+
+.art {
+  position: relative;
+  overflow: hidden;
+  background: #2a2f36;
+  border-radius: .4vw;
+  transition: transform .12s;
+}
+
+.wide .art {
+  height: 13.5vw;
+}
+
+.poster .art {
+  height: 18vw;
+}
+
+.icon .art {
+  height: 7.875vw;
+}
+
+.art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.art-text {
+  text-align: center;
+  font-size: 1.4vw;
+  padding: 1vw;
+}
+
+.progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: .35vw;
+  background: rgba(255, 255, 255, .25);
+}
+
+.bar {
+  height: 100%;
+  background: #e5a00d;
+}
+
+.t {
+  font-size: 1.3vw;
+  margin-top: .5vw;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.s {
+  font-size: 1.1vw;
+  color: #aab0b8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tile.focused .art {
+  outline: .3vw solid #ffffff;
+  transform: scale(1.06);
+}
+
+#status {
+  text-align: center;
+  font-size: 1.6vw;
+  position: absolute;
+  top: 45%;
+  left: 0;
+  right: 0;
+}
+
+#toast {
+  position: fixed;
+  bottom: 3vw;
+  left: 50%;
+  width: 40vw;
+  margin-left: -20vw;
+  text-align: center;
+  padding: 1vw;
+  background: rgba(0, 0, 0, .8);
+  font-size: 1.4vw;
+  opacity: 0;
+  transition: opacity .2s;
+}
+
+#toast.show {
+  opacity: 1;
+}
