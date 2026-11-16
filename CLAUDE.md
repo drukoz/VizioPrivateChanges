@@ -41,6 +41,7 @@ The owner chose software only: no DNS blocker (no Pi-hole, no router changes) an
 
 - Tests: `python3 -m unittest discover -s tests -v`
 - CLI: `python3 -m vizio_privacy --help`. For example `python3 -m vizio_privacy --host 192.168.1.130 harden` is a dry run, and `harden --apply` writes.
+- Dashboard: `python3 -m vizio_privacy --host 192.168.1.130 dashboard serve` (keep it running), then `dashboard open` in a second terminal.
 
 ## Toolchain
 
