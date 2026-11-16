@@ -22,7 +22,7 @@ The owner chose software only: no DNS blocker (no Pi-hole, no router changes) an
   - `settings.py`: walks the settings tree and sets the matched items (`harden`).
   - `cli.py` and `__main__.py`: the command line.
   - `api.py` and `cast.py` are the only modules that open sockets.
-- `tests/`: `unittest` tests. They never open a socket; they pass a fake transport or a fake TV (`tests/fakes.py`).
+- `tests/`: `unittest` tests. The unit tests never open a socket; they pass a fake transport or a fake TV (`tests/fakes.py`). `tests/test_e2e.py` runs the command line over real HTTP(S) against a mock TV (`tests/mock_tv.py`) on `127.0.0.1` only, and is skipped when `openssl` is missing.
 - `docs/`: protocol reference.
 
 ## Commands (run from the repository root)
