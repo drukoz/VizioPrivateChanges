@@ -1,28 +1,33 @@
-"""Google Cast telemetry opt-out over the Cast setup API on port 8008.
+"""Google Cast telemetry opt-out over the Cast setup API.
 
-The TV runs Google's "eureka" Cast setup service on ``http://<host>:8008``
-(plain HTTP, no TLS, no auth for the calls used here). This module reads the
-device's telemetry opt-in flags and tries to turn crash and usage reporting
-off. It reports honestly whether the change took, and never raises on a
-rejected write: only the read performed after the write proves the result,
-because the device answers 200 OK even for fields it ignores.
+The TV runs Google's "eureka" Cast setup service. Reads go over plain HTTP on
+port 8008. The opt-out write goes over HTTPS on port 8443: on the owner's TV
+(Cast firmware 1.68) a write on 8008 answers 403 and changes nothing, while the
+same write on 8443 answers 200 and takes effect, with no token (checked on
+2026-11-16). The 8443 certificate is self-signed, so certificate checks are
+off, as in ``api.py``. No auth is needed for the calls used here.
+
+This module reads the device's telemetry opt-in flags and tries to turn crash
+and usage reporting off. It reports honestly whether the change took, and
+never raises on a rejected write: only the read performed after the write
+proves the result, because the device answers 200 OK even for fields it ignores.
 
 This module is independent of the SmartCast client in ``api.py``: it uses
-plain ``http.client`` on port 8008 and defines its own injectable transport.
+``http.client`` directly and defines its own injectable transport.
 """
 
 from __future__ import annotations
 
 import http.client
 import json
+import ssl
 from dataclasses import dataclass
 from typing import Callable, Dict, Optional, Tuple
 from urllib.parse import urlsplit
 
-# The body of the opt-out write. A 200 OK proves nothing (the device answers
-# 200 even for fields it ignores), so the result is decided by the read that
-# follows. This body has not been confirmed on the real TV yet, so it lives in
-# one module constant that the CTO can correct in a single place. Send as-is.
+# The body of the opt-out write, confirmed on the owner's TV on 2026-11-16 (sent
+# over HTTPS on port 8443). A 200 OK proves nothing (the device answers 200 even
+# for fields it ignores), so the result is decided by the read that follows.
 SET_OPT_IN_BODY = {"opt_in": {"crash": False, "stats": False}}
 
 # Transport contract: a callable that performs one HTTP request and returns
@@ -34,11 +39,16 @@ _SET_EUREKA_INFO_PATH = "/setup/set_eureka_info"
 
 
 def default_transport(timeout: float = 5.0) -> Transport:
-    """Return a transport that uses ``http.client`` over plain HTTP.
+    """Return a transport that uses ``http.client``: HTTPS for ``https://`` URLs,
+    plain HTTP otherwise.
 
-    Host and port are taken from the URL passed in, matching the transport
-    contract ``(method, url, headers, body) -> (status, text)``.
+    HTTPS skips certificate checks, because the TV's certificate is
+    self-signed. Host and port are taken from the URL passed in, matching the
+    transport contract ``(method, url, headers, body) -> (status, text)``.
     """
+    ssl_ctx = ssl.create_default_context()
+    ssl_ctx.check_hostname = False
+    ssl_ctx.verify_mode = ssl.CERT_NONE
 
     def transport(
         method: str,
@@ -52,7 +62,12 @@ def default_transport(timeout: float = 5.0) -> Transport:
         path = parts.path
         if parts.query:
             path = "{}?{}".format(path, parts.query)
-        conn = http.client.HTTPConnection(host, port, timeout=timeout)
+        if parts.scheme == "https":
+            conn = http.client.HTTPSConnection(
+                host, port, timeout=timeout, context=ssl_ctx
+            )  # type: http.client.HTTPConnection
+        else:
+            conn = http.client.HTTPConnection(host, port, timeout=timeout)
         try:
             conn.request(method, path, body=body, headers=headers)
             resp = conn.getresponse()
@@ -80,6 +95,11 @@ class OptOutResult:
         before_off = self.before.get("crash") is False and self.before.get("stats") is False
         return after_off and not before_off
 
+    @property
+    def reporting_off(self) -> bool:
+        """True when the read after the write shows crash and stats reporting both off."""
+        return self.after.get("crash") is False and self.after.get("stats") is False
+
     def summary(self) -> str:
         """One-line human message describing the truth from the after-read.
 
@@ -102,20 +122,25 @@ class OptOutResult:
 
 
 class CastClient:
-    """Read and opt out of Google Cast telemetry on the TV's port 8008."""
+    """Read Google Cast telemetry flags on port 8008; write the opt-out on port 8443."""
 
     def __init__(
         self,
         host: str,
         transport: Optional[Transport] = None,
         port: int = 8008,
+        secure_port: int = 8443,
     ) -> None:
         self.host = host
         self.port = port
+        self.secure_port = secure_port
         self.transport = transport if transport is not None else default_transport()
 
     def _url(self, path: str) -> str:
         return "http://{}:{}{}".format(self.host, self.port, path)
+
+    def _secure_url(self, path: str) -> str:
+        return "https://{}:{}{}".format(self.host, self.secure_port, path)
 
     def read_opt_in(self) -> Dict[str, bool]:
         """Return the device's ``opt_in`` dict, or ``{}`` if absent or unparseable."""
@@ -138,7 +163,7 @@ class CastClient:
         posted_status = None  # type: Optional[int]
         error = None  # type: Optional[str]
         try:
-            url = self._url(_SET_EUREKA_INFO_PATH)
+            url = self._secure_url(_SET_EUREKA_INFO_PATH)
             headers = {"Content-Type": "application/json"}
             posted_status, _ = self.transport(
                 "POST", url, headers, json.dumps(SET_OPT_IN_BODY)

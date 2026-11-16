@@ -196,8 +196,9 @@ def _cmd_cast_optout(
     client_factory: Callable[..., SmartCastClient],
     cast_factory: Callable[..., CastClient],
 ) -> int:
-    print(cast_factory(host).opt_out().summary())
-    return 0
+    result = cast_factory(host).opt_out()
+    print(result.summary())
+    return 0 if result.reporting_off else 1
 
 
 _COMMANDS = {
