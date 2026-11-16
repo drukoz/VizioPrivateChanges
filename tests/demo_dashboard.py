@@ -98,6 +98,7 @@ def run(port: int, plex_down: bool) -> int:
         )
     )  # type: Callable[..., SmartCastClient]
 
+    stop = threading.Event()
     try:
         with mock.patch("builtins.input", return_value=PIN):
             main(["--host", "127.0.0.1", "pair"], client_factory=factory)
@@ -107,7 +108,6 @@ def run(port: int, plex_down: bool) -> int:
         else:
             plex_url = "http://127.0.0.1:{}".format(closed_port())
 
-        stop = threading.Event()
         watcher = threading.Thread(target=watch_tv, args=(tv, stop), daemon=True)
         watcher.start()
 
