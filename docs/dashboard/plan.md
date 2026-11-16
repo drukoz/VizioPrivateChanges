@@ -36,9 +36,9 @@ TV (Conjure web runtime)                Mac: python3 -m vizio_privacy dashboard 
 | `vizio_privacy/plex_discovery.py` | GDM discovery: `ServerInfo`, `parse_gdm_reply`, `discover` | M1-T5 (RUK-2461) |
 | `vizio_privacy/dashboard/model.py` | The contract below: enums, dataclasses, JSON both ways | M1-T3 (RUK-2459) |
 | `vizio_privacy/apps.py` | `AppId` and the pinned launch table | M1-T4 (RUK-2460) |
-| `vizio_privacy/dashboard/service.py` | Builds `Home` from Plex and apps; runs actions | M1, after S1/S2 |
-| `vizio_privacy/dashboard/server.py` | `ThreadingHTTPServer`: `/`, `/static/*`, `/api/home`, `/api/action`, `/img` | M1, after S1 |
-| `vizio_privacy/dashboard/static/` | `index.html`, `app.js`, `app.css`: rows, focus, keys | M1, after S1 |
+| `vizio_privacy/dashboard/service.py` | Builds `Home` from Plex and apps; runs actions | M1-T6 (RUK-2465); Plex playback after S2 |
+| `vizio_privacy/dashboard/server.py` | `ThreadingHTTPServer`: `/`, `/static/*`, `/api/home`, `/api/action`, `/img` | M1-T7 (RUK-2466) |
+| `vizio_privacy/dashboard/static/` | `index.html`, `app.js`, `app.css`: rows, focus, keys | M1-T8 (RUK-2479) |
 | `cli.py` | `dashboard serve`, `dashboard open` (M1); `install`, `uninstall`, `status` (M2) | M1/M2 |
 | `vizio_privacy/dashboard/watcher.py`, `launchd.py` | Takeover loop; LaunchAgent | M2 |
 
@@ -67,6 +67,8 @@ Enums are integers on the wire (company rule). Text appears only in labels.
 
 `GET /img?p=<Plex image path starting with /library/>&w=<int 1..1920>&h=<int 1..1080>` → JPEG from Plex's `/photo/:/transcode`. Anything else answers 400.
 
+Even after `parse_image_query` accepts it, `p` is untrusted: it can still contain `?`, `&`, `#` or control characters. The server passes it to Plex only as one percent-encoded value of the transcoder's `url` parameter, built with `urllib.parse.urlencode`, and adds the token itself, so `p` can never add or override a Plex query parameter such as `X-Plex-Token`. The T7 spec has a test for `p=/library/x?X-Plex-Token=evil`.
+
 Tile rules (service): a movie's title is its title and its subtitle is the year. An episode's title is the show's name and its subtitle is `S<season> · E<episode> · <title>`. A show's title is its title, with no subtitle. The Continue Watching row is `WIDE`: an episode uses its own `thumb`, a movie its `art`. Every other row is `POSTER`: `thumb`, or `grandparentThumb` for an episode. `progress` is `viewOffset / duration` when both exist.
 
 ## What we don't build
@@ -84,11 +86,13 @@ A media player (Plex plays). A Plex sign-in, until S2 says it's needed. Settings
 | T3 Contract `dashboard/model.py` (RUK-2459) | — | Started 2026-11-16 |
 | T4 App table `apps.py` (RUK-2460) | — | Started 2026-11-16 |
 | T5 Plex discovery `plex_discovery.py` (RUK-2461) | — | Started 2026-11-16 |
-| T6 Service `dashboard/service.py` | T1-T4, S2 | Play route chosen by S2 |
-| T7 Server `dashboard/server.py` | T3 | Built against a fake service |
-| T8 Page `static/` | T3, S1 | Language level from S1's user agent |
-| T9 CLI `dashboard serve` / `open` | T6, T7 | |
-| T10 End-to-end test: mock TV + fake Plex + real HTTP on 127.0.0.1 | T9 | QA Engineer or Test Writer |
+| T6 Service `dashboard/service.py` (RUK-2465) | T1-T4 | Merged 2026-11-16. Rows, app tiles and app/input actions. Without a `play` callable, OK on a Plex tile opens the Plex app; the S2 route is passed in as `play` later |
+| T7 Server `dashboard/server.py` (RUK-2466) | T3 | Merged 2026-11-16, built against a fake service |
+| T8 Page `static/` (RUK-2479) | T3, T7 | Merged 2026-11-16, before S1: written in ES5 with `XMLHttpRequest`, which any TV web runtime runs. If S1 fails, only this page is wasted |
+| T9 CLI `dashboard serve` / `open` (RUK-2477) | T6, T7 | Merged 2026-11-16. `open` launches `NAME_SPACE` 4, `APP_ID` "1" with our URL (both options, so S1 can try 2), reads `/app/current` back and exits 1 if the TV did not switch |
+| T10 End-to-end test (RUK-2478): mock TV + fake Plex + real HTTP on 127.0.0.1 | T9 | Merged 2026-11-16. Runs `serve` and `open` in-process; Plex playback extends the same file |
+| Verification in a real browser (RUK-2490): `tests/demo_dashboard.py` launcher + Playwright arrow-key checks against the mock TV and fake Plex | T8, T10 | Merged 2026-11-16: 11 of 11 checks pass, no bugs. The CTO's review made the toast opaque. After Plex playback merges, only playback is re-checked |
+| Plex playback (the S2 route, passed in as `play`) | S2 | Waits for the TV test card on RUK-2394 |
 | Live check with the owner | T10 | CTO only |
 
 **M2 — It replaces VIZIO's home** (branch `feat/tv-dashboard-m2`, cut from M1's). It covers:

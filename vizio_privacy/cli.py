@@ -14,12 +14,25 @@ from __future__ import annotations
 import argparse
 import http.client
 import os
+import socket
+import time
+import urllib.error
+import urllib.request
 from typing import Callable, Dict, List, Optional, Tuple
 
-from vizio_privacy import settings, targets, tokenstore
-from vizio_privacy.api import ResultStatus, SmartCastClient, SmartCastError
+from vizio_privacy import plex_discovery, settings, targets, tokenstore
+from vizio_privacy.api import (
+    AppConfig,
+    ResultStatus,
+    SmartCastClient,
+    SmartCastError,
+)
+from vizio_privacy.apps import DEFAULT_APPS, parse_app_names
 from vizio_privacy.cast import CastClient
+from vizio_privacy.dashboard.server import make_server, plex_image_source
+from vizio_privacy.dashboard.service import DashboardService
 from vizio_privacy.pairing import DEFAULT_DEVICE_ID, begin_pair, finish_pair
+from vizio_privacy.plex import PlexClient
 from vizio_privacy.settings import ChangeOutcome, HardenRow, WalkError
 
 NO_MATCHES = "No tracking or ad settings were found in the menus that were read."
@@ -33,6 +46,28 @@ TELEMETRY_BINARIES = (
     "s3logger",
     "watchfree-helper",
 )
+
+
+def lan_address(tv_host: str) -> str:
+    """The Mac's own address on the route to the TV. A UDP connect sends no packet."""
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    try:
+        sock.connect((tv_host, 7345))
+        return sock.getsockname()[0]
+    finally:
+        sock.close()
+
+
+def _server_answers(url: str, timeout: float = 3.0) -> bool:
+    """True when anything answers HTTP at url (a 404 counts: the page may not exist yet)."""
+    try:
+        with urllib.request.urlopen(url, timeout=timeout):
+            return True
+    except urllib.error.HTTPError as err:
+        err.close()
+        return True
+    except (OSError, ValueError):
+        return False
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -53,6 +88,42 @@ def build_parser() -> argparse.ArgumentParser:
     harden = sub.add_parser("harden", help="plan privacy changes (a dry run unless --apply)")
     harden.add_argument("--apply", action="store_true", help="write the changes to the TV")
     sub.add_parser("cast-optout", help="opt the TV's Google Cast out of telemetry")
+
+    dashboard = sub.add_parser("dashboard", help="the home screen dashboard")
+    dsub = dashboard.add_subparsers(dest="dashboard_command", required=True)
+    dserve = dsub.add_parser("serve", help="run the dashboard server on this Mac")
+    dserve.add_argument(
+        "--plex",
+        default=os.environ.get("VIZIO_PLEX_URL"),
+        help="the Plex server's URL, for example http://192.168.1.196:32400; "
+        "found on the network when not given",
+    )
+    dserve.add_argument(
+        "--bind", default="0.0.0.0", help="the address to listen on (default 0.0.0.0)"
+    )
+    dserve.add_argument(
+        "--port", type=int, default=8790, help="the port to listen on (default 8790)"
+    )
+    dserve.add_argument(
+        "--apps",
+        default=None,
+        help='comma-separated apps for the bottom row, for example "Plex,Netflix,YouTube"',
+    )
+    dopen = dsub.add_parser("open", help="show the dashboard on the TV")
+    dopen.add_argument(
+        "--port", type=int, default=8790, help="the dashboard server's port (default 8790)"
+    )
+    dopen.add_argument(
+        "--url",
+        default=None,
+        help="the dashboard URL (default: http://<this Mac on the route to the TV>:<port>/)",
+    )
+    dopen.add_argument(
+        "--namespace", type=int, default=4, help="the NAME_SPACE to launch (default 4)"
+    )
+    dopen.add_argument(
+        "--app-id", default="1", help='the APP_ID to launch (default "1")'
+    )
     return parser
 
 
@@ -201,6 +272,100 @@ def _cmd_cast_optout(
     return 0 if result.reporting_off else 1
 
 
+def _dashboard_serve(
+    host: str,
+    args: argparse.Namespace,
+    client_factory: Callable[..., SmartCastClient],
+    cast_factory: Callable[..., CastClient],
+) -> int:
+    client, exit_code = _client_with_token(host, client_factory)
+    if client is None:
+        return exit_code if exit_code is not None else 2
+    if args.apps:
+        try:
+            apps = parse_app_names(args.apps.split(","))
+        except ValueError as err:
+            print(str(err))
+            return 2
+    else:
+        apps = DEFAULT_APPS
+    if args.plex:
+        url = args.plex
+    else:
+        servers = plex_discovery.discover()
+        if not servers:
+            print(
+                "No Plex server answered on the network. "
+                "Pass --plex http://<address>:32400 or set VIZIO_PLEX_URL."
+            )
+            return 1
+        url = servers[0].base_url
+    plex = PlexClient(url)
+    service = DashboardService(plex, client, apps=apps)
+    server = make_server(service, plex_image_source(plex), host=args.bind, port=args.port)
+    lan = lan_address(host)
+    port = server.server_address[1]
+    print("Dashboard: http://{}:{}/  (Plex: {})".format(lan, port, url))
+    print(
+        "Show it on the TV with: "
+        "python3 -m vizio_privacy --host {} dashboard open".format(host)
+    )
+    print("Stop with Ctrl-C.")
+    try:
+        server.serve_forever()
+    except KeyboardInterrupt:
+        pass
+    finally:
+        server.server_close()
+    print("Dashboard stopped.")
+    return 0
+
+
+def _dashboard_open(
+    host: str,
+    args: argparse.Namespace,
+    client_factory: Callable[..., SmartCastClient],
+    cast_factory: Callable[..., CastClient],
+) -> int:
+    client, exit_code = _client_with_token(host, client_factory)
+    if client is None:
+        return exit_code if exit_code is not None else 2
+    url = args.url or "http://{}:{}/".format(lan_address(host), args.port)
+    if not _server_answers(url):
+        print(
+            "The dashboard server is not answering at {}. Start it with: "
+            "python3 -m vizio_privacy --host {} dashboard serve".format(url, host)
+        )
+        return 1
+    client.launch_app(AppConfig(name_space=args.namespace, app_id=args.app_id, message=url))
+    current = None  # type: Optional[AppConfig]
+    for _ in range(5):
+        current = client.current_app()
+        if current is not None and current.message == url:
+            print("The TV is showing the dashboard ({}).".format(url))
+            return 0
+        time.sleep(1.0)
+    ns = "-" if current is None else current.name_space
+    app_id = "-" if current is None else current.app_id
+    message = "-" if current is None else current.message
+    print(
+        "The TV accepted the launch but did not switch to the dashboard. "
+        "It reports: NAME_SPACE {} APP_ID {} MESSAGE {}".format(ns, app_id, message)
+    )
+    return 1
+
+
+def _cmd_dashboard(
+    host: str,
+    args: argparse.Namespace,
+    client_factory: Callable[..., SmartCastClient],
+    cast_factory: Callable[..., CastClient],
+) -> int:
+    if args.dashboard_command == "serve":
+        return _dashboard_serve(host, args, client_factory, cast_factory)
+    return _dashboard_open(host, args, client_factory, cast_factory)
+
+
 _COMMANDS = {
     "info": _cmd_info,
     "pair": _cmd_pair,
@@ -208,6 +373,7 @@ _COMMANDS = {
     "status": _cmd_status,
     "harden": _cmd_harden,
     "cast-optout": _cmd_cast_optout,
+    "dashboard": _cmd_dashboard,
 }
 
 
