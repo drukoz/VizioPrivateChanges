@@ -91,7 +91,7 @@ A media player (Plex plays). A Plex sign-in, until S2 says it's needed. Settings
 | T8 Page `static/` (RUK-2479) | T3, T7 | Merged 2026-11-16, before S1: written in ES5 with `XMLHttpRequest`, which any TV web runtime runs. If S1 fails, only this page is wasted |
 | T9 CLI `dashboard serve` / `open` (RUK-2477) | T6, T7 | Merged 2026-11-16. `open` launches `NAME_SPACE` 4, `APP_ID` "1" with our URL (both options, so S1 can try 2), reads `/app/current` back and exits 1 if the TV did not switch |
 | T10 End-to-end test (RUK-2478): mock TV + fake Plex + real HTTP on 127.0.0.1 | T9 | Merged 2026-11-16. Runs `serve` and `open` in-process; Plex playback extends the same file |
-| Verification in a real browser (RUK-2490): `tests/demo_dashboard.py` launcher + Playwright arrow-key checks against the mock TV and fake Plex | T8, T10 | Started 2026-11-16 while the TV test waits, so page bugs are fixed before the live check. After Plex playback merges, only playback is re-checked |
+| Verification in a real browser (RUK-2490): `tests/demo_dashboard.py` launcher + Playwright arrow-key checks against the mock TV and fake Plex | T8, T10 | Merged 2026-11-16: 11 of 11 checks pass, no bugs. The CTO's review made the toast opaque. After Plex playback merges, only playback is re-checked |
 | Plex playback (the S2 route, passed in as `play`) | S2 | Waits for the TV test card on RUK-2394 |
 | Live check with the owner | T10 | CTO only |
 
