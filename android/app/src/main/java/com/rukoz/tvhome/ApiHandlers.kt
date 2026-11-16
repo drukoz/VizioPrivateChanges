@@ -12,7 +12,7 @@ fun interface IconSource {
     fun icon(pkg: String): ByteArray?
 }
 
-private val PKG_REGEX = Regex("^[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z0-9_]+)+$")
+internal val PKG_REGEX = Regex("^[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z0-9_]+)+$")
 private const val MAX_PKG_LENGTH = 200
 
 class ApiHandlers(
