@@ -9,7 +9,7 @@ import ssl
 import urllib.parse
 from collections import namedtuple
 from dataclasses import dataclass, field
-from typing import Any, Callable, Dict, List, Optional
+from typing import Any, Callable, Dict, List, Optional, Tuple
 
 Response = namedtuple("Response", ["status", "body"])
 
@@ -165,6 +165,75 @@ class DeviceInfo:
         )
 
 
+class PowerState(enum.IntEnum):
+    STANDBY = 0
+    ON = 1
+    UNKNOWN = 2
+
+
+class RemoteKey(enum.IntEnum):
+    DOWN = 0
+    LEFT = 1
+    OK = 2
+    RIGHT = 3
+    UP = 4
+    BACK = 5
+    HOME = 6
+    EXIT = 7
+
+
+# (CODESET, CODE) for each key, from pyvizio const.py DEVICE_CONFIGS["tv"].key_codes.
+KEY_CODES = {
+    RemoteKey.DOWN: (3, 0),
+    RemoteKey.LEFT: (3, 1),
+    RemoteKey.OK: (3, 2),
+    RemoteKey.RIGHT: (3, 7),
+    RemoteKey.UP: (3, 8),
+    RemoteKey.BACK: (4, 0),
+    RemoteKey.HOME: (4, 15),
+    RemoteKey.EXIT: (9, 0),
+}  # type: Dict[RemoteKey, Tuple[int, int]]
+
+
+@dataclass(frozen=True)
+class AppConfig:
+    name_space: int
+    app_id: str
+    message: Optional[str] = None
+
+    def to_json(self) -> Dict[str, Any]:
+        return {"MESSAGE": self.message, "NAME_SPACE": self.name_space, "APP_ID": self.app_id}
+
+    @classmethod
+    def from_json(cls, value: Any) -> Optional["AppConfig"]:
+        """None unless value is a dict holding NAME_SPACE and APP_ID (keys read case-insensitively)."""
+        if not isinstance(value, dict):
+            return None
+        name_space = _as_int(_ci_get(value, "NAME_SPACE"))
+        app_id = _ci_get(value, "APP_ID")
+        if name_space is None or app_id is None:
+            return None
+        message = _ci_get(value, "MESSAGE")
+        return cls(
+            name_space=name_space,
+            app_id=str(app_id),
+            message=None if message is None else str(message),
+        )
+
+
+@dataclass
+class InputState:
+    name: str      # current_input VALUE, e.g. "SMARTCAST" or "HDMI-2"
+    hashval: int
+
+
+@dataclass
+class InputInfo:
+    cname: str     # "hdmi2"
+    name: str      # "HDMI-2": the value set_input takes
+    label: str     # VALUE.NAME, e.g. "Fire TV Stick"; NAME when VALUE.NAME is missing
+
+
 class SmartCastClient:
     def __init__(
         self,
@@ -229,3 +298,71 @@ class SmartCastClient:
         if not isinstance(items, list):
             return []
         return [Item.from_json(item) for item in items if isinstance(item, dict)]
+
+    def power_state(self) -> PowerState:
+        envelope = self.get("/state/device/power_mode", auth=True)
+        items = _ci_get(envelope, "ITEMS", [])
+        if not isinstance(items, list) or not items:
+            return PowerState.UNKNOWN
+        value = _as_int(_ci_get(items[0], "VALUE"))
+        if value == 0:
+            return PowerState.STANDBY
+        if value == 1:
+            return PowerState.ON
+        return PowerState.UNKNOWN
+
+    def current_app(self) -> Optional[AppConfig]:
+        envelope = self.get("/app/current", auth=True)
+        item = _ci_get(envelope, "ITEM")
+        value = _ci_get(item, "VALUE") if isinstance(item, dict) else None
+        return AppConfig.from_json(value)
+
+    def launch_app(self, config: AppConfig) -> None:
+        self.put("/app/launch", {"VALUE": config.to_json()}, auth=True)
+
+    def press_key(self, key: RemoteKey) -> None:
+        codeset, code = KEY_CODES[key]
+        body = {"KEYLIST": [{"CODESET": codeset, "CODE": code, "ACTION": "KEYPRESS"}]}
+        self.put("/key_command/", body, auth=True)
+
+    def current_input(self) -> InputState:
+        envelope = self.get(
+            "/menu_native/dynamic/tv_settings/devices/current_input", auth=True
+        )
+        items = _ci_get(envelope, "ITEMS", [])
+        if not isinstance(items, list) or not items:
+            raise SmartCastError(ResultStatus.UNKNOWN, "no current input")
+        value = _ci_get(items[0], "VALUE")
+        hashval = _as_int(_ci_get(items[0], "HASHVAL"))
+        if value is None or hashval is None:
+            raise SmartCastError(ResultStatus.UNKNOWN, "no current input")
+        return InputState(name=str(value), hashval=hashval)
+
+    def list_inputs(self) -> List[InputInfo]:
+        envelope = self.get(
+            "/menu_native/dynamic/tv_settings/devices/name_input", auth=True
+        )
+        items = _ci_get(envelope, "ITEMS", [])
+        if not isinstance(items, list):
+            return []
+        result = []  # type: List[InputInfo]
+        for item in items:
+            if not isinstance(item, dict):
+                continue
+            if str(_ci_get(item, "TYPE", "")).upper().strip() != "T_DEVICE_V1":
+                continue
+            name = str(_ci_get(item, "NAME", "") or "")
+            value = _ci_get(item, "VALUE")
+            label = _ci_get(value, "NAME") if isinstance(value, dict) else None
+            label = str(label) if label is not None else name
+            result.append(
+                InputInfo(cname=str(_ci_get(item, "CNAME", "") or ""), name=name, label=label)
+            )
+        return result
+
+    def set_input(self, name: str) -> None:
+        current = self.current_input()
+        body = {"REQUEST": "MODIFY", "VALUE": name, "HASHVAL": current.hashval}
+        self.put(
+            "/menu_native/dynamic/tv_settings/devices/current_input", body, auth=True
+        )
