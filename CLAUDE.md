@@ -3,9 +3,9 @@
 Software for the owner's VIZIO SmartCast TV that never touches its firmware. One household uses it. The owner runs the commands, or the CTO runs them in a live session with the owner at the TV. It has two parts:
 
 1. **Privacy settings** (done, merged in PR #1): switches off tracking and ads through the TV's local SmartCast API, and opts the TV's built-in Google Cast out of crash and usage reporting.
-2. **Dashboard** (in progress, program RUK-2394, branch `feat/tv-dashboard`): the household's own home screen in place of VIZIO's. It shows Continue Watching and suggestions from their Plex server, plus a row of chosen apps. The page runs in the TV's built-in web-app runtime, is served from the owner's Mac, and the remote drives it. Design: [docs/dashboard/](docs/dashboard/) (`system-map.md`, `reuse-ledger.md`, `plan.md`; the plan holds the page ↔ server contract).
+2. **Dashboard** (program RUK-2394, branch `feat/tv-dashboard`): the household's own home screen, with **Continue Watching** and suggestions from their Plex server and a row of chosen apps. Since 2026-11-16 it runs on the **Fire TV Stick** on the TV's HDMI-2, as an Android app in `android/` (being built, milestone M2) that shows the dashboard page in a WebView and reads Plex directly. The earlier route, the page in VIZIO's web runtime served from the Mac, is closed; its Python code (milestone M1: `plex.py`, `dashboard/`) is the reference for the page, the contract and the row rules. Design: [docs/dashboard/](docs/dashboard/) (`system-map.md`, `reuse-ledger.md`, `plan.md`; the plan holds the page ↔ app contract).
 
-The owner chose software only: no DNS blocker (no Pi-hole, no router changes) and no extra device. Do not add blocklists or network tooling.
+The owner chose software only: no DNS blocker (no Pi-hole, no router changes). Do not add blocklists or network tooling. Nothing runs on the Mac after setup.
 
 ## The TV
 
@@ -14,7 +14,18 @@ The owner chose software only: no DNS blocker (no Pi-hole, no router changes) an
 - SmartCast API: HTTPS on port 7345 with a self-signed certificate. `GET /state/device/deviceinfo` works without auth. Everything under `/menu_native/` needs an auth token from a one-time PIN pairing; without one the TV answers HTTP 403 `REQUIRES_PAIRING`.
 - Google Cast setup API: reads over plain HTTP on port 8008 (`/setup/eureka_info`). The opt-out write (`/setup/set_eureka_info`) must go over HTTPS on port 8443 (self-signed certificate, no token): this TV answers the same write on 8008 with HTTP 403 and changes nothing.
 - Protocol reference for both: [docs/smartcast-api.md](docs/smartcast-api.md).
+- Since 2026-11-16 `System → Input at Power On` is `Last Used TV Input` (the only other choice is `SmartCast`). The TV refuses input changes over the API (`PUT .../devices/current_input` answers `RESULT: FAILURE`, on and in standby), so `api.set_input` does not work on this TV; the Fire TV Stick switches the TV to HDMI-2 through CEC One Touch Play when it wakes.
 - A custom OS is not possible: the bootloader is locked, the firmware is VIZIO-signed and there is no root access, so no program on the TV can be removed. Its tracking components (`acr`, `eventanalyzer`, `s3logger`, `errorcollector`, `collectd`, `recommendationd`, `watchfree-helper`) can only be switched off through its settings.
+
+## The Fire TV Stick
+
+- Fire TV Stick 4K, 1st gen (2018), model `AFTMM`, Fire OS 6 (Android 7.1, API 25). LAN address `192.168.1.60` (DHCP; found by SSDP/DIAL, see `docs/dashboard/system-map.md` section 0), on the TV's HDMI-2.
+- Its friendly name contains a person's name, and its serial number, MAC address and advertising ID are identifiers: never commit or print any of them.
+- Only the CTO connects to it, over ADB on Wi-Fi from the Mac, in sessions agreed with the owner. The trusted ADB key is in `/Users/drukoz/.vizio-privacy/adb/`.
+
+## Android toolchain (for `android/`)
+
+Pinned and proved on this Mac on 2026-11-16: Gradle 9.4.1 (wrapper), Android Gradle Plugin 9.2.1, JDK 17, compileSdk 37, targetSdk 37, minSdk 25, `androidx.webkit:webkit` 1.14.0, JUnit 4.13.2 and `org.json:json` 20180813 for unit tests. AGP 9 compiles Kotlin itself: never apply `org.jetbrains.kotlin.android` or `kotlin-android`, and add no `kotlinOptions` block. `source scripts/android-env.sh` selects the JDK, the SDK and the Gradle home under `/Volumes/Storage/paperclip/toolchains/` (task F1 adds it, with the build and test commands below).
 
 ## Layout
 
@@ -65,4 +76,5 @@ Python 3.9 or newer, standard library only: no pip installs and no `requirements
 - **This repository is public.** Never commit an auth token, a token file, or the TV's identifiers (serial number, MAC address, ESN, `TVAD_ID`, `uma_client_id`). Token files live in `~/.vizio-privacy/`, outside the repository.
 - **Never commit the household's Plex data**: titles, people, summaries, file paths, the server's `machineIdentifier` or `*.plex.direct` host, or any Plex token. Tests use only `tests/fixtures/plex/`.
 - **Never contact the real TV or the real Plex server from tests or engineer tasks.** Starting a pairing puts a PIN on the owner's screen, launching an app takes over their TV, and a settings write changes it. Only the CTO runs commands against `192.168.1.130` or `192.168.1.196`, in a session agreed with the owner. Tests bind only to `127.0.0.1`.
+- **Never contact the Fire TV Stick from tests or engineer tasks.** Any ADB command can wake it, and a waking stick turns the TV on through CEC. Tests use an emulator or a fake ADB runner; only the CTO connects to `192.168.1.60`.
 - **Never change the network.** No DNS, DHCP or router changes, and no traffic interception (ARP spoofing, proxies).

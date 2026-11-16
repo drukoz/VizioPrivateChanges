@@ -2,6 +2,47 @@
 
 Kind: **Program**. It is a new product surface on an existing tool, it talks to two outside systems, and it is about 15-20 subtasks. Written 2026-11-16 from the code on `feat/tv-dejunk` (`6044137`), live read-only probes of the TV and the Plex server, and VIZIO's public app catalog.
 
+## 0. Since 2026-11-16 15:19 UTC: the Fire TV Stick
+
+The owner chose the Fire TV Stick on the Vizio's HDMI-2 as the home screen's device, and asked for the TV to come on to HDMI 2. This section supersedes sections 2, 5 and 6 for the dashboard. Sections 1-9 below describe the Vizio route, which is closed; they stay as the reference for M1's code (page, contract, Plex calls, row rules).
+
+### The stick
+
+| What | Value (source) |
+|---|---|
+| Model | Fire TV Stick 4K, 1st gen (2018), `AFTMM`: DIAL device description `http://192.168.1.60:60000/dd.xml` (`manufacturer` Amazon, `modelName` AFTMM), read 2026-11-16. Its `friendlyName` contains a person's name: never commit it. |
+| OS | Fire OS 6 = Android 7.1, API 25 (Amazon's Fire TV device specifications). Updates until 2029-12-31 (Tom's Guide). Exact build, WebView version: F2. |
+| Network | `192.168.1.60` by DHCP. Find it again with SSDP `M-SEARCH` for `urn:dial-multiscreen-org:service:dial:1`: the responder whose description says `AFTMM`. DIAL on 60000, DIAL apps on 8009. ADB on TCP 5555 once the owner switches on ADB debugging. |
+| Connection | Vizio HDMI-2 (CEC name "Fire TV Stick"). The Vizio's `USB Power` is `Always On`. |
+| Remote | Fire TV voice remote with TV power and volume (CEC). |
+
+### How we reach it
+
+ADB over Wi-Fi from the Mac, CTO only, in sessions agreed with the owner: `/Volumes/Storage/paperclip/toolchains/android-sdk/platform-tools/adb` (37.0.1), with `ANDROID_USER_HOME=/Users/drukoz/.vizio-privacy/adb` (the key the stick trusts) and `ANDROID_ADB_SERVER_PORT=5038` (its own ADB server, so the engineers' emulator server never holds that key). Any ADB command can wake the stick, and a waking stick turns the TV on through CEC.
+
+### Workflows on the stick (target)
+
+1. **Switch on:** Home or power on the Fire TV remote wakes the stick; CEC One Touch Play turns the TV on to HDMI-2; Amazon's home appears and the takeover (F2/F4) brings TV Home to the front. With the Vizio remote, the TV comes on to its last-used input, HDMI-2 once it was last turned off there.
+2. **Resume a show:** OK on a Continue Watching tile, then the Plex deep link, and the Plex app plays from `viewOffset`. Back or Home returns to TV Home.
+3. **Open an app:** OK on Netflix launches its leanback launch intent. Home returns to TV Home.
+4. **Amazon's home on purpose:** the "Amazon Home" tile pauses the takeover for 15 minutes and opens Amazon's launcher (app store, Amazon's own settings).
+5. **Install or update:** the CTO runs `adb install -r` from the Mac and switches the takeover service on with `settings put secure` (F2 decides the exact keys).
+6. **Tracking off:** the CTO runs `python3 -m vizio_privacy firetv harden --apply` from the Mac (M2-T7).
+
+### TV facts found for the HDMI-2 request (2026-11-16, read live)
+
+| Item | Finding |
+|---|---|
+| `system/input_at_power_on` | `T_LIST_X_V1`, choices `SmartCast`, `Last Used TV Input`. Set to `Last Used TV Input` (was `SmartCast`). |
+| `devices/current_input` | `VALUE` `SMARTCAST`, `ENABLED` `FALSE`, `HIDDEN` `TRUE`. `PUT {"REQUEST":"MODIFY","VALUE":"HDMI-2","HASHVAL":<current>}` answers HTTP 200 with `RESULT` `FAILURE`, in standby and when on. |
+| `system/hide_from_input_list` | One `T_LIST_V1` per input: `tuner` (TV), `comp`, `hdmi1`, `hdmi2`; choices `Visible`, `Hidden`; all `Visible`. SmartCast is not listed. |
+| `system/cec` | `cec_function` Enabled, `one_touch_play` Enabled, `device_discovery` (action). |
+| `system/power_mode` | Quick Start. Key `CODESET 11` `CODE 1` powers on and `CODE 0` powers off over `/key_command/` (used once, 2026-11-16). |
+
+### Still to read in F2
+
+Fire OS build (`getprop ro.build.version.name`), WebView package and version, installed packages (Plex, Netflix, YouTube, Prime Video, Disney+ and their names), Amazon's privacy settings and their `settings` keys, whether third-party accessibility services can be switched on, and whether the stick can read Plex without a token.
+
 ## 1. Purpose and users
 
 The owner's household watches a VIZIO D24f-J09 SmartCast TV. Its home screen is VIZIO's, full of ads and WatchFree+, and the TV gives no way to uninstall apps. The dashboard replaces what the household sees: a home screen of their own, with **Continue Watching** and suggestions from their Plex server and a bottom row of a few chosen apps, driven with the TV remote. The household uses it daily. The owner (or the CTO in an agreed session) installs and updates it.
