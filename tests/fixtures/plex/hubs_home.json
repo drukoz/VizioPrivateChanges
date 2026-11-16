@@ -5,7 +5,7 @@
   "identifier": "com.plexapp.plugins.library",
   "Hub": [
    {
-    "hubKey": "/library/metadata/4619,17346,10128",
+    "hubKey": "/library/metadata/4617,17346,10128",
     "key": "/hubs/home/continueWatching",
     "title": "Continue Watching",
     "type": "mixed",
@@ -17,8 +17,8 @@
     "promoted": true,
     "Metadata": [
      {
-      "ratingKey": "4619",
-      "key": "/library/metadata/4619",
+      "ratingKey": "4617",
+      "key": "/library/metadata/4617",
       "parentRatingKey": "4613",
       "grandparentRatingKey": "4516",
       "guid": "plex://item/00000000000000000000005d",
@@ -37,29 +37,29 @@
       "parentTitle": "parentTitle 100",
       "contentRating": "TV-PG",
       "summary": "summary 101",
-      "index": 6,
+      "index": 4,
       "parentIndex": 4,
-      "audienceRating": 7.1,
-      "viewOffset": 363399,
+      "audienceRating": 4.6,
+      "viewOffset": 540259,
       "lastViewedAt": 1790000102,
       "year": 2012,
-      "thumb": "/library/metadata/4619/thumb/1790131474",
-      "art": "/library/metadata/4516/art/1687580364",
+      "thumb": "/library/metadata/4617/thumb/1790131474",
+      "art": "/library/metadata/4516/art/1687580316",
       "parentThumb": "/library/metadata/4613/thumb/1790131474",
-      "grandparentThumb": "/library/metadata/4516/thumb/1687580364",
-      "grandparentArt": "/library/metadata/4516/art/1687580364",
-      "grandparentTheme": "/library/metadata/4516/theme/1687580364",
-      "duration": 707049,
-      "originallyAvailableAt": "2012-04-30",
+      "grandparentThumb": "/library/metadata/4516/thumb/1687580316",
+      "grandparentArt": "/library/metadata/4516/art/1687580316",
+      "grandparentTheme": "/library/metadata/4516/theme/1687580316",
+      "duration": 702484,
+      "originallyAvailableAt": "2012-04-23",
       "addedAt": 1790000103,
       "updatedAt": 1790000104,
       "audienceRatingImage": "themoviedb://image.rating",
       "chapterSource": "media",
       "Media": [
        {
-        "id": 23804,
-        "duration": 707049,
-        "bitrate": 2940,
+        "id": 23802,
+        "duration": 702484,
+        "bitrate": 2043,
         "width": 1920,
         "height": 1080,
         "aspectRatio": 1.78,
@@ -74,11 +74,11 @@
         "hasVoiceActivity": false,
         "Part": [
          {
-          "id": 26325,
-          "key": "/library/parts/26325/1687580364/file.mkv",
-          "duration": 707049,
+          "id": 26323,
+          "key": "/library/parts/26323/1687580316/file.mkv",
+          "duration": 702484,
           "file": "/media/library/file-105.mkv",
-          "size": 259866131,
+          "size": 179430469,
           "audioProfile": "lc",
           "container": "mkv",
           "videoProfile": "main 10"
@@ -90,34 +90,34 @@
        {
         "alt": "alt 106",
         "type": "coverPoster",
-        "url": "/library/metadata/4516/thumb/1687580364"
+        "url": "/library/metadata/4516/thumb/1687580316"
        },
        {
         "alt": "alt 107",
         "type": "snapshot",
-        "url": "/library/metadata/4619/thumb/1790131474"
+        "url": "/library/metadata/4617/thumb/1790131474"
        },
        {
         "alt": "alt 108",
         "type": "background",
-        "url": "/library/metadata/4516/art/1687580364"
+        "url": "/library/metadata/4516/art/1687580316"
        },
        {
         "alt": "alt 109",
         "type": "clearLogo",
-        "url": "/library/metadata/4516/clearLogo/1687580364"
+        "url": "/library/metadata/4516/clearLogo/1687580316"
        },
        {
         "alt": "alt 110",
         "type": "backgroundSquare",
-        "url": "/library/metadata/4516/squareArt/1687580364"
+        "url": "/library/metadata/4516/squareArt/1687580316"
        }
       ],
       "UltraBlurColors": {
-       "topLeft": "390a18",
-       "topRight": "3a0b1a",
-       "bottomRight": "9a2849",
-       "bottomLeft": "651f4e"
+       "topLeft": "4c1a28",
+       "topRight": "9f3322",
+       "bottomRight": "463376",
+       "bottomLeft": "94265c"
       },
       "Director": [
        {
