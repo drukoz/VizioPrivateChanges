@@ -41,7 +41,9 @@ def save_token(host: str, device_id: str, auth_token: str) -> str:
     except OSError:
         pass
     payload = {"host": host, "device_id": device_id, "auth_token": auth_token}  # type: Dict[str, Any]
-    with open(path, "w", encoding="utf-8") as handle:
+    # Create the file owner-only from the start, so the token is never readable by others.
+    fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_TRUNC, FILE_MODE)
+    with os.fdopen(fd, "w", encoding="utf-8") as handle:
         json.dump(payload, handle)
     os.chmod(path, FILE_MODE)
     return path

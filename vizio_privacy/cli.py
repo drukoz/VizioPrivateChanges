@@ -17,10 +17,12 @@ import os
 from typing import Callable, Dict, List, Optional, Tuple
 
 from vizio_privacy import settings, targets, tokenstore
-from vizio_privacy.api import SmartCastClient, SmartCastError
+from vizio_privacy.api import ResultStatus, SmartCastClient, SmartCastError
 from vizio_privacy.cast import CastClient
 from vizio_privacy.pairing import DEFAULT_DEVICE_ID, begin_pair, finish_pair
-from vizio_privacy.settings import ChangeOutcome, HardenRow
+from vizio_privacy.settings import ChangeOutcome, HardenRow, WalkError
+
+NO_MATCHES = "No tracking or ad settings were found in the menus that were read."
 
 TELEMETRY_BINARIES = (
     "acr",
@@ -78,6 +80,11 @@ def _outcome_counts(rows: List[HardenRow]) -> str:
     )
 
 
+def _print_errors(errors: List[WalkError]) -> None:
+    for path, detail in errors:
+        print("Could not read menu {}: {}".format(path, detail))
+
+
 def _client_with_token(
     host: str, client_factory: Callable[..., SmartCastClient]
 ) -> Tuple[Optional[SmartCastClient], Optional[int]]:
@@ -130,12 +137,14 @@ def _cmd_dump(
     client, exit_code = _client_with_token(host, client_factory)
     if client is None:
         return exit_code if exit_code is not None else 2
-    for path, item in settings.dump(client):
+    errors = []  # type: List[WalkError]
+    for path, item in settings.dump(client, errors=errors):
         print(
             "{} = {}  [{}]".format(
                 _label(path, item.cname), targets.display_value(item), item.type.name
             )
         )
+    _print_errors(errors)
     return 0
 
 
@@ -148,8 +157,13 @@ def _cmd_status(
     client, exit_code = _client_with_token(host, client_factory)
     if client is None:
         return exit_code if exit_code is not None else 2
-    for row in settings.plan(client):
+    errors = []  # type: List[WalkError]
+    rows = settings.plan(client, errors=errors)
+    for row in rows:
         print(_row_line(row))
+    if not rows:
+        print(NO_MATCHES)
+    _print_errors(errors)
     return 0
 
 
@@ -162,11 +176,15 @@ def _cmd_harden(
     client, exit_code = _client_with_token(host, client_factory)
     if client is None:
         return exit_code if exit_code is not None else 2
-    rows = settings.harden(client, apply=args.apply)
+    errors = []  # type: List[WalkError]
+    rows = settings.harden(client, apply=args.apply, errors=errors)
     for row in rows:
         print(_row_line(row))
-    if rows:
-        print(_outcome_counts(rows))
+    _print_errors(errors)
+    if not rows:
+        print(NO_MATCHES)
+        return 0
+    print(_outcome_counts(rows))
     if not args.apply:
         print("Dry run: nothing changed. Re-run with --apply to change these.")
     return 1 if any(row.outcome is ChangeOutcome.FAILED for row in rows) else 0
@@ -214,6 +232,11 @@ def main(
         return command(host, args, client_factory, cast_factory)
     except SmartCastError as err:
         print("TV error: {}".format(err))
+        if err.result is ResultStatus.REQUIRES_PAIRING and args.command != "pair":
+            print(
+                "The TV no longer accepts the saved pairing. "
+                "Run: python3 -m vizio_privacy --host {} pair".format(host)
+            )
         return 1
     except (OSError, http.client.HTTPException) as err:
         print("Cannot reach the TV at {}: {}".format(host, err))

@@ -5,6 +5,7 @@ from __future__ import annotations
 import contextlib
 import io
 import os
+import stat
 import tempfile
 import unittest
 from typing import Any, Optional, Tuple
@@ -251,6 +252,64 @@ class GlobalFailureTest(unittest.TestCase):
         )
         self.assertEqual(code, 1)
         self.assertIn("TV error: REQUIRES_PAIRING: Pairing is required", out)
+
+
+PAIRING_REQUIRED = Response(
+    403, '{"STATUS": {"RESULT": "REQUIRES_PAIRING", "DETAIL": "Pairing is required"}}'
+)
+
+
+def no_match_tree() -> dict:
+    return {
+        "": [item("picture", "Picture", "T_MENU_V1")],
+        "picture": [item("brightness", "Brightness", "T_VALUE_ABS_V1", 50, None, 1)],
+    }
+
+
+class ReportingTest(unittest.TestCase):
+    def _run(self, argv: list, client_factory: Any) -> Tuple[int, str]:
+        with tempfile.TemporaryDirectory() as home, mock.patch.dict(
+            os.environ, {"VIZIO_PRIVACY_HOME": home}
+        ):
+            tokenstore.save_token("127.0.0.1", "vizio-privacy", "TOK")
+            return run_main(["--host", "127.0.0.1"] + argv, client_factory=client_factory)
+
+    def test_unreadable_menu_is_printed(self) -> None:
+        for argv in (["dump"], ["status"], ["harden"]):
+            code, out = self._run(argv, tv_factory(FakeTV(tree())))
+            self.assertEqual(code, 0, argv)
+            self.assertIn("Could not read menu broken: URI_NOT_FOUND: not found", out, argv)
+
+    def test_status_with_no_matches_says_so(self) -> None:
+        code, out = self._run(["status"], tv_factory(FakeTV(no_match_tree())))
+        self.assertEqual(code, 0)
+        self.assertIn("No tracking or ad settings were found in the menus that were read.", out)
+
+    def test_harden_with_no_matches_says_so(self) -> None:
+        code, out = self._run(["harden"], tv_factory(FakeTV(no_match_tree())))
+        self.assertEqual(code, 0)
+        self.assertIn("No tracking or ad settings were found in the menus that were read.", out)
+        self.assertNotIn("Dry run", out)
+
+    def test_rejected_token_prints_the_pair_hint(self) -> None:
+        for argv in (["dump"], ["status"], ["harden"]):
+            code, out = self._run(argv, smartcast_factory([PAIRING_REQUIRED]))
+            self.assertEqual(code, 1, argv)
+            self.assertIn("TV error: REQUIRES_PAIRING: Pairing is required", out, argv)
+            self.assertIn(
+                "The TV no longer accepts the saved pairing. "
+                "Run: python3 -m vizio_privacy --host 127.0.0.1 pair",
+                out,
+                argv,
+            )
+
+    def test_token_file_is_owner_only_from_creation(self) -> None:
+        with tempfile.TemporaryDirectory() as home, mock.patch.dict(
+            os.environ, {"VIZIO_PRIVACY_HOME": home}
+        ), mock.patch("vizio_privacy.tokenstore.os.chmod"):
+            path = tokenstore.save_token("127.0.0.1", "vizio-privacy", "TOK")
+            mode = stat.S_IMODE(os.stat(path).st_mode)
+        self.assertEqual(mode, 0o600)
 
 
 if __name__ == "__main__":
