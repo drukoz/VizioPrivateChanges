@@ -52,6 +52,7 @@ def ok(items: Optional[List[Dict[str, Any]]] = None, **extra: Any) -> Response:
 
 
 MENU_PREFIX = "/menu_native/dynamic/tv_settings"
+STATIC_PREFIX = "/menu_native/static/tv_settings"
 
 
 def _status(result: str, detail: str) -> Response:
@@ -62,26 +63,58 @@ class FakeTV:
     """A fake SmartCast settings tree; it is itself a transport and never opens a socket."""
 
     def __init__(
-        self, menus: Dict[str, List[dict]], refuse: Optional[Set[str]] = None
+        self,
+        menus: Dict[str, List[dict]],
+        refuse: Optional[Set[str]] = None,
+        dynamic_elements: bool = True,
+        static_menus: Optional[Dict[str, List[dict]]] = None,
     ) -> None:
         self.menus = menus
         self.refuse = refuse if refuse is not None else set()
+        # A real TV leaves ELEMENTS out of its dynamic answers; False copies that.
+        self.dynamic_elements = dynamic_elements
+        # Static answers: by default each menu's items without VALUE and HASHVAL.
+        self.static_menus = static_menus
         self.calls = []  # type: List[Tuple[str, str, Optional[str]]]
+
+    def _static(self, rel: str) -> Response:
+        if self.static_menus is not None:
+            items = self.static_menus.get(rel)
+        elif rel in self.menus:
+            items = [
+                {k: v for k, v in it.items() if k not in ("VALUE", "HASHVAL")}
+                for it in self.menus[rel]
+            ]
+        else:
+            items = None
+        if items is None:
+            return _status("URI_NOT_FOUND", "not found")
+        return Response(
+            200,
+            json.dumps({"STATUS": {"RESULT": "SUCCESS", "DETAIL": "Success"}, "ITEMS": items}),
+        )
 
     def __call__(
         self, method: str, url: str, headers: Dict[str, str], body: Optional[str]
     ) -> Response:
         path = urllib.parse.urlsplit(url).path
         self.calls.append((method, path, body))
+        if path == STATIC_PREFIX or path.startswith(STATIC_PREFIX + "/"):
+            if method.upper() != "GET":
+                return _status("URI_NOT_FOUND", "not found")
+            return self._static(path[len(STATIC_PREFIX):].lstrip("/"))
         rel = path[len(MENU_PREFIX):].lstrip("/")
         if method.upper() == "GET":
             if rel in self.menus:
+                items = self.menus[rel]
+                if not self.dynamic_elements:
+                    items = [{k: v for k, v in it.items() if k != "ELEMENTS"} for it in items]
                 return Response(
                     200,
                     json.dumps(
                         {
                             "STATUS": {"RESULT": "SUCCESS", "DETAIL": "Success"},
-                            "ITEMS": self.menus[rel],
+                            "ITEMS": items,
                         }
                     ),
                 )
