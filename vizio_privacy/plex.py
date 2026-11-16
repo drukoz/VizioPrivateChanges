@@ -138,7 +138,7 @@ def default_transport(timeout: float = 8.0) -> Callable[..., Response]:
     return transport
 
 
-def _metadata_list(container: Dict[str, Any], key: str) -> List[Dict[str, Any]]:
+def _dict_list(container: Dict[str, Any], key: str) -> List[Dict[str, Any]]:
     value = container.get(key)
     if not isinstance(value, list):
         return []
@@ -194,12 +194,14 @@ class PlexClient:
         container = self._container("GET", "/identity")
         machine = container.get("machineIdentifier")
         version = container.get("version")
-        return (str(machine) if machine is not None else "", str(version) if version is not None else "")
+        machine_text = str(machine) if machine is not None else ""
+        version_text = str(version) if version is not None else ""
+        return (machine_text, version_text)
 
     def libraries(self) -> List[Library]:
         container = self._container("GET", "/library/sections")
         libraries = []  # type: List[Library]
-        for directory in _metadata_list(container, "Directory"):
+        for directory in _dict_list(container, "Directory"):
             section_id = _as_int(directory.get("key"))
             if section_id is None:
                 continue
@@ -214,27 +216,27 @@ class PlexClient:
 
     def continue_watching(self, count: int = 20) -> List[PlexItem]:
         container = self._container("GET", "/hubs/continueWatching?count={}".format(count))
-        hubs = _metadata_list(container, "Hub")
+        hubs = _dict_list(container, "Hub")
         if not hubs:
             return []
-        return [PlexItem.from_json(entry) for entry in _metadata_list(hubs[0], "Metadata")]
+        return [PlexItem.from_json(entry) for entry in _dict_list(hubs[0], "Metadata")]
 
     def section_hubs(self, section_id: int, count: int = 20) -> List[Hub]:
         container = self._container("GET", "/hubs/sections/{}?count={}".format(section_id, count))
         hubs = []  # type: List[Hub]
-        for hub in _metadata_list(container, "Hub"):
+        for hub in _dict_list(container, "Hub"):
             hubs.append(
                 Hub(
                     identifier=str(hub.get("hubIdentifier") or ""),
                     title=str(hub.get("title") or ""),
-                    items=[PlexItem.from_json(entry) for entry in _metadata_list(hub, "Metadata")],
+                    items=[PlexItem.from_json(entry) for entry in _dict_list(hub, "Metadata")],
                 )
             )
         return hubs
 
     def item(self, rating_key: str) -> PlexItem:
         container = self._container("GET", "/library/metadata/{}".format(rating_key))
-        metadata = _metadata_list(container, "Metadata")
+        metadata = _dict_list(container, "Metadata")
         if not metadata:
             raise PlexError(404, "no such item")
         return PlexItem.from_json(metadata[0])
@@ -243,7 +245,7 @@ class PlexClient:
         container = self._container(
             "GET", "/library/metadata/{}?includeOnDeck=1".format(rating_key)
         )
-        metadata = _metadata_list(container, "Metadata")
+        metadata = _dict_list(container, "Metadata")
         if not metadata:
             return None
         on_deck = metadata[0].get("OnDeck")
