@@ -169,6 +169,48 @@ class SmartCastHandler(_QuietHandler):
         if method == "PUT" and path == "/pairing/cancel":
             return self._send(200, _success())
 
+        current_input = "/menu_native/dynamic/tv_settings/devices/current_input"
+        if path in ("/app/current", "/app/launch", current_input):
+            if headers["AUTH"] != AUTH_TOKEN or not tv.token_valid:
+                return self._send(403, _status("REQUIRES_PAIRING", "Pairing is required"))
+            if method == "GET" and path == "/app/current":
+                return self._send(
+                    200,
+                    _success(
+                        ITEM={"TYPE": "T_APP_V1", "VALUE": dict(tv.current_app)},
+                        URI="/app/current",
+                    ),
+                )
+            if method == "PUT" and path == "/app/launch":
+                if not (isinstance(body, dict) and isinstance(body.get("VALUE"), dict)):
+                    return self._send(200, _status("INVALID_PARAMETER", "Bad VALUE"))
+                tv.launches.append(body["VALUE"])
+                if tv.launch_switches:
+                    tv.current_app = dict(body["VALUE"])
+                return self._send(200, _success())
+            if path == current_input:
+                if method == "GET":
+                    return self._send(
+                        200,
+                        _success(
+                            ITEMS=[
+                                {
+                                    "CNAME": "current_input",
+                                    "TYPE": "T_STRING_V1",
+                                    "NAME": "Current Input",
+                                    "VALUE": tv.current_input[0],
+                                    "HASHVAL": tv.current_input[1],
+                                }
+                            ]
+                        ),
+                    )
+                if method == "PUT":
+                    sent = body if isinstance(body, dict) else {}
+                    if sent.get("HASHVAL") != tv.current_input[1]:
+                        return self._send(200, _status("INVALID_PARAMETER", "Stale HASHVAL"))
+                    tv.current_input = [sent.get("VALUE"), tv.current_input[1] + 1]
+                    return self._send(200, _success())
+
         if path.startswith("/menu_native/"):
             if headers["AUTH"] != AUTH_TOKEN or not tv.token_valid:
                 return self._send(403, _status("REQUIRES_PAIRING", "Pairing is required"))
@@ -266,6 +308,12 @@ class MockTV:
             "admin_and_privacy/advertising/limit_ad_tracking": ["Off", 202],
         }  # type: Dict[str, List[Any]]
         self.token_valid = True
+        self.current_app = {
+            "NAME_SPACE": 345, "APP_ID": "707", "MESSAGE": "dtv-system://power",
+        }  # type: Dict[str, Any]
+        self.launches = []  # type: List[Any]
+        self.launch_switches = True
+        self.current_input = ["SMARTCAST", 2023834057]  # type: List[Any]
         self.refuse_writes = False
         self.ignore_writes = False
         self.cast_applies_writes = True
