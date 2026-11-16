@@ -33,3 +33,16 @@ adb -s "$SERIAL" exec-out screencap -p >"$OUT/home-right.png"
 adb -s "$SERIAL" logcat -d -s TvHome:V >"$OUT/tvhome-log.txt"
 if grep -q "served /api/home" "$OUT/tvhome-log.txt"; then echo "PASS the page asked for /api/home"; else echo "FAIL the page never asked for /api/home"; fi
 if grep -q "console ERROR" "$OUT/tvhome-log.txt"; then echo "FAIL the page logged errors:"; grep "console ERROR" "$OUT/tvhome-log.txt"; else echo "PASS no page errors"; fi
+# Takeover: switch the service on, leave TV Home, press Home, expect TV Home in front.
+adb -s "$SERIAL" shell settings put secure enabled_accessibility_services com.rukoz.tvhome/com.rukoz.tvhome.HomeTakeover
+adb -s "$SERIAL" shell settings put secure accessibility_enabled 1
+sleep 5
+adb -s "$SERIAL" shell am start -W -a android.settings.SETTINGS >/dev/null
+sleep 3
+adb -s "$SERIAL" shell input keyevent KEYCODE_HOME
+sleep 4
+adb -s "$SERIAL" exec-out screencap -p >"$OUT/after-home.png"
+adb -s "$SERIAL" logcat -d -s TvHome:V >"$OUT/tvhome-log.txt"
+top=$(adb -s "$SERIAL" shell dumpsys activity activities | grep -m1 -E "topResumedActivity|mResumedActivity")
+if grep -q "takeover connected" "$OUT/tvhome-log.txt"; then echo "PASS takeover service connected"; else echo "FAIL takeover service never connected"; fi
+if echo "$top" | grep -q "com.rukoz.tvhome/.HomeActivity"; then echo "PASS Home brought TV Home forward"; else echo "FAIL after Home the top activity is: $top"; fi
