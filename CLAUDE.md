@@ -35,6 +35,7 @@ Pinned and proved on this Mac on 2026-11-16: Gradle 9.4.1 (wrapper), Android Gra
   - `pairing.py` and `tokenstore.py`: PIN pairing, and the auth token saved under `~/.vizio-privacy/`.
   - `targets.py`: which settings count as tracking or ads, and the private value of each.
   - `settings.py`: walks the settings tree and sets the matched items (`harden`).
+  - `firetv.py`: the Fire TV Stick's Amazon packages over ADB (`firetv status|harden|undo`).
   - `cli.py` and `__main__.py`: the command line.
   - Dashboard (being built; the plan's module table says which task adds what): `plex.py` (Plex client), `apps.py` (app launch table), `dashboard/` (`model.py` contract, `service.py`, `server.py`, `watcher.py`, `static/` page).
   - `api.py`, `cast.py` and `plex.py` open sockets, as does the dashboard server. Each takes a transport argument, so tests can pass a fake.
@@ -57,6 +58,7 @@ Pinned and proved on this Mac on 2026-11-16: Gradle 9.4.1 (wrapper), Android Gra
 - Android setup, once per shell: `source scripts/android-env.sh`.
 - Android build and unit tests: `(cd android && ./gradlew --no-daemon assembleDebug testDebugUnitTest)`.
 - Android smoke test on an emulator: `bash android/scripts/emulator-smoke.sh tvhome-<task id> 5610 "$PWD/android/build/smoke" "$PWD/android/app/build/outputs/apk/debug/app-debug.apk"` (prints PASS or FAIL lines, deletes its emulator).
+- Fire TV packages (CTO only, in a session with the owner): `python3 -m vizio_privacy firetv --device 192.168.1.60:5555 --adb-home /Users/drukoz/.vizio-privacy/adb status`, then `harden`, `harden --apply --package <pkg>`, `undo`.
 
 ## Toolchain
 
