@@ -1,0 +1,20 @@
+[
+  {
+    "h": 216,
+    "p": "/library/metadata/4617/thumb/1700000000",
+    "path": "/img?p=%2Flibrary%2Fmetadata%2F4617%2Fthumb%2F1700000000&w=384&h=216",
+    "w": 384
+  },
+  {
+    "h": 360,
+    "p": "/library/metadata/2/thumb/1?x=a b&c=ü*~",
+    "path": "/img?p=%2Flibrary%2Fmetadata%2F2%2Fthumb%2F1%3Fx%3Da%20b%26c%3D%C3%BC%2A~&w=240&h=360",
+    "w": 240
+  },
+  {
+    "h": 1080,
+    "p": "/library/metadata/9/art/1+2",
+    "path": "/img?p=%2Flibrary%2Fmetadata%2F9%2Fart%2F1%2B2&w=1920&h=1080",
+    "w": 1920
+  }
+]

@@ -1,0 +1,96 @@
+{
+  "apps": [
+    {
+      "action": {
+        "kind": 1,
+        "target": "com.netflix.ninja"
+      },
+      "id": "app:com.netflix.ninja",
+      "image": "/appicon?pkg=com.netflix.ninja",
+      "progress": null,
+      "shape": 2,
+      "subtitle": null,
+      "title": "Netflix"
+    },
+    {
+      "action": {
+        "kind": 4,
+        "target": "com.amazon.tv.launcher"
+      },
+      "id": "app:amazon-home",
+      "image": null,
+      "progress": null,
+      "shape": 2,
+      "subtitle": null,
+      "title": "Amazon Home"
+    }
+  ],
+  "notices": [
+    "Plex is not answering; showing apps only."
+  ],
+  "rows": [
+    {
+      "id": "continueWatching",
+      "kind": 0,
+      "tiles": [
+        {
+          "action": {
+            "kind": 0,
+            "target": "4617"
+          },
+          "id": "plex:4617",
+          "image": "/img?p=%2Flibrary%2Fmetadata%2F4617%2Fthumb%2F1700000000&w=384&h=216",
+          "progress": 0.333,
+          "shape": 1,
+          "subtitle": "S1 · E2 · Episode B",
+          "title": "Show A"
+        },
+        {
+          "action": {
+            "kind": 0,
+            "target": "24339"
+          },
+          "id": "plex:24339",
+          "image": null,
+          "progress": 1.0,
+          "shape": 1,
+          "subtitle": "2024",
+          "title": "Movie C"
+        },
+        {
+          "action": {
+            "kind": 0,
+            "target": "1"
+          },
+          "id": "plex:1",
+          "image": null,
+          "progress": 0.0,
+          "shape": 1,
+          "subtitle": null,
+          "title": "Movie D"
+        }
+      ],
+      "title": "Continue Watching"
+    },
+    {
+      "id": "hub:movie.recentlyadded.1",
+      "kind": 1,
+      "tiles": [
+        {
+          "action": {
+            "kind": 0,
+            "target": "2"
+          },
+          "id": "plex:2",
+          "image": "/img?p=%2Flibrary%2Fmetadata%2F2%2Fthumb%2F1%3Fx%3Da%20b%26c%3D%C3%BC%2A~&w=240&h=360",
+          "progress": null,
+          "shape": 0,
+          "subtitle": null,
+          "title": "Movie E"
+        }
+      ],
+      "title": "Recently Added Movies"
+    }
+  ],
+  "version": 1
+}

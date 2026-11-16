@@ -1,0 +1,10 @@
+[
+  {
+    "message": "Opening Netflix",
+    "ok": true
+  },
+  {
+    "message": "Plex is not installed",
+    "ok": false
+  }
+]
