@@ -59,7 +59,7 @@ class HomeActivity : Activity() {
         }
         setContentView(web)
         web.requestFocus()
-        web.addJavascriptInterface(TvHomeBridge { ActionResult(false, "Not available yet") }, "TvHome")
+        web.addJavascriptInterface(TvHomeBridge(ActionRunner(this, ActionPlanner(plex))::run), "TvHome")
         web.loadUrl("https://appassets.androidplatform.net/static/index.html")
     }
 
