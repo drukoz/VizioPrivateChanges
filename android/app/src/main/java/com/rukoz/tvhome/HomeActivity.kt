@@ -15,7 +15,13 @@ import java.io.ByteArrayInputStream
 class HomeActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val handlers = ApiHandlers({ FixtureHome.JSON }, ImageSource { _, _, _ -> null }, AppIcons(packageManager))
+        val debuggable = (applicationInfo.flags and android.content.pm.ApplicationInfo.FLAG_DEBUGGABLE) != 0
+        val plex = PlexClient(plexBaseUrlFrom(intent?.getStringExtra(EXTRA_PLEX_BASE_URL), debuggable))
+        val pm = packageManager
+        val live = LiveHome(HomeBuilder(plex)) {
+            appTiles { pkg -> (pm.getLeanbackLaunchIntentForPackage(pkg) ?: pm.getLaunchIntentForPackage(pkg)) != null }
+        }
+        val handlers = ApiHandlers(live::json, PlexImageSource(plex), AppIcons(pm))
         val loader = WebViewAssetLoader.Builder()
             .addPathHandler("/static/", WebViewAssetLoader.AssetsPathHandler(this))
             .build()
