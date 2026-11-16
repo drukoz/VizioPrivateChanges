@@ -326,18 +326,19 @@ def _change(
             print(_plan_line(planned, states.get(planned.package, PackageState.NOT_INSTALLED)))
         print("Dry run: nothing changed. Add --apply to {} them.".format(verb))
         return 0
-    lines: List[str] = []
+    # One package at a time, each line printed (and flushed) as soon as its
+    # read-back is in, so an adb error part-way still shows what changed.
+    change = disable if verb == "disable" else enable
     failed = 0
-    for pkg, outcome, detail in (disable if verb == "disable" else enable)(run, packages):
-        if outcome == ChangeOutcome.CHANGED:
-            lines.append("{}  {}".format(changed_word, pkg))
-        elif outcome == ChangeOutcome.PROTECTED:
-            lines.append("protected {}".format(pkg))
-        else:
-            failed += 1
-            lines.append("FAILED    {}: {}".format(pkg, detail))
-    for line in lines:
-        print(line)
+    for planned in packages:
+        for pkg, outcome, detail in change(run, [planned]):
+            if outcome == ChangeOutcome.CHANGED:
+                print("{}  {}".format(changed_word, pkg), flush=True)
+            elif outcome == ChangeOutcome.PROTECTED:
+                print("protected {}".format(pkg), flush=True)
+            else:
+                failed += 1
+                print("FAILED    {}: {}".format(pkg, detail), flush=True)
     return 1 if failed else 0
 
 
