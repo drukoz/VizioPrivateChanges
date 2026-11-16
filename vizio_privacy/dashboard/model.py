@@ -22,6 +22,7 @@ class ActionKind(enum.IntEnum):
     OPEN_APP = 1
     SWITCH_INPUT = 2
     VIZIO_HOME = 3
+    AMAZON_HOME = 4
 
 
 class ImageShape(enum.IntEnum):

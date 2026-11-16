@@ -118,6 +118,7 @@ class EnumsTest(unittest.TestCase):
                 (1, "OPEN_APP"),
                 (2, "SWITCH_INPUT"),
                 (3, "VIZIO_HOME"),
+                (4, "AMAZON_HOME"),
             ],
         )
         self.assertEqual(
