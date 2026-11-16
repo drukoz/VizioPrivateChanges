@@ -18,7 +18,7 @@ The owner chose the Fire TV Stick on the Vizio's HDMI-2 as the home screen's dev
 
 ### How we reach it
 
-ADB over Wi-Fi from the Mac, CTO only, in sessions agreed with the owner: `/Volumes/Storage/paperclip/toolchains/android-sdk/platform-tools/adb` (37.0.1), with `ANDROID_USER_HOME=/Users/drukoz/.vizio-privacy/adb` (the key the stick trusts) and `ANDROID_ADB_SERVER_PORT=5038` (its own ADB server, so the engineers' emulator server never holds that key). Any ADB command can wake the stick, and a waking stick turns the TV on through CEC.
+ADB over Wi-Fi from the Mac, CTO only, in sessions agreed with the owner: `/Volumes/Storage/paperclip/toolchains/android-sdk/platform-tools/adb` (37.0.1), with `HOME=/Users/drukoz/.vizio-privacy/adb` (adb 37 keeps its key in `$HOME/.android/adbkey` and ignores `ANDROID_USER_HOME`; this is the key the stick trusts) and `ANDROID_ADB_SERVER_PORT=5038` (its own ADB server, so the engineers' emulator server never holds that key). Any ADB command can wake the stick, and a waking stick turns the TV on through CEC.
 
 ### Workflows on the stick (target)
 

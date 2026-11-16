@@ -21,7 +21,7 @@ The owner chose software only: no DNS blocker (no Pi-hole, no router changes). D
 
 - Fire TV Stick 4K, 1st gen (2018), model `AFTMM`, Fire OS 6 (Android 7.1, API 25). LAN address `192.168.1.60` (DHCP; found by SSDP/DIAL, see `docs/dashboard/system-map.md` section 0), on the TV's HDMI-2.
 - Its friendly name contains a person's name, and its serial number, MAC address and advertising ID are identifiers: never commit or print any of them.
-- Only the CTO connects to it, over ADB on Wi-Fi from the Mac, in sessions agreed with the owner. The trusted ADB key is in `/Users/drukoz/.vizio-privacy/adb/`.
+- Only the CTO connects to it, over ADB on Wi-Fi from the Mac, in sessions agreed with the owner. The trusted ADB key is `/Users/drukoz/.vizio-privacy/adb/.android/adbkey`, used by running adb with `HOME=/Users/drukoz/.vizio-privacy/adb` and `ANDROID_ADB_SERVER_PORT=5038`.
 
 ## Android toolchain (for `android/`)
 
