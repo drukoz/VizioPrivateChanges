@@ -8,6 +8,8 @@ Sources: pyvizio 0.1.64 (MIT, <https://github.com/vkorn/pyvizio>), files `pyvizi
 - Reads use `GET`. Everything else uses `PUT` with a JSON body and `Content-Type: application/json`.
 - Auth: header `AUTH: <auth_token>` on every `/menu_native/` call.
 - pyvizio's default timeout is 5 seconds.
+- Checked on 2026-11-15 against our TV: `ssl.create_default_context()` with `check_hostname = False` and `verify_mode = ssl.CERT_NONE` connects from macOS's own Python 3.9 (LibreSSL 2.8.3, TLS 1.2) and from Python 3.11 and newer (OpenSSL 3, TLS 1.3). No cipher or protocol overrides are needed.
+- With `http.client`, send only the path (plus `?query`) as the request target, never the full URL.
 
 ## Response envelope
 
@@ -64,3 +66,13 @@ Send `PUT /menu_native/dynamic/tv_settings/<path>/<cname>` with the `AUTH` heade
 ## Known paths
 
 pyvizio reads system information at `system/system_information/...` on older firmware and at `admin_and_privacy/system_information/...` on newer firmware. So `admin_and_privacy` is a top-level menu on current sets. The exact CNAME of "Viewing Data" (ACR) on our TV will only be known after the first `dump` that follows pairing.
+
+## Google Cast setup API (port 8008)
+
+Source: GHLocalApi, a community OpenAPI description of the Google Cast local API (<https://github.com/rithvikvibhu/GHLocalApi>, file `GoogleHome.openapi3.json`). The read was checked on our TV on 2026-11-15; the write has not been tried on it yet.
+
+- Plain HTTP, no TLS: `http://<host>:8008`.
+- `GET /setup/eureka_info?params=opt_in,device_info` returns JSON with a top-level `opt_in` object. Our TV: `{"crash": true, "opencast": false, "stats": true}`. `crash` is crash reporting and `stats` is usage statistics.
+- `POST /setup/set_eureka_info` with `Content-Type: application/json` takes only the fields to change, with `opt_in` at the top level of the body: `{"opt_in": {"crash": false, "stats": false}}`.
+- The device answers 200 OK even for fields it ignores, so a 200 proves nothing. Read `opt_in` again to see whether the change took.
+- Newer Cast firmware may refuse writes that lack a `cast-local-authorization-token` header, which needs the owner's Google account. If the TV refuses, report it; do not try to obtain that token.
