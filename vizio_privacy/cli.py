@@ -63,7 +63,8 @@ def _server_answers(url: str, timeout: float = 3.0) -> bool:
     try:
         with urllib.request.urlopen(url, timeout=timeout):
             return True
-    except urllib.error.HTTPError:
+    except urllib.error.HTTPError as err:
+        err.close()
         return True
     except (OSError, ValueError):
         return False
