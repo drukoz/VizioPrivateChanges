@@ -36,8 +36,8 @@ TV (Conjure web runtime)                Mac: python3 -m vizio_privacy dashboard 
 | `vizio_privacy/plex_discovery.py` | GDM discovery: `ServerInfo`, `parse_gdm_reply`, `discover` | M1-T5 (RUK-2461) |
 | `vizio_privacy/dashboard/model.py` | The contract below: enums, dataclasses, JSON both ways | M1-T3 (RUK-2459) |
 | `vizio_privacy/apps.py` | `AppId` and the pinned launch table | M1-T4 (RUK-2460) |
-| `vizio_privacy/dashboard/service.py` | Builds `Home` from Plex and apps; runs actions | M1, after S1/S2 |
-| `vizio_privacy/dashboard/server.py` | `ThreadingHTTPServer`: `/`, `/static/*`, `/api/home`, `/api/action`, `/img` | M1, after S1 |
+| `vizio_privacy/dashboard/service.py` | Builds `Home` from Plex and apps; runs actions | M1-T6 (RUK-2465); Plex playback after S2 |
+| `vizio_privacy/dashboard/server.py` | `ThreadingHTTPServer`: `/`, `/static/*`, `/api/home`, `/api/action`, `/img` | M1-T7 (RUK-2466) |
 | `vizio_privacy/dashboard/static/` | `index.html`, `app.js`, `app.css`: rows, focus, keys | M1, after S1 |
 | `cli.py` | `dashboard serve`, `dashboard open` (M1); `install`, `uninstall`, `status` (M2) | M1/M2 |
 | `vizio_privacy/dashboard/watcher.py`, `launchd.py` | Takeover loop; LaunchAgent | M2 |
@@ -86,8 +86,8 @@ A media player (Plex plays). A Plex sign-in, until S2 says it's needed. Settings
 | T3 Contract `dashboard/model.py` (RUK-2459) | — | Started 2026-11-16 |
 | T4 App table `apps.py` (RUK-2460) | — | Started 2026-11-16 |
 | T5 Plex discovery `plex_discovery.py` (RUK-2461) | — | Started 2026-11-16 |
-| T6 Service `dashboard/service.py` | T1-T4, S2 | Play route chosen by S2 |
-| T7 Server `dashboard/server.py` | T3 | Built against a fake service |
+| T6 Service `dashboard/service.py` (RUK-2465) | T1-T4 | Rows, app tiles and app/input actions, started 2026-11-16. Without a `play` callable, OK on a Plex tile opens the Plex app; the S2 route is passed in as `play` later |
+| T7 Server `dashboard/server.py` (RUK-2466) | T3 | Built against a fake service, started 2026-11-16 |
 | T8 Page `static/` | T3, S1 | Language level from S1's user agent |
 | T9 CLI `dashboard serve` / `open` | T6, T7 | |
 | T10 End-to-end test: mock TV + fake Plex + real HTTP on 127.0.0.1 | T9 | QA Engineer or Test Writer |
