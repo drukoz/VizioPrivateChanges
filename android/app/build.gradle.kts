@@ -23,6 +23,9 @@ android {
         getByName("main") {
             assets.srcDirs("../../vizio_privacy/dashboard/static")
         }
+        getByName("test") {
+            resources.srcDirs("../../tests/fixtures")
+        }
     }
 }
 
