@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+import copy
 import json
+import os
 import urllib.parse
 from collections import namedtuple
 from typing import Any, Callable, Dict, List, Optional, Set, Tuple, Union
@@ -138,3 +140,90 @@ class FakeTV:
         item["VALUE"] = req.get("VALUE")
         item["HASHVAL"] = item["HASHVAL"] + 1
         return _status("SUCCESS", "Success")
+
+
+TV_FIXTURES = os.path.join(os.path.dirname(__file__), "fixtures", "tv")
+
+
+def load_tv_fixture(name: str) -> dict:
+    """Read tests/fixtures/tv/<name> and return the whole {http_status, body} dict."""
+    with open(os.path.join(TV_FIXTURES, name), "r", encoding="utf-8") as handle:
+        return json.load(handle)
+
+
+POWER_PATH = "/state/device/power_mode"
+APP_CURRENT_PATH = "/app/current"
+APP_LAUNCH_PATH = "/app/launch"
+KEY_COMMAND_PATH = "/key_command/"
+DEVICES_PREFIX = "/menu_native/dynamic/tv_settings/devices"
+CURRENT_INPUT_PATH = DEVICES_PREFIX + "/current_input"
+NAME_INPUT_PATH = DEVICES_PREFIX + "/name_input"
+
+
+class FakeRemoteTV:
+    """A fake TV for the dashboard control calls; a transport that never opens a socket."""
+
+    def __init__(self, power: int = 0, app: Optional[dict] = None, refuse_launch: bool = False) -> None:
+        self.power = power
+        self.app = app
+        self.refuse_launch = refuse_launch
+        self.input_value = "SMARTCAST"
+        self.input_hash = 2023834057
+        self.keys = []  # type: List[Tuple[int, int]]
+        self.calls = []  # type: List[Tuple[str, str, Optional[str]]]
+
+    def _body(self, name: str) -> Dict[str, Any]:
+        return copy.deepcopy(load_tv_fixture(name)["body"])
+
+    def __call__(
+        self, method: str, url: str, headers: Dict[str, str], body: Optional[str]
+    ) -> Response:
+        path = urllib.parse.urlsplit(url).path
+        self.calls.append((method, path, body))
+        verb = method.upper()
+        if verb == "GET":
+            return self._get(path)
+        if verb == "PUT":
+            return self._put(path, body)
+        return _status("URI_NOT_FOUND", "not found")
+
+    def _get(self, path: str) -> Response:
+        if path == POWER_PATH:
+            body = self._body("power_mode_standby.json")
+            body["ITEMS"][0]["VALUE"] = self.power
+            return _json(body)
+        if path == APP_CURRENT_PATH:
+            body = self._body("app_current_standby.json")
+            body["ITEM"]["VALUE"] = self.app
+            return _json(body)
+        if path == CURRENT_INPUT_PATH:
+            body = self._body("current_input_smartcast.json")
+            body["ITEMS"][0]["VALUE"] = self.input_value
+            body["ITEMS"][0]["HASHVAL"] = self.input_hash
+            return _json(body)
+        if path == NAME_INPUT_PATH:
+            return _json(self._body("name_input.json"))
+        return _status("URI_NOT_FOUND", "not found")
+
+    def _put(self, path: str, body: Optional[str]) -> Response:
+        req = json.loads(body) if body is not None else {}
+        if path == APP_LAUNCH_PATH:
+            if self.refuse_launch:
+                return _status("INVALID_PARAMETER", "refused")
+            self.app = req.get("VALUE")
+            return _status("SUCCESS", "Success")
+        if path == KEY_COMMAND_PATH:
+            for key in req.get("KEYLIST", []):
+                self.keys.append((key.get("CODESET"), key.get("CODE")))
+            return _status("SUCCESS", "Success")
+        if path == CURRENT_INPUT_PATH:
+            if req.get("HASHVAL") != self.input_hash:
+                return _status("INVALID_PARAMETER", "refused")
+            self.input_value = req.get("VALUE")
+            self.input_hash = self.input_hash + 1
+            return _status("SUCCESS", "Success")
+        return _status("URI_NOT_FOUND", "not found")
+
+
+def _json(body: Dict[str, Any]) -> Response:
+    return Response(200, json.dumps(body))
