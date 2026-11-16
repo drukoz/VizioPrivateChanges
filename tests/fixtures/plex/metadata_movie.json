@@ -1,0 +1,301 @@
+{
+ "MediaContainer": {
+  "size": 1,
+  "allowSync": true,
+  "identifier": "com.plexapp.plugins.library",
+  "librarySectionID": 1,
+  "librarySectionTitle": "Movies",
+  "librarySectionUUID": "00000000-0000-4000-8000-000000000759",
+  "mediaTagPrefix": "/system/bundle/media/flags/",
+  "mediaTagVersion": 1792751798,
+  "Metadata": [
+   {
+    "ratingKey": "24339",
+    "key": "/library/metadata/24339",
+    "guid": "plex://item/0000000000000000000002f8",
+    "slug": "slug-761",
+    "studio": "studio 762",
+    "type": "movie",
+    "title": "title 763",
+    "titleSort": "titleSort 764",
+    "librarySectionTitle": "Movies",
+    "librarySectionID": 1,
+    "librarySectionKey": "/library/sections/1",
+    "contentRating": "G",
+    "contentRatingAge": 7,
+    "summary": "summary 765",
+    "rating": 9.7,
+    "audienceRating": 8.8,
+    "viewOffset": 3559000,
+    "viewCount": 1,
+    "lastViewedAt": 1790000766,
+    "year": 1995,
+    "tagline": "tagline 767",
+    "thumb": "/library/metadata/24339/thumb/1787303570",
+    "art": "/library/metadata/24339/art/1787303570",
+    "duration": 5840710,
+    "originallyAvailableAt": "1995-05-19",
+    "addedAt": 1790000768,
+    "updatedAt": 1790000769,
+    "audienceRatingImage": "rottentomatoes://image.rating.upright",
+    "primaryExtraKey": "/library/metadata/24344",
+    "ratingImage": "rottentomatoes://image.rating.ripe",
+    "Media": [
+     {
+      "id": 151542,
+      "duration": 5840710,
+      "bitrate": 10233,
+      "width": 1920,
+      "height": 1080,
+      "aspectRatio": 1.78,
+      "audioChannels": 2,
+      "audioCodec": "eac3",
+      "videoCodec": "h264",
+      "videoResolution": "1080",
+      "container": "mkv",
+      "videoFrameRate": "24p",
+      "videoProfile": "high",
+      "hasVoiceActivity": false,
+      "Part": [
+       {
+        "id": 154063,
+        "key": "/library/parts/154063/1758441077/file.mkv",
+        "duration": 5840710,
+        "file": "/media/library/file-770.mkv",
+        "size": 7471145952,
+        "container": "mkv",
+        "videoProfile": "high",
+        "Stream": [
+         {
+          "id": 981414,
+          "streamType": 1,
+          "default": true,
+          "codec": "h264",
+          "index": 0,
+          "bitrate": 10009,
+          "language": "English",
+          "languageTag": "en",
+          "languageCode": "eng",
+          "bitDepth": 8,
+          "chromaLocation": "left",
+          "chromaSubsampling": "4:2:0",
+          "closedCaptions": true,
+          "codedHeight": 1088,
+          "codedWidth": 1920,
+          "colorPrimaries": "bt709",
+          "colorRange": "tv",
+          "colorSpace": "bt709",
+          "colorTrc": "bt709",
+          "frameRate": 23.976,
+          "hasScalingMatrix": false,
+          "height": 1080,
+          "level": 40,
+          "profile": "high",
+          "refFrames": 4,
+          "scanType": "progressive",
+          "width": 1920,
+          "displayTitle": "1080p",
+          "extendedDisplayTitle": "1080p (H.264)"
+         },
+         {
+          "id": 981416,
+          "streamType": 2,
+          "canNormalizeLoudness": false,
+          "selected": true,
+          "default": true,
+          "codec": "eac3",
+          "index": 1,
+          "channels": 2,
+          "bitrate": 224,
+          "language": "English",
+          "languageTag": "en",
+          "languageCode": "eng",
+          "audioChannelLayout": "stereo",
+          "samplingRate": 48000,
+          "displayTitle": "English (EAC3 Stereo)",
+          "extendedDisplayTitle": "English (EAC3 Stereo)"
+         },
+         {
+          "id": 981415,
+          "streamType": 3,
+          "canAutoSync": false,
+          "codec": "eia_608",
+          "index": 0,
+          "language": "English",
+          "languageTag": "en",
+          "languageCode": "eng",
+          "embeddedInVideo": "1",
+          "displayTitle": "English",
+          "extendedDisplayTitle": "English (Closed Captions)"
+         },
+         {
+          "id": 981417,
+          "streamType": 3,
+          "canAutoSync": false,
+          "codec": "srt",
+          "index": 2,
+          "bitrate": 0,
+          "language": "English",
+          "languageTag": "en",
+          "languageCode": "eng",
+          "displayTitle": "English",
+          "extendedDisplayTitle": "English (SRT)"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "Image": [
+     {
+      "alt": "alt 771",
+      "type": "coverPoster",
+      "url": "/library/metadata/24339/thumb/1787303570"
+     },
+     {
+      "alt": "alt 772",
+      "type": "background",
+      "url": "/library/metadata/24339/art/1787303570"
+     },
+     {
+      "alt": "alt 773",
+      "type": "clearLogo",
+      "url": "/library/metadata/24339/clearLogo/1787303570"
+     },
+     {
+      "alt": "alt 774",
+      "type": "backgroundSquare",
+      "url": "/library/metadata/24339/squareArt/1787303570"
+     }
+    ],
+    "UltraBlurColors": {
+     "topLeft": "43250f",
+     "topRight": "38210d",
+     "bottomRight": "301a0a",
+     "bottomLeft": "874c2d"
+    },
+    "Genre": [
+     {
+      "id": 297,
+      "filter": "genre=297",
+      "tag": "Family"
+     },
+     {
+      "id": 621,
+      "filter": "genre=621",
+      "tag": "Drama"
+     },
+     {
+      "id": 298,
+      "filter": "genre=298",
+      "tag": "Fantasy"
+     }
+    ],
+    "Country": [
+     {
+      "id": 87,
+      "filter": "country=87",
+      "tag": "United States of America"
+     }
+    ],
+    "Guid": [
+     {
+      "id": "imdb://tt0000775"
+     },
+     {
+      "id": "imdb://tt0000776"
+     },
+     {
+      "id": "imdb://tt0000777"
+     }
+    ],
+    "Rating": [
+     {
+      "image": "imdb://image.rating",
+      "value": 7.6,
+      "type": "audience"
+     },
+     {
+      "image": "rottentomatoes://image.rating.ripe",
+      "value": 9.7,
+      "type": "critic"
+     },
+     {
+      "image": "rottentomatoes://image.rating.upright",
+      "value": 8.8,
+      "type": "audience"
+     },
+     {
+      "image": "themoviedb://image.rating",
+      "value": 7.6,
+      "type": "audience"
+     }
+    ],
+    "Director": [
+     {
+      "id": 4681,
+      "filter": "director=4681",
+      "tag": "Person 778",
+      "tagKey": "5d776827103a2d001f5645cc",
+      "thumb": "https://example.invalid/person.jpg"
+     }
+    ],
+    "Writer": [
+     {
+      "id": 77302,
+      "filter": "writer=77302",
+      "tag": "Person 779",
+      "tagKey": "5d776836f59e580021898c22"
+     },
+     {
+      "id": 77272,
+      "filter": "writer=77272",
+      "tag": "Person 780",
+      "tagKey": "5dcd37f025c1a5002062d739",
+      "thumb": "https://example.invalid/person.jpg"
+     }
+    ],
+    "Role": [
+     {
+      "id": 77303,
+      "filter": "actor=77303",
+      "tag": "Person 781",
+      "tagKey": "5d7768346f4521001ea9bd40",
+      "role": "Character 782",
+      "thumb": "https://example.invalid/person.jpg"
+     },
+     {
+      "id": 77304,
+      "filter": "actor=77304",
+      "tag": "Person 783",
+      "tagKey": "5d77683054c0f0001f302e14",
+      "role": "Character 784",
+      "thumb": "https://example.invalid/person.jpg"
+     }
+    ],
+    "Producer": [
+     {
+      "id": 77319,
+      "filter": "producer=77319",
+      "tag": "Person 785",
+      "tagKey": "5d776e4bfb0d55001f5bc634",
+      "thumb": "https://example.invalid/person.jpg"
+     }
+    ],
+    "CommonSenseMedia": [
+     {
+      "id": 45560,
+      "oneLiner": "oneLiner 786",
+      "AgeRating": [
+       {
+        "type": "official",
+        "rating": 4,
+        "age": 7
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}

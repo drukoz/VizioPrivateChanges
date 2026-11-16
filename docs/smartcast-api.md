@@ -94,3 +94,21 @@ Source: GHLocalApi, a community OpenAPI description of the Google Cast local API
   - Over **HTTPS on 8443** (`https://<host>:8443`, self-signed certificate, so certificate checks are off as for SmartCast), with no token, it answers **200 with an empty body** and applies it. Read back on 2026-11-16: `{"crash": false, "opencast": false, "stats": false}`.
 - The device answers 200 OK even for fields it ignores, so a 200 proves nothing. Read `opt_in` again to see whether the change took.
 - Later Cast firmware may refuse even the 8443 write unless it carries a `cast-local-authorization-token` header, which needs the owner's Google account. If the TV refuses, report it; do not try to obtain that token.
+
+## Apps, remote keys, inputs and power (used by the dashboard)
+
+Source: pyvizio (`raman325/pyvizio`, MIT): `pyvizio/const.py` (`DEVICE_CONFIGS`, `APP_HOME`), `api/apps.py`, `api/input.py`, `api/remote.py`. Answers marked "read" came from our TV on 2026-11-16; the rest are from pyvizio and are confirmed in the CTO's live test (spike S1-S3). Real answers are in `tests/fixtures/tv/`.
+
+| Call | Body | Answer |
+|---|---|---|
+| `GET /state/device/power_mode` | — | `ITEMS[0].VALUE`: `0` standby (read), `1` on. |
+| `GET /app/current` | — | `ITEM.VALUE` = `{"APP_ID": "707", "NAME_SPACE": 345, "MESSAGE": "dtv-system://power"}` in standby (read). `ITEM.VALUE` can be missing or `null`. |
+| `PUT /app/launch` | `{"VALUE": {"MESSAGE": <string or null>, "NAME_SPACE": <int>, "APP_ID": "<string>"}}` | Success envelope. |
+| `PUT /key_command/` | `{"KEYLIST": [{"CODESET": <int>, "CODE": <int>, "ACTION": "KEYPRESS"}]}` | Success envelope. |
+| `GET /menu_native/dynamic/tv_settings/devices/current_input` | — | `ITEMS[0]`: `CNAME` `current_input`, `VALUE` `"SMARTCAST"`, `HASHVAL` (read). |
+| `PUT /menu_native/dynamic/tv_settings/devices/current_input` | `{"REQUEST": "MODIFY", "VALUE": "<input NAME, e.g. HDMI-2>", "HASHVAL": <current HASHVAL>}` | Success envelope. A stale `HASHVAL` is refused. |
+| `GET /menu_native/dynamic/tv_settings/devices/name_input` | — | `ITEMS[]` of `T_DEVICE_V1`: `CNAME` (`cast`, `hdmi1`, `hdmi2`, `comp`, `tuner`), `NAME` (`CAST`, `HDMI-1`, `HDMI-2`, `COMP`, `TV`) and `VALUE.NAME`, the owner's label (`HDMI-2` is "Fire TV Stick") (read). |
+
+Remote key codes (`CODESET`, `CODE`): DOWN 3,0 · LEFT 3,1 · OK 3,2 · RIGHT 3,7 · UP 3,8 · BACK 4,0 · HOME 4,15 · EXIT 9,0.
+
+Launch configs come from VIZIO's public catalog: `https://scfs.vizio.com/appservice/vizio_apps_prod.json` (id, name) and `app_availability_prod.json` (id → `app_type_payload`, the `VALUE` above). `NAME_SPACE` 2 and 4 are web apps (pyvizio treats them as equal), 3 native apps (Netflix, Apple TV+), 5 YouTube, 0 Google Cast apps (`APP_ID` is the Cast app id, `MESSAGE` a JSON string `{"CAST_NAMESPACE": ..., "CAST_MESSAGE": {...}}`). SmartCast Home is `NAME_SPACE` 4, `APP_ID` "1", `MESSAGE` `http://127.0.0.1:12345/scfs/sctv/main.html`.

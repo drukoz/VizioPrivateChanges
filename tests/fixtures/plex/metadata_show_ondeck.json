@@ -1,0 +1,461 @@
+{
+ "MediaContainer": {
+  "size": 1,
+  "allowSync": true,
+  "identifier": "com.plexapp.plugins.library",
+  "librarySectionID": 3,
+  "librarySectionTitle": "Anime",
+  "librarySectionUUID": "00000000-0000-4000-8000-000000000809",
+  "mediaTagPrefix": "/system/bundle/media/flags/",
+  "mediaTagVersion": 1792751798,
+  "Metadata": [
+   {
+    "ratingKey": "4516",
+    "key": "/library/metadata/4516/children",
+    "guid": "plex://item/00000000000000000000032a",
+    "slug": "slug-811",
+    "studio": "studio 812",
+    "type": "show",
+    "title": "title 813",
+    "librarySectionTitle": "Anime",
+    "librarySectionID": 3,
+    "librarySectionKey": "/library/sections/3",
+    "contentRating": "TV-PG",
+    "contentRatingAge": 10,
+    "summary": "summary 814",
+    "index": 1,
+    "audienceRating": 8.5,
+    "viewCount": 441,
+    "skipCount": 27,
+    "lastViewedAt": 1790000815,
+    "year": 2010,
+    "thumb": "/library/metadata/4516/thumb/1790131437",
+    "art": "/library/metadata/4516/art/1790131437",
+    "theme": "/library/metadata/4516/theme/1790131437",
+    "duration": 660000,
+    "originallyAvailableAt": "2010-04-05",
+    "leafCount": 292,
+    "viewedLeafCount": 149,
+    "childCount": 11,
+    "seasonCount": 10,
+    "addedAt": 1790000816,
+    "updatedAt": 1790000817,
+    "audienceRatingImage": "themoviedb://image.rating",
+    "primaryExtraKey": "/library/metadata/7120",
+    "Image": [
+     {
+      "alt": "alt 818",
+      "type": "coverPoster",
+      "url": "/library/metadata/4516/thumb/1790131437"
+     },
+     {
+      "alt": "alt 819",
+      "type": "background",
+      "url": "/library/metadata/4516/art/1790131437"
+     },
+     {
+      "alt": "alt 820",
+      "type": "clearLogo",
+      "url": "/library/metadata/4516/clearLogo/1790131437"
+     },
+     {
+      "alt": "alt 821",
+      "type": "backgroundSquare",
+      "url": "/library/metadata/4516/squareArt/1790131437"
+     }
+    ],
+    "UltraBlurColors": {
+     "topLeft": "0c2f50",
+     "topRight": "356c36",
+     "bottomRight": "1a6175",
+     "bottomLeft": "214d69"
+    },
+    "Genre": [
+     {
+      "id": 298,
+      "filter": "genre=298",
+      "tag": "Fantasy"
+     },
+     {
+      "id": 5,
+      "filter": "genre=5",
+      "tag": "Adventure"
+     },
+     {
+      "id": 296,
+      "filter": "genre=296",
+      "tag": "Animation"
+     },
+     {
+      "id": 109,
+      "filter": "genre=109",
+      "tag": "Action"
+     },
+     {
+      "id": 6,
+      "filter": "genre=6",
+      "tag": "Comedy"
+     },
+     {
+      "id": 297,
+      "filter": "genre=297",
+      "tag": "Family"
+     },
+     {
+      "id": 7,
+      "filter": "genre=7",
+      "tag": "Science Fiction"
+     },
+     {
+      "id": 10380,
+      "filter": "genre=10380",
+      "tag": "Sci-Fi & Fantasy"
+     },
+     {
+      "id": 11215,
+      "filter": "genre=11215",
+      "tag": "Children"
+     }
+    ],
+    "Country": [
+     {
+      "id": 87,
+      "filter": "country=87",
+      "tag": "United States of America"
+     }
+    ],
+    "Guid": [
+     {
+      "id": "imdb://tt0000822"
+     },
+     {
+      "id": "imdb://tt0000823"
+     },
+     {
+      "id": "imdb://tt0000824"
+     }
+    ],
+    "Rating": [
+     {
+      "image": "imdb://image.rating",
+      "value": 8.7,
+      "type": "audience"
+     },
+     {
+      "image": "rottentomatoes://image.rating.ripe",
+      "value": 10.0,
+      "type": "critic"
+     },
+     {
+      "image": "rottentomatoes://image.rating.upright",
+      "value": 9.4,
+      "type": "audience"
+     },
+     {
+      "image": "themoviedb://image.rating",
+      "value": 8.5,
+      "type": "audience"
+     }
+    ],
+    "Role": [
+     {
+      "id": 10386,
+      "filter": "actor=10386",
+      "tag": "Person 825",
+      "tagKey": "5d77682ee6d55c002040bce6",
+      "role": "Character 826",
+      "thumb": "https://example.invalid/person.jpg"
+     },
+     {
+      "id": 8834,
+      "filter": "actor=8834",
+      "tag": "Person 827",
+      "tagKey": "5d7768256f4521001ea989ff",
+      "role": "Character 828",
+      "thumb": "https://example.invalid/person.jpg"
+     }
+    ],
+    "CommonSenseMedia": [
+     {
+      "id": 45560,
+      "oneLiner": "oneLiner 829",
+      "AgeRating": [
+       {
+        "type": "official",
+        "rating": 5,
+        "age": 10
+       }
+      ]
+     }
+    ],
+    "Location": [
+     {
+      "path": "/media/library/830"
+     }
+    ],
+    "OnDeck": {
+     "Metadata": {
+      "ratingKey": "4617",
+      "key": "/library/metadata/4617",
+      "parentRatingKey": "4613",
+      "grandparentRatingKey": "4516",
+      "guid": "plex://item/00000000000000000000033f",
+      "parentGuid": "plex://item/000000000000000000000340",
+      "grandparentGuid": "plex://item/000000000000000000000341",
+      "grandparentSlug": "slug-834",
+      "type": "episode",
+      "title": "title 835",
+      "grandparentKey": "/library/metadata/4516",
+      "parentKey": "/library/metadata/4613",
+      "librarySectionTitle": "Anime",
+      "librarySectionID": 3,
+      "librarySectionKey": "/library/sections/3",
+      "grandparentTitle": "grandparentTitle 836",
+      "parentTitle": "parentTitle 837",
+      "contentRating": "TV-PG",
+      "summary": "summary 838",
+      "index": 4,
+      "parentIndex": 4,
+      "audienceRating": 4.6,
+      "viewOffset": 540259,
+      "lastViewedAt": 1790000839,
+      "year": 2012,
+      "thumb": "/library/metadata/4617/thumb/1790131474",
+      "art": "/library/metadata/4516/art/1790131437",
+      "parentThumb": "/library/metadata/4613/thumb/1790131474",
+      "grandparentThumb": "/library/metadata/4516/thumb/1790131437",
+      "grandparentArt": "/library/metadata/4516/art/1790131437",
+      "grandparentTheme": "/library/metadata/4516/theme/1790131437",
+      "duration": 702484,
+      "originallyAvailableAt": "2012-04-23",
+      "addedAt": 1790000840,
+      "updatedAt": 1790000841,
+      "audienceRatingImage": "themoviedb://image.rating",
+      "chapterSource": "media",
+      "Media": [
+       {
+        "id": 23802,
+        "duration": 702484,
+        "bitrate": 2043,
+        "width": 1920,
+        "height": 1080,
+        "aspectRatio": 1.78,
+        "audioChannels": 2,
+        "audioCodec": "aac",
+        "videoCodec": "hevc",
+        "videoResolution": "1080",
+        "container": "mkv",
+        "videoFrameRate": "24p",
+        "audioProfile": "lc",
+        "videoProfile": "main 10",
+        "hasVoiceActivity": false,
+        "Part": [
+         {
+          "id": 26323,
+          "key": "/library/parts/26323/1687580316/file.mkv",
+          "duration": 702484,
+          "file": "/media/library/file-842.mkv",
+          "size": 179430469,
+          "audioProfile": "lc",
+          "container": "mkv",
+          "videoProfile": "main 10",
+          "Stream": [
+           {
+            "id": 141496,
+            "streamType": 1,
+            "default": true,
+            "codec": "hevc",
+            "index": 0,
+            "bitrate": 2043,
+            "language": "English",
+            "languageTag": "en",
+            "languageCode": "eng",
+            "bitDepth": 10,
+            "chromaLocation": "left",
+            "chromaSubsampling": "4:2:0",
+            "codedHeight": 1080,
+            "codedWidth": 1920,
+            "colorPrimaries": "bt709",
+            "colorRange": "tv",
+            "colorSpace": "bt709",
+            "colorTrc": "bt709",
+            "frameRate": 23.976,
+            "height": 1080,
+            "level": 120,
+            "profile": "main 10",
+            "refFrames": 1,
+            "width": 1920,
+            "displayTitle": "1080p",
+            "extendedDisplayTitle": "1080p (HEVC Main 10)"
+           },
+           {
+            "id": 141497,
+            "streamType": 2,
+            "canNormalizeLoudness": false,
+            "selected": true,
+            "default": true,
+            "codec": "aac",
+            "index": 1,
+            "channels": 2,
+            "language": "English",
+            "languageTag": "en",
+            "languageCode": "eng",
+            "audioChannelLayout": "stereo",
+            "profile": "lc",
+            "samplingRate": 48000,
+            "displayTitle": "English (AAC Stereo)",
+            "extendedDisplayTitle": "English (AAC Stereo)"
+           },
+           {
+            "id": 141498,
+            "streamType": 2,
+            "canNormalizeLoudness": false,
+            "codec": "aac",
+            "index": 2,
+            "channels": 2,
+            "language": "English",
+            "languageTag": "en",
+            "languageCode": "eng",
+            "audioChannelLayout": "stereo",
+            "profile": "lc",
+            "samplingRate": 48000,
+            "title": "Commentary",
+            "displayTitle": "English (AAC Stereo)",
+            "extendedDisplayTitle": "Commentary (English AAC Stereo)"
+           },
+           {
+            "id": 141499,
+            "streamType": 3,
+            "canAutoSync": false,
+            "codec": "pgs",
+            "index": 3,
+            "language": "English",
+            "languageTag": "en",
+            "languageCode": "eng",
+            "displayTitle": "English",
+            "extendedDisplayTitle": "English (PGS)"
+           }
+          ]
+         }
+        ]
+       }
+      ],
+      "Image": [
+       {
+        "alt": "alt 843",
+        "type": "coverPoster",
+        "url": "/library/metadata/4516/thumb/1790131437"
+       },
+       {
+        "alt": "alt 844",
+        "type": "snapshot",
+        "url": "/library/metadata/4617/thumb/1790131474"
+       },
+       {
+        "alt": "alt 845",
+        "type": "background",
+        "url": "/library/metadata/4516/art/1790131437"
+       },
+       {
+        "alt": "alt 846",
+        "type": "clearLogo",
+        "url": "/library/metadata/4516/clearLogo/1790131437"
+       },
+       {
+        "alt": "alt 847",
+        "type": "backgroundSquare",
+        "url": "/library/metadata/4516/squareArt/1790131437"
+       }
+      ],
+      "UltraBlurColors": {
+       "topLeft": "4c1a28",
+       "topRight": "9f3322",
+       "bottomRight": "463376",
+       "bottomLeft": "94265c"
+      },
+      "Guid": [
+       {
+        "id": "imdb://tt0000848"
+       },
+       {
+        "id": "imdb://tt0000849"
+       },
+       {
+        "id": "imdb://tt0000850"
+       }
+      ],
+      "Rating": [
+       {
+        "image": "imdb://image.rating",
+        "value": 5.7,
+        "type": "audience"
+       },
+       {
+        "image": "themoviedb://image.rating",
+        "value": 4.6,
+        "type": "audience"
+       }
+      ],
+      "Director": [
+       {
+        "id": 46796,
+        "filter": "director=46796",
+        "tag": "Person 851",
+        "tagKey": "5ec4183890c7f60040812401"
+       },
+       {
+        "id": 27011,
+        "filter": "director=27011",
+        "tag": "Person 852",
+        "tagKey": "5d77684d85719b001f3a7e87",
+        "thumb": "https://example.invalid/person.jpg"
+       }
+      ],
+      "Writer": [
+       {
+        "id": 11494,
+        "filter": "writer=11494",
+        "tag": "Person 853",
+        "tagKey": "5d7768987a53e9001e6d3969",
+        "thumb": "https://example.invalid/person.jpg"
+       },
+       {
+        "id": 4079,
+        "filter": "writer=4079",
+        "tag": "Person 854",
+        "tagKey": "5d776b6df617c90020175f34",
+        "thumb": "https://example.invalid/person.jpg"
+       }
+      ],
+      "Role": [
+       {
+        "id": 10386,
+        "filter": "actor=10386",
+        "tag": "Person 855",
+        "tagKey": "5d77682ee6d55c002040bce6",
+        "role": "Character 856",
+        "thumb": "https://example.invalid/person.jpg"
+       },
+       {
+        "id": 8834,
+        "filter": "actor=8834",
+        "tag": "Person 857",
+        "tagKey": "5d7768256f4521001ea989ff",
+        "role": "Character 858",
+        "thumb": "https://example.invalid/person.jpg"
+       }
+      ],
+      "Producer": [
+       {
+        "id": 46797,
+        "filter": "producer=46797",
+        "tag": "Person 859",
+        "tagKey": "5e1635e62d4d84003e4916da"
+       }
+      ]
+     }
+    }
+   }
+  ]
+ }
+}

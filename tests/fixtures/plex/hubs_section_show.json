@@ -1,0 +1,1747 @@
+{
+ "MediaContainer": {
+  "size": 8,
+  "allowSync": true,
+  "identifier": "com.plexapp.plugins.library",
+  "librarySectionID": 2,
+  "librarySectionTitle": "TV Shows",
+  "librarySectionUUID": "00000000-0000-4000-8000-000000000427",
+  "Hub": [
+   {
+    "hubKey": "/library/metadata/17346,10128,4505",
+    "key": "/hubs/sections/2/continueWatching/items",
+    "title": "Continue Watching",
+    "type": "episode",
+    "hubIdentifier": "tv.inprogress.2",
+    "context": "hub.tv.inprogress",
+    "size": 3,
+    "more": true,
+    "style": "shelf",
+    "Metadata": [
+     {
+      "ratingKey": "17346",
+      "key": "/library/metadata/17346",
+      "parentRatingKey": "17343",
+      "grandparentRatingKey": "17221",
+      "guid": "plex://item/0000000000000000000001ac",
+      "parentGuid": "plex://item/0000000000000000000001ad",
+      "grandparentGuid": "plex://item/0000000000000000000001ae",
+      "grandparentSlug": "slug-431",
+      "studio": "studio 432",
+      "type": "episode",
+      "title": "title 433",
+      "grandparentKey": "/library/metadata/17221",
+      "parentKey": "/library/metadata/17343",
+      "librarySectionTitle": "TV Shows",
+      "librarySectionID": 2,
+      "librarySectionKey": "/library/sections/2",
+      "grandparentTitle": "grandparentTitle 434",
+      "parentTitle": "parentTitle 435",
+      "contentRating": "TV-14",
+      "summary": "summary 436",
+      "index": 3,
+      "parentIndex": 5,
+      "audienceRating": 7.8,
+      "viewOffset": 881152,
+      "lastViewedAt": 1790000437,
+      "year": 2012,
+      "thumb": "/library/metadata/17346/thumb/1762429158",
+      "art": "/library/metadata/17221/art/1762429158",
+      "parentThumb": "/library/metadata/17343/thumb/1789287116",
+      "grandparentThumb": "/library/metadata/17221/thumb/1762429158",
+      "grandparentArt": "/library/metadata/17221/art/1762429158",
+      "grandparentTheme": "/library/metadata/17221/theme/1762429158",
+      "duration": 2564832,
+      "originallyAvailableAt": "2012-10-14",
+      "addedAt": 1790000438,
+      "audienceRatingImage": "themoviedb://image.rating",
+      "chapterSource": "media",
+      "Media": [
+       {
+        "id": 245153,
+        "duration": 2564832,
+        "bitrate": 1850,
+        "width": 1920,
+        "height": 1080,
+        "aspectRatio": 1.78,
+        "audioChannels": 6,
+        "audioCodec": "eac3",
+        "videoCodec": "hevc",
+        "videoResolution": "1080",
+        "container": "mkv",
+        "videoFrameRate": "24p",
+        "videoProfile": "main",
+        "hasVoiceActivity": false,
+        "Part": [
+         {
+          "id": 247674,
+          "key": "/library/parts/247674/1755913459/file.mkv",
+          "duration": 2564832,
+          "file": "/media/library/file-439.mkv",
+          "size": 594283752,
+          "container": "mkv",
+          "videoProfile": "main"
+         }
+        ]
+       }
+      ],
+      "Image": [
+       {
+        "alt": "alt 440",
+        "type": "coverPoster",
+        "url": "/library/metadata/17221/thumb/1762429158"
+       },
+       {
+        "alt": "alt 441",
+        "type": "snapshot",
+        "url": "/library/metadata/17346/thumb/1762429158"
+       },
+       {
+        "alt": "alt 442",
+        "type": "background",
+        "url": "/library/metadata/17221/art/1762429158"
+       },
+       {
+        "alt": "alt 443",
+        "type": "clearLogo",
+        "url": "/library/metadata/17221/clearLogo/1762429158"
+       },
+       {
+        "alt": "alt 444",
+        "type": "backgroundSquare",
+        "url": "/library/metadata/17221/squareArt/1762429158"
+       }
+      ],
+      "UltraBlurColors": {
+       "topLeft": "060303",
+       "topRight": "3d1f0c",
+       "bottomRight": "1a201b",
+       "bottomLeft": "303a3b"
+      },
+      "Director": [
+       {
+        "tag": "Person 445"
+       }
+      ],
+      "Writer": [
+       {
+        "tag": "Person 446"
+       }
+      ],
+      "Role": [
+       {
+        "tag": "Person 447"
+       },
+       {
+        "tag": "Person 448"
+       }
+      ]
+     },
+     {
+      "ratingKey": "10128",
+      "key": "/library/metadata/10128",
+      "parentRatingKey": "10114",
+      "grandparentRatingKey": "1987",
+      "guid": "plex://item/0000000000000000000001c1",
+      "parentGuid": "plex://item/0000000000000000000001c2",
+      "grandparentGuid": "plex://item/0000000000000000000001c3",
+      "grandparentSlug": "slug-452",
+      "studio": "studio 453",
+      "type": "episode",
+      "title": "title 454",
+      "grandparentKey": "/library/metadata/1987",
+      "parentKey": "/library/metadata/10114",
+      "librarySectionTitle": "TV Shows",
+      "librarySectionID": 2,
+      "librarySectionKey": "/library/sections/2",
+      "grandparentTitle": "grandparentTitle 455",
+      "parentTitle": "parentTitle 456",
+      "contentRating": "TV-14",
+      "summary": "summary 457",
+      "index": 14,
+      "parentIndex": 6,
+      "audienceRating": 7.1,
+      "viewOffset": 218234,
+      "viewCount": 1,
+      "lastViewedAt": 1790000458,
+      "year": 2011,
+      "thumb": "/library/metadata/10128/thumb/1725828990",
+      "art": "/library/metadata/1987/art/1725828990",
+      "parentThumb": "/library/metadata/10114/thumb/1764807714",
+      "grandparentThumb": "/library/metadata/1987/thumb/1725828990",
+      "grandparentArt": "/library/metadata/1987/art/1725828990",
+      "grandparentTheme": "/library/metadata/1987/theme/1725828990",
+      "duration": 1299360,
+      "originallyAvailableAt": "2011-06-23",
+      "addedAt": 1790000459,
+      "audienceRatingImage": "themoviedb://image.rating",
+      "chapterSource": "media",
+      "Media": [
+       {
+        "id": 248193,
+        "duration": 1299360,
+        "bitrate": 1828,
+        "width": 1920,
+        "height": 1080,
+        "aspectRatio": 1.78,
+        "audioChannels": 6,
+        "audioCodec": "eac3",
+        "videoCodec": "hevc",
+        "videoResolution": "1080",
+        "container": "mkv",
+        "videoFrameRate": "24p",
+        "videoProfile": "main 10",
+        "hasVoiceActivity": false,
+        "Part": [
+         {
+          "id": 250714,
+          "key": "/library/parts/250714/1725828978/file.mkv",
+          "duration": 1299360,
+          "file": "/media/library/file-460.mkv",
+          "size": 278494992,
+          "container": "mkv",
+          "videoProfile": "main 10"
+         }
+        ]
+       }
+      ],
+      "Image": [
+       {
+        "alt": "alt 461",
+        "type": "coverPoster",
+        "url": "/library/metadata/1987/thumb/1725828990"
+       },
+       {
+        "alt": "alt 462",
+        "type": "snapshot",
+        "url": "/library/metadata/10128/thumb/1725828990"
+       },
+       {
+        "alt": "alt 463",
+        "type": "background",
+        "url": "/library/metadata/1987/art/1725828990"
+       },
+       {
+        "alt": "alt 464",
+        "type": "clearLogo",
+        "url": "/library/metadata/1987/clearLogo/1725828990"
+       },
+       {
+        "alt": "alt 465",
+        "type": "backgroundSquare",
+        "url": "/library/metadata/1987/squareArt/1725828990"
+       }
+      ],
+      "UltraBlurColors": {
+       "topLeft": "030c3b",
+       "topRight": "331247",
+       "bottomRight": "34124b",
+       "bottomLeft": "111845"
+      },
+      "Director": [
+       {
+        "tag": "Person 466"
+       }
+      ],
+      "Writer": [
+       {
+        "tag": "Person 467"
+       }
+      ],
+      "Role": [
+       {
+        "tag": "Person 468"
+       },
+       {
+        "tag": "Person 469"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "hubKey": "/library/metadata/29291,29305,29215",
+    "key": "/library/sections/2/all?type=4&sort=originallyAvailableAt:desc",
+    "title": "Recently Released Episodes",
+    "type": "episode",
+    "hubIdentifier": "tv.recentlyaired.2",
+    "context": "hub.tv.recentlyaired",
+    "size": 3,
+    "more": true,
+    "style": "shelf",
+    "Metadata": [
+     {
+      "ratingKey": "29291",
+      "key": "/library/metadata/29291",
+      "parentRatingKey": "28741",
+      "grandparentRatingKey": "1987",
+      "guid": "plex://item/0000000000000000000001d6",
+      "parentGuid": "plex://item/0000000000000000000001d7",
+      "grandparentGuid": "plex://item/0000000000000000000001d8",
+      "grandparentSlug": "slug-473",
+      "type": "episode",
+      "title": "title 474",
+      "titleSort": "titleSort 475",
+      "grandparentKey": "/library/metadata/1987",
+      "parentKey": "/library/metadata/28741",
+      "librarySectionTitle": "TV Shows",
+      "librarySectionID": 2,
+      "librarySectionKey": "/library/sections/2",
+      "grandparentTitle": "grandparentTitle 476",
+      "parentTitle": "parentTitle 477",
+      "contentRating": "TV-14",
+      "summary": "summary 478",
+      "index": 9,
+      "parentIndex": 11,
+      "audienceRating": 6.3,
+      "year": 2026,
+      "thumb": "/library/metadata/29291/thumb/1790291235",
+      "art": "/library/metadata/1987/art/1788782034",
+      "parentThumb": "/library/metadata/28741/thumb/1789285939",
+      "grandparentThumb": "/library/metadata/1987/thumb/1788782034",
+      "grandparentArt": "/library/metadata/1987/art/1788782034",
+      "grandparentTheme": "/library/metadata/1987/theme/1788782034",
+      "duration": 1513600,
+      "originallyAvailableAt": "2026-09-21",
+      "addedAt": 1790000479,
+      "audienceRatingImage": "themoviedb://image.rating",
+      "chapterSource": "media",
+      "Media": [
+       {
+        "id": 241191,
+        "duration": 1513600,
+        "bitrate": 4569,
+        "width": 1920,
+        "height": 1080,
+        "aspectRatio": 1.78,
+        "audioChannels": 6,
+        "audioCodec": "eac3",
+        "videoCodec": "h264",
+        "videoResolution": "1080",
+        "container": "mkv",
+        "videoFrameRate": "24p",
+        "videoProfile": "high",
+        "hasVoiceActivity": false,
+        "Part": [
+         {
+          "id": 243712,
+          "key": "/library/parts/243712/1789981579/file.mkv",
+          "duration": 1513600,
+          "file": "/media/library/file-480.mkv",
+          "size": 864437644,
+          "container": "mkv",
+          "videoProfile": "high"
+         }
+        ]
+       }
+      ],
+      "Image": [
+       {
+        "alt": "alt 481",
+        "type": "coverPoster",
+        "url": "/library/metadata/1987/thumb/1788782034"
+       },
+       {
+        "alt": "alt 482",
+        "type": "snapshot",
+        "url": "/library/metadata/29291/thumb/1790291235"
+       },
+       {
+        "alt": "alt 483",
+        "type": "background",
+        "url": "/library/metadata/1987/art/1788782034"
+       },
+       {
+        "alt": "alt 484",
+        "type": "clearLogo",
+        "url": "/library/metadata/1987/clearLogo/1788782034"
+       },
+       {
+        "alt": "alt 485",
+        "type": "backgroundSquare",
+        "url": "/library/metadata/1987/squareArt/1788782034"
+       }
+      ],
+      "UltraBlurColors": {
+       "topLeft": "2b0e0b",
+       "topRight": "8c4911",
+       "bottomRight": "5f2b20",
+       "bottomLeft": "30110d"
+      },
+      "Director": [
+       {
+        "tag": "Person 486"
+       }
+      ],
+      "Writer": [
+       {
+        "tag": "Person 487"
+       },
+       {
+        "tag": "Person 488"
+       }
+      ],
+      "Role": [
+       {
+        "tag": "Person 489"
+       },
+       {
+        "tag": "Person 490"
+       }
+      ]
+     },
+     {
+      "ratingKey": "29305",
+      "key": "/library/metadata/29305",
+      "parentRatingKey": "28741",
+      "grandparentRatingKey": "1987",
+      "guid": "plex://item/0000000000000000000001eb",
+      "parentGuid": "plex://item/0000000000000000000001ec",
+      "grandparentGuid": "plex://item/0000000000000000000001ed",
+      "grandparentSlug": "slug-494",
+      "type": "episode",
+      "title": "title 495",
+      "grandparentKey": "/library/metadata/1987",
+      "parentKey": "/library/metadata/28741",
+      "librarySectionTitle": "TV Shows",
+      "librarySectionID": 2,
+      "librarySectionKey": "/library/sections/2",
+      "grandparentTitle": "grandparentTitle 496",
+      "parentTitle": "parentTitle 497",
+      "contentRating": "TV-14",
+      "summary": "summary 498",
+      "index": 8,
+      "parentIndex": 11,
+      "audienceRating": 4.4,
+      "year": 2026,
+      "thumb": "/library/metadata/29305/thumb/1790291248",
+      "art": "/library/metadata/1987/art/1788782034",
+      "parentThumb": "/library/metadata/28741/thumb/1789285939",
+      "grandparentThumb": "/library/metadata/1987/thumb/1788782034",
+      "grandparentArt": "/library/metadata/1987/art/1788782034",
+      "grandparentTheme": "/library/metadata/1987/theme/1788782034",
+      "duration": 1494400,
+      "originallyAvailableAt": "2026-09-14",
+      "addedAt": 1790000499,
+      "audienceRatingImage": "themoviedb://image.rating",
+      "chapterSource": "media",
+      "Media": [
+       {
+        "id": 241210,
+        "duration": 1494400,
+        "bitrate": 2553,
+        "width": 1280,
+        "height": 720,
+        "aspectRatio": 1.78,
+        "audioChannels": 6,
+        "audioCodec": "eac3",
+        "videoCodec": "h264",
+        "videoResolution": "720",
+        "container": "mkv",
+        "videoFrameRate": "24p",
+        "videoProfile": "high",
+        "hasVoiceActivity": false,
+        "Part": [
+         {
+          "id": 243731,
+          "key": "/library/parts/243731/1789375800/file.mkv",
+          "duration": 1494400,
+          "file": "/media/library/file-500.mkv",
+          "size": 476824518,
+          "container": "mkv",
+          "videoProfile": "high"
+         }
+        ]
+       }
+      ],
+      "Image": [
+       {
+        "alt": "alt 501",
+        "type": "coverPoster",
+        "url": "/library/metadata/1987/thumb/1788782034"
+       },
+       {
+        "alt": "alt 502",
+        "type": "snapshot",
+        "url": "/library/metadata/29305/thumb/1790291248"
+       },
+       {
+        "alt": "alt 503",
+        "type": "background",
+        "url": "/library/metadata/1987/art/1788782034"
+       },
+       {
+        "alt": "alt 504",
+        "type": "clearLogo",
+        "url": "/library/metadata/1987/clearLogo/1788782034"
+       },
+       {
+        "alt": "alt 505",
+        "type": "backgroundSquare",
+        "url": "/library/metadata/1987/squareArt/1788782034"
+       }
+      ],
+      "UltraBlurColors": {
+       "topLeft": "541219",
+       "topRight": "8e303b",
+       "bottomRight": "5b2cb0",
+       "bottomLeft": "336b49"
+      },
+      "Director": [
+       {
+        "tag": "Person 506"
+       }
+      ],
+      "Writer": [
+       {
+        "tag": "Person 507"
+       },
+       {
+        "tag": "Person 508"
+       }
+      ],
+      "Role": [
+       {
+        "tag": "Person 509"
+       },
+       {
+        "tag": "Person 510"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "hubKey": "/library/metadata/34150,33968,33516",
+    "key": "/hubs/home/recentlyAdded?type=2&sectionID=2",
+    "title": "Recently Added in TV Shows",
+    "type": "mixed",
+    "hubIdentifier": "tv.recentlyadded.2",
+    "context": "hub.tv.recentlyadded",
+    "size": 3,
+    "more": true,
+    "style": "shelf",
+    "promoted": true,
+    "Metadata": [
+     {
+      "ratingKey": "34150",
+      "key": "/library/metadata/34150/children",
+      "guid": "plex://item/0000000000000000000001ff",
+      "slug": "slug-512",
+      "studio": "studio 513",
+      "type": "show",
+      "title": "title 514",
+      "titleSort": "titleSort 515",
+      "librarySectionTitle": "TV Shows",
+      "librarySectionID": 2,
+      "librarySectionKey": "/library/sections/2",
+      "contentRating": "TV-14",
+      "contentRatingAge": 14,
+      "summary": "summary 516",
+      "index": 1,
+      "audienceRating": 7.6,
+      "year": 2013,
+      "tagline": "tagline 517",
+      "thumb": "/library/metadata/34150/thumb/1794097303",
+      "art": "/library/metadata/34150/art/1794097303",
+      "theme": "/library/metadata/34150/theme/1794097303",
+      "duration": 2580000,
+      "originallyAvailableAt": "2013-09-23",
+      "leafCount": 217,
+      "viewedLeafCount": 0,
+      "childCount": 10,
+      "addedAt": 1790000518,
+      "updatedAt": 1790000519,
+      "audienceRatingImage": "themoviedb://image.rating",
+      "primaryExtraKey": "/library/metadata/34220",
+      "Image": [
+       {
+        "alt": "alt 520",
+        "type": "coverPoster",
+        "url": "/library/metadata/34150/thumb/1794097303"
+       },
+       {
+        "alt": "alt 521",
+        "type": "background",
+        "url": "/library/metadata/34150/art/1794097303"
+       },
+       {
+        "alt": "alt 522",
+        "type": "clearLogo",
+        "url": "/library/metadata/34150/clearLogo/1794097303"
+       },
+       {
+        "alt": "alt 523",
+        "type": "backgroundSquare",
+        "url": "/library/metadata/34150/squareArt/1794097303"
+       }
+      ],
+      "UltraBlurColors": {
+       "topLeft": "272827",
+       "topRight": "4c4c4b",
+       "bottomRight": "044304",
+       "bottomLeft": "030403"
+      },
+      "Genre": [
+       {
+        "id": 203,
+        "filter": "genre=203",
+        "tag": "Crime"
+       },
+       {
+        "id": 621,
+        "filter": "genre=621",
+        "tag": "Drama"
+       },
+       {
+        "id": 622,
+        "filter": "genre=622",
+        "tag": "Mystery"
+       },
+       {
+        "id": 8,
+        "filter": "genre=8",
+        "tag": "Thriller"
+       },
+       {
+        "id": 109,
+        "filter": "genre=109",
+        "tag": "Action"
+       }
+      ],
+      "Country": [
+       {
+        "id": 87,
+        "filter": "country=87",
+        "tag": "United States of America"
+       }
+      ],
+      "Guid": [
+       {
+        "id": "imdb://tt0000524"
+       },
+       {
+        "id": "imdb://tt0000525"
+       },
+       {
+        "id": "imdb://tt0000526"
+       }
+      ],
+      "Rating": [
+       {
+        "image": "imdb://image.rating",
+        "value": 7.9,
+        "type": "audience"
+       },
+       {
+        "image": "rottentomatoes://image.rating.ripe",
+        "value": 9.1,
+        "type": "critic"
+       },
+       {
+        "image": "rottentomatoes://image.rating.upright",
+        "value": 8.0,
+        "type": "audience"
+       },
+       {
+        "image": "themoviedb://image.rating",
+        "value": 7.6,
+        "type": "audience"
+       }
+      ],
+      "Role": [
+       {
+        "id": 1622,
+        "filter": "actor=1622",
+        "tag": "Person 527",
+        "tagKey": "5d77682985719b001f3a12f8",
+        "role": "Character 528",
+        "thumb": "https://example.invalid/person.jpg"
+       },
+       {
+        "id": 2534,
+        "filter": "actor=2534",
+        "tag": "Person 529",
+        "tagKey": "5d7768266f4521001ea98cfa",
+        "role": "Character 530",
+        "thumb": "https://example.invalid/person.jpg"
+       }
+      ],
+      "CommonSenseMedia": [
+       {
+        "id": 45560,
+        "oneLiner": "oneLiner 531",
+        "AgeRating": [
+         {
+          "type": "official",
+          "rating": 4,
+          "age": 14
+         }
+        ]
+       }
+      ],
+      "Location": [
+       {
+        "path": "/media/library/532"
+       }
+      ]
+     },
+     {
+      "ratingKey": "33968",
+      "key": "/library/metadata/33968/children",
+      "guid": "plex://item/000000000000000000000215",
+      "slug": "slug-534",
+      "studio": "studio 535",
+      "type": "show",
+      "title": "title 536",
+      "librarySectionTitle": "TV Shows",
+      "librarySectionID": 2,
+      "librarySectionKey": "/library/sections/2",
+      "contentRating": "TV-14",
+      "contentRatingAge": 13,
+      "summary": "summary 537",
+      "index": 1,
+      "audienceRating": 8.0,
+      "year": 2009,
+      "tagline": "tagline 538",
+      "thumb": "/library/metadata/33968/thumb/1794088201",
+      "art": "/library/metadata/33968/art/1794088201",
+      "theme": "/library/metadata/33968/theme/1794088201",
+      "duration": 2700000,
+      "originallyAvailableAt": "2009-03-09",
+      "leafCount": 173,
+      "viewedLeafCount": 0,
+      "childCount": 8,
+      "addedAt": 1790000539,
+      "updatedAt": 1790000540,
+      "audienceRatingImage": "themoviedb://image.rating",
+      "Image": [
+       {
+        "alt": "alt 541",
+        "type": "coverPoster",
+        "url": "/library/metadata/33968/thumb/1794088201"
+       },
+       {
+        "alt": "alt 542",
+        "type": "background",
+        "url": "/library/metadata/33968/art/1794088201"
+       },
+       {
+        "alt": "alt 543",
+        "type": "clearLogo",
+        "url": "/library/metadata/33968/clearLogo/1794088201"
+       },
+       {
+        "alt": "alt 544",
+        "type": "backgroundSquare",
+        "url": "/library/metadata/33968/squareArt/1794088201"
+       }
+      ],
+      "UltraBlurColors": {
+       "topLeft": "561013",
+       "topRight": "246a65",
+       "bottomRight": "2a292b",
+       "bottomLeft": "a6291f"
+      },
+      "Genre": [
+       {
+        "id": 621,
+        "filter": "genre=621",
+        "tag": "Drama"
+       },
+       {
+        "id": 203,
+        "filter": "genre=203",
+        "tag": "Crime"
+       },
+       {
+        "id": 6,
+        "filter": "genre=6",
+        "tag": "Comedy"
+       },
+       {
+        "id": 622,
+        "filter": "genre=622",
+        "tag": "Mystery"
+       },
+       {
+        "id": 1280,
+        "filter": "genre=1280",
+        "tag": "Romance"
+       }
+      ],
+      "Country": [
+       {
+        "id": 87,
+        "filter": "country=87",
+        "tag": "United States of America"
+       }
+      ],
+      "Guid": [
+       {
+        "id": "imdb://tt0000545"
+       },
+       {
+        "id": "imdb://tt0000546"
+       },
+       {
+        "id": "imdb://tt0000547"
+       }
+      ],
+      "Rating": [
+       {
+        "image": "imdb://image.rating",
+        "value": 8.1,
+        "type": "audience"
+       },
+       {
+        "image": "rottentomatoes://image.rating.ripe",
+        "value": 8.2,
+        "type": "critic"
+       },
+       {
+        "image": "rottentomatoes://image.rating.upright",
+        "value": 8.8,
+        "type": "audience"
+       },
+       {
+        "image": "themoviedb://image.rating",
+        "value": 8.0,
+        "type": "audience"
+       }
+      ],
+      "Role": [
+       {
+        "id": 3995,
+        "filter": "actor=3995",
+        "tag": "Person 548",
+        "tagKey": "5d7768286f4521001ea9945c",
+        "role": "Character 549",
+        "thumb": "https://example.invalid/person.jpg"
+       },
+       {
+        "id": 76138,
+        "filter": "actor=76138",
+        "tag": "Person 550",
+        "tagKey": "5d77683254c0f0001f3031fe",
+        "role": "Character 551",
+        "thumb": "https://example.invalid/person.jpg"
+       }
+      ],
+      "CommonSenseMedia": [
+       {
+        "id": 45560,
+        "oneLiner": "oneLiner 552",
+        "AgeRating": [
+         {
+          "type": "official",
+          "rating": 3,
+          "age": 13
+         }
+        ]
+       }
+      ],
+      "Location": [
+       {
+        "path": "/media/library/553"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "hubKey": "/library/metadata/19258,20979,34150",
+    "key": "/library/sections/2/all?type=2&viewedOrInProgressLeafCount=0",
+    "title": "Start Watching",
+    "type": "show",
+    "hubIdentifier": "tv.startwatching.2",
+    "context": "hub.tv.startwatching",
+    "size": 3,
+    "more": true,
+    "random": true,
+    "style": "shelf",
+    "Metadata": [
+     {
+      "ratingKey": "19258",
+      "key": "/library/metadata/19258/children",
+      "guid": "plex://item/00000000000000000000022a",
+      "slug": "slug-555",
+      "studio": "studio 556",
+      "type": "show",
+      "title": "title 557",
+      "librarySectionTitle": "TV Shows",
+      "librarySectionID": 2,
+      "librarySectionKey": "/library/sections/2",
+      "contentRating": "TV-MA",
+      "contentRatingAge": 17,
+      "summary": "summary 558",
+      "index": 1,
+      "audienceRating": 8.4,
+      "year": 2007,
+      "thumb": "/library/metadata/19258/thumb/1788782065",
+      "art": "/library/metadata/19258/art/1788782065",
+      "theme": "/library/metadata/19258/theme/1788782065",
+      "duration": 720000,
+      "originallyAvailableAt": "2007-11-02",
+      "leafCount": 20,
+      "viewedLeafCount": 0,
+      "childCount": 2,
+      "addedAt": 1790000559,
+      "updatedAt": 1790000560,
+      "audienceRatingImage": "themoviedb://image.rating",
+      "Image": [
+       {
+        "alt": "alt 561",
+        "type": "coverPoster",
+        "url": "/library/metadata/19258/thumb/1788782065"
+       },
+       {
+        "alt": "alt 562",
+        "type": "background",
+        "url": "/library/metadata/19258/art/1788782065"
+       },
+       {
+        "alt": "alt 563",
+        "type": "clearLogo",
+        "url": "/library/metadata/19258/clearLogo/1788782065"
+       },
+       {
+        "alt": "alt 564",
+        "type": "backgroundSquare",
+        "url": "/library/metadata/19258/squareArt/1788782065"
+       }
+      ],
+      "UltraBlurColors": {
+       "topLeft": "402810",
+       "topRight": "110303",
+       "bottomRight": "227012",
+       "bottomLeft": "8a4a2f"
+      },
+      "Genre": [
+       {
+        "tag": "Animation"
+       },
+       {
+        "tag": "Comedy"
+       }
+      ],
+      "Country": [
+       {
+        "tag": "United States of America"
+       }
+      ],
+      "Role": [
+       {
+        "tag": "Person 565"
+       },
+       {
+        "tag": "Person 566"
+       }
+      ]
+     },
+     {
+      "ratingKey": "20979",
+      "key": "/library/metadata/20979/children",
+      "guid": "local://567",
+      "type": "show",
+      "title": "title 568",
+      "librarySectionTitle": "TV Shows",
+      "librarySectionID": 2,
+      "librarySectionKey": "/library/sections/2",
+      "summary": "summary 569",
+      "index": 1,
+      "leafCount": 48,
+      "viewedLeafCount": 0,
+      "childCount": 3,
+      "seasonCount": 2,
+      "addedAt": 1790000570
+     }
+    ]
+   },
+   {
+    "hubKey": "/library/metadata/3459,15269,9595",
+    "key": "/library/sections/2/all?type=2&lastViewedAt<=-6w&lastViewedAt>=-5y&unwatchedLeaves=1&viewCount>=1",
+    "title": "Rediscover",
+    "type": "show",
+    "hubIdentifier": "tv.rediscover.2",
+    "context": "hub.tv.rediscover",
+    "size": 3,
+    "more": true,
+    "random": true,
+    "style": "shelf",
+    "Metadata": [
+     {
+      "ratingKey": "3459",
+      "key": "/library/metadata/3459/children",
+      "guid": "plex://item/00000000000000000000023b",
+      "slug": "slug-572",
+      "studio": "studio 573",
+      "type": "show",
+      "title": "title 574",
+      "librarySectionTitle": "TV Shows",
+      "librarySectionID": 2,
+      "librarySectionKey": "/library/sections/2",
+      "contentRating": "TV-MA",
+      "contentRatingAge": 16,
+      "summary": "summary 575",
+      "index": 1,
+      "audienceRating": 7.8,
+      "viewCount": 51,
+      "skipCount": 1,
+      "lastViewedAt": 1790000576,
+      "year": 2020,
+      "tagline": "tagline 577",
+      "thumb": "/library/metadata/3459/thumb/1788782040",
+      "art": "/library/metadata/3459/art/1788782040",
+      "theme": "/library/metadata/3459/theme/1788782040",
+      "duration": 1320000,
+      "originallyAvailableAt": "2020-05-08",
+      "leafCount": 51,
+      "viewedLeafCount": 38,
+      "childCount": 6,
+      "addedAt": 1790000578,
+      "updatedAt": 1790000579,
+      "audienceRatingImage": "themoviedb://image.rating",
+      "primaryExtraKey": "/library/metadata/3610",
+      "Image": [
+       {
+        "alt": "alt 580",
+        "type": "coverPoster",
+        "url": "/library/metadata/3459/thumb/1788782040"
+       },
+       {
+        "alt": "alt 581",
+        "type": "background",
+        "url": "/library/metadata/3459/art/1788782040"
+       },
+       {
+        "alt": "alt 582",
+        "type": "clearLogo",
+        "url": "/library/metadata/3459/clearLogo/1788782040"
+       },
+       {
+        "alt": "alt 583",
+        "type": "backgroundSquare",
+        "url": "/library/metadata/3459/squareArt/1788782040"
+       }
+      ],
+      "UltraBlurColors": {
+       "topLeft": "312255",
+       "topRight": "a03313",
+       "bottomRight": "8c4a0f",
+       "bottomLeft": "8c491e"
+      },
+      "Genre": [
+       {
+        "tag": "Comedy"
+       },
+       {
+        "tag": "Animation"
+       }
+      ],
+      "Country": [
+       {
+        "tag": "United States of America"
+       }
+      ],
+      "Role": [
+       {
+        "tag": "Person 584"
+       },
+       {
+        "tag": "Person 585"
+       }
+      ]
+     },
+     {
+      "ratingKey": "15269",
+      "key": "/library/metadata/15269/children",
+      "guid": "plex://item/00000000000000000000024a",
+      "slug": "slug-587",
+      "studio": "studio 588",
+      "type": "show",
+      "title": "title 589",
+      "librarySectionTitle": "TV Shows",
+      "librarySectionID": 2,
+      "librarySectionKey": "/library/sections/2",
+      "contentRating": "TV-14",
+      "contentRatingAge": 13,
+      "summary": "summary 590",
+      "index": 1,
+      "audienceRating": 8.0,
+      "viewCount": 1,
+      "skipCount": 1,
+      "lastViewedAt": 1790000591,
+      "year": 2011,
+      "tagline": "tagline 592",
+      "thumb": "/library/metadata/15269/thumb/1789898317",
+      "art": "/library/metadata/15269/art/1789898317",
+      "theme": "/library/metadata/15269/theme/1789898317",
+      "duration": 1800000,
+      "originallyAvailableAt": "2011-12-15",
+      "leafCount": 293,
+      "viewedLeafCount": 132,
+      "childCount": 13,
+      "addedAt": 1790000593,
+      "updatedAt": 1790000594,
+      "audienceRatingImage": "themoviedb://image.rating",
+      "primaryExtraKey": "/library/metadata/15355",
+      "Image": [
+       {
+        "alt": "alt 595",
+        "type": "coverPoster",
+        "url": "/library/metadata/15269/thumb/1789898317"
+       },
+       {
+        "alt": "alt 596",
+        "type": "background",
+        "url": "/library/metadata/15269/art/1789898317"
+       },
+       {
+        "alt": "alt 597",
+        "type": "clearLogo",
+        "url": "/library/metadata/15269/clearLogo/1789898317"
+       },
+       {
+        "alt": "alt 598",
+        "type": "backgroundSquare",
+        "url": "/library/metadata/15269/squareArt/1789898317"
+       }
+      ],
+      "UltraBlurColors": {
+       "topLeft": "1a3513",
+       "topRight": "3c6b33",
+       "bottomRight": "316735",
+       "bottomLeft": "366c36"
+      },
+      "Genre": [
+       {
+        "tag": "Comedy"
+       },
+       {
+        "tag": "Reality"
+       }
+      ],
+      "Country": [
+       {
+        "tag": "United States of America"
+       }
+      ],
+      "Role": [
+       {
+        "tag": "Person 599"
+       },
+       {
+        "tag": "Person 600"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "hubKey": "/library/metadata/1937,1735,22310",
+    "key": "/library/sections/2/all?type=2&unwatchedLeaves=1&genre=298",
+    "title": "More in Fantasy",
+    "type": "show",
+    "hubIdentifier": "tv.moreingenre.2",
+    "context": "hub.tv.moreingenre",
+    "size": 3,
+    "more": true,
+    "random": true,
+    "style": "shelf",
+    "Metadata": [
+     {
+      "ratingKey": "1937",
+      "key": "/library/metadata/1937/children",
+      "guid": "plex://item/000000000000000000000259",
+      "slug": "slug-602",
+      "studio": "studio 603",
+      "type": "show",
+      "title": "title 604",
+      "titleSort": "titleSort 605",
+      "librarySectionTitle": "TV Shows",
+      "librarySectionID": 2,
+      "librarySectionKey": "/library/sections/2",
+      "contentRating": "TV-Y7",
+      "contentRatingAge": 7,
+      "summary": "summary 606",
+      "index": 1,
+      "audienceRating": 8.1,
+      "viewCount": 21,
+      "skipCount": 2,
+      "lastViewedAt": 1790000607,
+      "year": 2008,
+      "thumb": "/library/metadata/1937/thumb/1788782033",
+      "art": "/library/metadata/1937/art/1788782033",
+      "theme": "/library/metadata/1937/theme/1788782033",
+      "duration": 660000,
+      "originallyAvailableAt": "2008-06-06",
+      "leafCount": 64,
+      "viewedLeafCount": 21,
+      "childCount": 3,
+      "addedAt": 1790000608,
+      "updatedAt": 1790000609,
+      "audienceRatingImage": "themoviedb://image.rating",
+      "Image": [
+       {
+        "alt": "alt 610",
+        "type": "coverPoster",
+        "url": "/library/metadata/1937/thumb/1788782033"
+       },
+       {
+        "alt": "alt 611",
+        "type": "background",
+        "url": "/library/metadata/1937/art/1788782033"
+       },
+       {
+        "alt": "alt 612",
+        "type": "clearLogo",
+        "url": "/library/metadata/1937/clearLogo/1788782033"
+       },
+       {
+        "alt": "alt 613",
+        "type": "backgroundSquare",
+        "url": "/library/metadata/1937/squareArt/1788782033"
+       }
+      ],
+      "UltraBlurColors": {
+       "topLeft": "160f03",
+       "topRight": "78351f",
+       "bottomRight": "5c3017",
+       "bottomLeft": "2d6a5f"
+      },
+      "Genre": [
+       {
+        "tag": "Comedy"
+       },
+       {
+        "tag": "Adventure"
+       }
+      ],
+      "Country": [
+       {
+        "tag": "United States of America"
+       }
+      ],
+      "Role": [
+       {
+        "tag": "Person 614"
+       },
+       {
+        "tag": "Person 615"
+       }
+      ]
+     },
+     {
+      "ratingKey": "1735",
+      "key": "/library/metadata/1735/children",
+      "guid": "plex://item/000000000000000000000268",
+      "slug": "slug-617",
+      "studio": "studio 618",
+      "type": "show",
+      "title": "title 619",
+      "librarySectionTitle": "TV Shows",
+      "librarySectionID": 2,
+      "librarySectionKey": "/library/sections/2",
+      "contentRating": "TV-14",
+      "contentRatingAge": 13,
+      "summary": "summary 620",
+      "index": 1,
+      "audienceRating": 8.3,
+      "year": 2022,
+      "tagline": "tagline 621",
+      "thumb": "/library/metadata/1735/thumb/1788782032",
+      "art": "/library/metadata/1735/art/1788782032",
+      "theme": "/library/metadata/1735/theme/1788782032",
+      "duration": 3600000,
+      "originallyAvailableAt": "2022-09-20",
+      "leafCount": 24,
+      "viewedLeafCount": 9,
+      "childCount": 2,
+      "addedAt": 1790000622,
+      "updatedAt": 1790000623,
+      "audienceRatingImage": "themoviedb://image.rating",
+      "primaryExtraKey": "/library/metadata/1767",
+      "Image": [
+       {
+        "alt": "alt 624",
+        "type": "coverPoster",
+        "url": "/library/metadata/1735/thumb/1788782032"
+       },
+       {
+        "alt": "alt 625",
+        "type": "background",
+        "url": "/library/metadata/1735/art/1788782032"
+       },
+       {
+        "alt": "alt 626",
+        "type": "clearLogo",
+        "url": "/library/metadata/1735/clearLogo/1788782032"
+       },
+       {
+        "alt": "alt 627",
+        "type": "backgroundSquare",
+        "url": "/library/metadata/1735/squareArt/1788782032"
+       }
+      ],
+      "UltraBlurColors": {
+       "topLeft": "152e4d",
+       "topRight": "17181e",
+       "bottomRight": "5a391b",
+       "bottomLeft": "1d355e"
+      },
+      "Genre": [
+       {
+        "tag": "Adventure"
+       },
+       {
+        "tag": "Fantasy"
+       }
+      ],
+      "Country": [
+       {
+        "tag": "United States of America"
+       }
+      ],
+      "Role": [
+       {
+        "tag": "Person 628"
+       },
+       {
+        "tag": "Person 629"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "hubKey": "/library/metadata/8601,25054,9226",
+    "key": "/library/sections/2/all?type=2&unwatchedLeaves=1&audienceRating>=7.0&sort=audienceRating:desc",
+    "title": "Top Rated TV",
+    "type": "show",
+    "hubIdentifier": "tv.toprated.2",
+    "context": "hub.tv.toprated",
+    "size": 3,
+    "more": true,
+    "random": true,
+    "style": "shelf",
+    "Metadata": [
+     {
+      "ratingKey": "8601",
+      "key": "/library/metadata/8601/children",
+      "guid": "plex://item/000000000000000000000276",
+      "slug": "slug-631",
+      "studio": "studio 632",
+      "type": "show",
+      "title": "title 633",
+      "librarySectionTitle": "TV Shows",
+      "librarySectionID": 2,
+      "librarySectionKey": "/library/sections/2",
+      "contentRating": "TV-MA",
+      "contentRatingAge": 16,
+      "summary": "summary 634",
+      "index": 1,
+      "audienceRating": 7.5,
+      "viewCount": 109,
+      "skipCount": 1,
+      "lastViewedAt": 1790000635,
+      "year": 2000,
+      "tagline": "tagline 636",
+      "thumb": "/library/metadata/8601/thumb/1789898255",
+      "art": "/library/metadata/8601/art/1789898255",
+      "theme": "/library/metadata/8601/theme/1789898255",
+      "duration": 660000,
+      "originallyAvailableAt": "2000-12-30",
+      "leafCount": 145,
+      "viewedLeafCount": 94,
+      "childCount": 13,
+      "seasonCount": 12,
+      "addedAt": 1790000637,
+      "updatedAt": 1790000638,
+      "audienceRatingImage": "themoviedb://image.rating",
+      "Image": [
+       {
+        "alt": "alt 639",
+        "type": "coverPoster",
+        "url": "/library/metadata/8601/thumb/1789898255"
+       },
+       {
+        "alt": "alt 640",
+        "type": "background",
+        "url": "/library/metadata/8601/art/1789898255"
+       },
+       {
+        "alt": "alt 641",
+        "type": "clearLogo",
+        "url": "/library/metadata/8601/clearLogo/1789898255"
+       },
+       {
+        "alt": "alt 642",
+        "type": "backgroundSquare",
+        "url": "/library/metadata/8601/squareArt/1789898255"
+       }
+      ],
+      "UltraBlurColors": {
+       "topLeft": "103621",
+       "topRight": "1d5d73",
+       "bottomRight": "3d52b7",
+       "bottomLeft": "752d20"
+      },
+      "Genre": [
+       {
+        "tag": "Animation"
+       },
+       {
+        "tag": "Comedy"
+       }
+      ],
+      "Country": [
+       {
+        "tag": "United States of America"
+       }
+      ],
+      "Role": [
+       {
+        "tag": "Person 643"
+       },
+       {
+        "tag": "Person 644"
+       }
+      ]
+     },
+     {
+      "ratingKey": "25054",
+      "key": "/library/metadata/25054/children",
+      "guid": "plex://item/000000000000000000000285",
+      "slug": "slug-646",
+      "studio": "studio 647",
+      "type": "show",
+      "title": "title 648",
+      "librarySectionTitle": "TV Shows",
+      "librarySectionID": 2,
+      "librarySectionKey": "/library/sections/2",
+      "contentRating": "TV-MA",
+      "contentRatingAge": 16,
+      "summary": "summary 649",
+      "index": 1,
+      "audienceRating": 8.3,
+      "year": 2013,
+      "tagline": "tagline 650",
+      "thumb": "/library/metadata/25054/thumb/1789898368",
+      "art": "/library/metadata/25054/art/1789898368",
+      "theme": "/library/metadata/25054/theme/1789898368",
+      "duration": 2700000,
+      "originallyAvailableAt": "2013-04-04",
+      "leafCount": 39,
+      "viewedLeafCount": 0,
+      "childCount": 3,
+      "addedAt": 1790000651,
+      "updatedAt": 1790000652,
+      "audienceRatingImage": "themoviedb://image.rating",
+      "primaryExtraKey": "/library/metadata/25097",
+      "Image": [
+       {
+        "alt": "alt 653",
+        "type": "coverPoster",
+        "url": "/library/metadata/25054/thumb/1789898368"
+       },
+       {
+        "alt": "alt 654",
+        "type": "background",
+        "url": "/library/metadata/25054/art/1789898368"
+       },
+       {
+        "alt": "alt 655",
+        "type": "clearLogo",
+        "url": "/library/metadata/25054/clearLogo/1789898368"
+       },
+       {
+        "alt": "alt 656",
+        "type": "backgroundSquare",
+        "url": "/library/metadata/25054/squareArt/1789898368"
+       }
+      ],
+      "UltraBlurColors": {
+       "topLeft": "0d1c41",
+       "topRight": "24406f",
+       "bottomRight": "1a264e",
+       "bottomLeft": "1f3e69"
+      },
+      "Genre": [
+       {
+        "tag": "Drama"
+       },
+       {
+        "tag": "Crime"
+       }
+      ],
+      "Country": [
+       {
+        "tag": "United States of America"
+       }
+      ],
+      "Role": [
+       {
+        "tag": "Person 657"
+       },
+       {
+        "tag": "Person 658"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "hubKey": "/library/metadata/17345,17344,17270",
+    "key": "/library/sections/2/all?sort=lastViewedAt:desc&unwatched=0&viewOffset=0&type=4",
+    "title": "Recently Watched Episodes",
+    "type": "episode",
+    "hubIdentifier": "tv.recentlyviewed.2",
+    "context": "hub.tv.recentlyviewed",
+    "size": 3,
+    "more": true,
+    "style": "shelf",
+    "Metadata": [
+     {
+      "ratingKey": "17345",
+      "key": "/library/metadata/17345",
+      "parentRatingKey": "17343",
+      "grandparentRatingKey": "17221",
+      "guid": "plex://item/000000000000000000000293",
+      "parentGuid": "plex://item/000000000000000000000294",
+      "grandparentGuid": "plex://item/000000000000000000000295",
+      "grandparentSlug": "slug-662",
+      "type": "episode",
+      "title": "title 663",
+      "grandparentKey": "/library/metadata/17221",
+      "parentKey": "/library/metadata/17343",
+      "librarySectionTitle": "TV Shows",
+      "librarySectionID": 2,
+      "librarySectionKey": "/library/sections/2",
+      "grandparentTitle": "grandparentTitle 664",
+      "parentTitle": "parentTitle 665",
+      "contentRating": "TV-14",
+      "summary": "summary 666",
+      "index": 2,
+      "parentIndex": 5,
+      "audienceRating": 8.3,
+      "viewCount": 1,
+      "skipCount": 1,
+      "lastViewedAt": 1790000667,
+      "year": 2012,
+      "thumb": "/library/metadata/17345/thumb/1762429158",
+      "art": "/library/metadata/17221/art/1788782063",
+      "parentThumb": "/library/metadata/17343/thumb/1789287116",
+      "grandparentThumb": "/library/metadata/17221/thumb/1788782063",
+      "grandparentArt": "/library/metadata/17221/art/1788782063",
+      "grandparentTheme": "/library/metadata/17221/theme/1788782063",
+      "duration": 2561216,
+      "originallyAvailableAt": "2012-10-07",
+      "addedAt": 1790000668,
+      "audienceRatingImage": "themoviedb://image.rating",
+      "chapterSource": "media",
+      "Media": [
+       {
+        "id": 245152,
+        "duration": 2561216,
+        "bitrate": 1962,
+        "width": 1920,
+        "height": 1080,
+        "aspectRatio": 1.78,
+        "audioChannels": 6,
+        "audioCodec": "eac3",
+        "videoCodec": "hevc",
+        "videoResolution": "1080",
+        "container": "mkv",
+        "videoFrameRate": "24p",
+        "videoProfile": "main",
+        "hasVoiceActivity": false,
+        "Part": [
+         {
+          "id": 247673,
+          "key": "/library/parts/247673/1755911562/file.mkv",
+          "duration": 2561216,
+          "file": "/media/library/file-669.mkv",
+          "size": 629348402,
+          "container": "mkv",
+          "videoProfile": "main"
+         }
+        ]
+       }
+      ],
+      "Image": [
+       {
+        "alt": "alt 670",
+        "type": "coverPoster",
+        "url": "/library/metadata/17221/thumb/1788782063"
+       },
+       {
+        "alt": "alt 671",
+        "type": "snapshot",
+        "url": "/library/metadata/17345/thumb/1762429158"
+       },
+       {
+        "alt": "alt 672",
+        "type": "background",
+        "url": "/library/metadata/17221/art/1788782063"
+       },
+       {
+        "alt": "alt 673",
+        "type": "clearLogo",
+        "url": "/library/metadata/17221/clearLogo/1788782063"
+       },
+       {
+        "alt": "alt 674",
+        "type": "backgroundSquare",
+        "url": "/library/metadata/17221/squareArt/1788782063"
+       }
+      ],
+      "UltraBlurColors": {
+       "topLeft": "05020f",
+       "topRight": "a52b1d",
+       "bottomRight": "a52b1a",
+       "bottomLeft": "ab1f1b"
+      },
+      "Director": [
+       {
+        "tag": "Person 675"
+       }
+      ],
+      "Writer": [
+       {
+        "tag": "Person 676"
+       }
+      ],
+      "Role": [
+       {
+        "tag": "Person 677"
+       },
+       {
+        "tag": "Person 678"
+       }
+      ]
+     },
+     {
+      "ratingKey": "17344",
+      "key": "/library/metadata/17344",
+      "parentRatingKey": "17343",
+      "grandparentRatingKey": "17221",
+      "guid": "plex://item/0000000000000000000002a7",
+      "parentGuid": "plex://item/0000000000000000000002a8",
+      "grandparentGuid": "plex://item/0000000000000000000002a9",
+      "grandparentSlug": "slug-682",
+      "type": "episode",
+      "title": "title 683",
+      "titleSort": "titleSort 684",
+      "grandparentKey": "/library/metadata/17221",
+      "parentKey": "/library/metadata/17343",
+      "librarySectionTitle": "TV Shows",
+      "librarySectionID": 2,
+      "librarySectionKey": "/library/sections/2",
+      "grandparentTitle": "grandparentTitle 685",
+      "parentTitle": "parentTitle 686",
+      "contentRating": "TV-14",
+      "summary": "summary 687",
+      "index": 1,
+      "parentIndex": 5,
+      "audienceRating": 7.9,
+      "viewCount": 1,
+      "lastViewedAt": 1790000688,
+      "year": 2012,
+      "thumb": "/library/metadata/17344/thumb/1762429158",
+      "art": "/library/metadata/17221/art/1788782063",
+      "parentThumb": "/library/metadata/17343/thumb/1789287116",
+      "grandparentThumb": "/library/metadata/17221/thumb/1788782063",
+      "grandparentArt": "/library/metadata/17221/art/1788782063",
+      "grandparentTheme": "/library/metadata/17221/theme/1788782063",
+      "duration": 2479808,
+      "originallyAvailableAt": "2012-09-30",
+      "addedAt": 1790000689,
+      "audienceRatingImage": "themoviedb://image.rating",
+      "chapterSource": "media",
+      "Media": [
+       {
+        "id": 245151,
+        "duration": 2479808,
+        "bitrate": 1923,
+        "width": 1920,
+        "height": 1080,
+        "aspectRatio": 1.78,
+        "audioChannels": 6,
+        "audioCodec": "eac3",
+        "videoCodec": "hevc",
+        "videoResolution": "1080",
+        "container": "mkv",
+        "videoFrameRate": "24p",
+        "videoProfile": "main",
+        "hasVoiceActivity": false,
+        "Part": [
+         {
+          "id": 247672,
+          "key": "/library/parts/247672/1755910090/file.mkv",
+          "duration": 2479808,
+          "file": "/media/library/file-690.mkv",
+          "size": 597263815,
+          "container": "mkv",
+          "videoProfile": "main"
+         }
+        ]
+       }
+      ],
+      "Image": [
+       {
+        "alt": "alt 691",
+        "type": "coverPoster",
+        "url": "/library/metadata/17221/thumb/1788782063"
+       },
+       {
+        "alt": "alt 692",
+        "type": "snapshot",
+        "url": "/library/metadata/17344/thumb/1762429158"
+       },
+       {
+        "alt": "alt 693",
+        "type": "background",
+        "url": "/library/metadata/17221/art/1788782063"
+       },
+       {
+        "alt": "alt 694",
+        "type": "clearLogo",
+        "url": "/library/metadata/17221/clearLogo/1788782063"
+       },
+       {
+        "alt": "alt 695",
+        "type": "backgroundSquare",
+        "url": "/library/metadata/17221/squareArt/1788782063"
+       }
+      ],
+      "UltraBlurColors": {
+       "topLeft": "441c0b",
+       "topRight": "914421",
+       "bottomRight": "a2310d",
+       "bottomLeft": "9d3811"
+      },
+      "Director": [
+       {
+        "tag": "Person 696"
+       }
+      ],
+      "Writer": [
+       {
+        "tag": "Person 697"
+       }
+      ],
+      "Role": [
+       {
+        "tag": "Person 698"
+       },
+       {
+        "tag": "Person 699"
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}
