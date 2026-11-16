@@ -6,9 +6,10 @@ The owner chose software only: no DNS blocker (no Pi-hole, no router changes) an
 
 ## The TV
 
-- VIZIO D24f-J09 (2021 D-Series, 24" FHD), SmartCast `prod 59.47`, API `3.3.3-2538.0001`, Google Cast built in. LAN address `192.168.1.130`, on Wi-Fi.
+- VIZIO D24f-J09 (2021 D-Series, 24" FHD), SmartCast `prod 59.54`, API `3.3.3-2538.0001`, Google Cast built in (Cast firmware 1.68). LAN address `192.168.1.130`, on Wi-Fi. VIZIO updates the firmware by itself: it went from `59.47` to `59.54` between 2026-11-15 and 2026-11-16.
+- Paired on 2026-11-16: the token is in the owner's `~/.vizio-privacy/192.168.1.130.json`, and the TV lists the tool under System → Mobile Devices as "Vizio Privacy". On that day `harden --apply` set Viewing Data to Off and Limited Ad Tracking to On, and Cast crash and usage reporting were switched off.
 - SmartCast API: HTTPS on port 7345 with a self-signed certificate. `GET /state/device/deviceinfo` works without auth. Everything under `/menu_native/` needs an auth token from a one-time PIN pairing; without one the TV answers HTTP 403 `REQUIRES_PAIRING`.
-- Google Cast setup API: plain HTTP on port 8008 (`/setup/eureka_info` and `/setup/set_eureka_info`).
+- Google Cast setup API: reads over plain HTTP on port 8008 (`/setup/eureka_info`). The opt-out write (`/setup/set_eureka_info`) must go over HTTPS on port 8443 (self-signed certificate, no token): this TV answers the same write on 8008 with HTTP 403 and changes nothing.
 - Protocol reference for both: [docs/smartcast-api.md](docs/smartcast-api.md).
 - A custom OS is not possible: the bootloader is locked, the firmware is VIZIO-signed and there is no root access, so no program on the TV can be removed. Its tracking components (`acr`, `eventanalyzer`, `s3logger`, `errorcollector`, `collectd`, `recommendationd`, `watchfree-helper`) can only be switched off through its settings.
 
