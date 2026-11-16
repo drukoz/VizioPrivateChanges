@@ -1,0 +1,304 @@
+{
+ "MediaContainer": {
+  "size": 1,
+  "identifier": "com.plexapp.plugins.library",
+  "mediaTagPrefix": "/system/bundle/media/flags/",
+  "mediaTagVersion": 1792751798,
+  "playQueueID": 1615,
+  "playQueueSelectedItemID": 109039,
+  "playQueueSelectedItemOffset": 0,
+  "playQueueSelectedMetadataItemID": "4619",
+  "playQueueShuffled": false,
+  "playQueueSourceURI": "library://x/item/%2Flibrary%2Fmetadata%2F4619",
+  "playQueueTotalCount": 1,
+  "playQueueVersion": 1,
+  "Metadata": [
+   {
+    "playQueueItemID": 109039,
+    "ratingKey": "4619",
+    "key": "/library/metadata/4619",
+    "parentRatingKey": "4613",
+    "grandparentRatingKey": "4516",
+    "guid": "plex://item/0000000000000000000002bc",
+    "parentGuid": "plex://item/0000000000000000000002bd",
+    "grandparentGuid": "plex://item/0000000000000000000002be",
+    "grandparentSlug": "slug-703",
+    "type": "episode",
+    "title": "title 704",
+    "grandparentKey": "/library/metadata/4516",
+    "parentKey": "/library/metadata/4613",
+    "librarySectionTitle": "Anime",
+    "librarySectionID": 3,
+    "librarySectionKey": "/library/sections/3",
+    "grandparentTitle": "grandparentTitle 705",
+    "parentTitle": "parentTitle 706",
+    "contentRating": "TV-PG",
+    "summary": "summary 707",
+    "index": 6,
+    "parentIndex": 4,
+    "audienceRating": 7.1,
+    "viewOffset": 363399,
+    "lastViewedAt": 1790000708,
+    "year": 2012,
+    "thumb": "/library/metadata/4619/thumb/1790131474",
+    "art": "/library/metadata/4516/art/1790131437",
+    "parentThumb": "/library/metadata/4613/thumb/1790131474",
+    "grandparentThumb": "/library/metadata/4516/thumb/1790131437",
+    "grandparentArt": "/library/metadata/4516/art/1790131437",
+    "grandparentTheme": "/library/metadata/4516/theme/1790131437",
+    "duration": 707049,
+    "originallyAvailableAt": "2012-04-30",
+    "addedAt": 1790000709,
+    "updatedAt": 1790000710,
+    "audienceRatingImage": "themoviedb://image.rating",
+    "chapterSource": "media",
+    "Media": [
+     {
+      "id": 23804,
+      "duration": 707049,
+      "bitrate": 2940,
+      "width": 1920,
+      "height": 1080,
+      "aspectRatio": 1.78,
+      "audioChannels": 2,
+      "audioCodec": "aac",
+      "videoCodec": "hevc",
+      "videoResolution": "1080",
+      "container": "mkv",
+      "videoFrameRate": "24p",
+      "audioProfile": "lc",
+      "videoProfile": "main 10",
+      "hasVoiceActivity": false,
+      "Part": [
+       {
+        "id": 26325,
+        "key": "/library/parts/26325/1687580364/file.mkv",
+        "duration": 707049,
+        "file": "/media/library/file-711.mkv",
+        "size": 259866131,
+        "audioProfile": "lc",
+        "container": "mkv",
+        "videoProfile": "main 10",
+        "Stream": [
+         {
+          "id": 141504,
+          "streamType": 1,
+          "default": true,
+          "codec": "hevc",
+          "index": 0,
+          "bitrate": 2940,
+          "language": "English",
+          "languageTag": "en",
+          "languageCode": "eng",
+          "bitDepth": 10,
+          "chromaLocation": "left",
+          "chromaSubsampling": "4:2:0",
+          "codedHeight": 1080,
+          "codedWidth": 1920,
+          "colorPrimaries": "bt709",
+          "colorRange": "tv",
+          "colorSpace": "bt709",
+          "colorTrc": "bt709",
+          "frameRate": 23.976,
+          "height": 1080,
+          "level": 120,
+          "profile": "main 10",
+          "refFrames": 1,
+          "width": 1920,
+          "displayTitle": "1080p",
+          "extendedDisplayTitle": "1080p (HEVC Main 10)"
+         },
+         {
+          "id": 141505,
+          "streamType": 2,
+          "canNormalizeLoudness": false,
+          "selected": true,
+          "default": true,
+          "codec": "aac",
+          "index": 1,
+          "channels": 2,
+          "language": "English",
+          "languageTag": "en",
+          "languageCode": "eng",
+          "audioChannelLayout": "stereo",
+          "profile": "lc",
+          "samplingRate": 48000,
+          "displayTitle": "English (AAC Stereo)",
+          "extendedDisplayTitle": "English (AAC Stereo)"
+         },
+         {
+          "id": 141506,
+          "streamType": 2,
+          "canNormalizeLoudness": false,
+          "codec": "aac",
+          "index": 2,
+          "channels": 2,
+          "language": "English",
+          "languageTag": "en",
+          "languageCode": "eng",
+          "audioChannelLayout": "stereo",
+          "profile": "lc",
+          "samplingRate": 48000,
+          "title": "Commentary",
+          "displayTitle": "English (AAC Stereo)",
+          "extendedDisplayTitle": "Commentary (English AAC Stereo)"
+         },
+         {
+          "id": 141507,
+          "streamType": 3,
+          "canAutoSync": false,
+          "codec": "pgs",
+          "index": 3,
+          "language": "English",
+          "languageTag": "en",
+          "languageCode": "eng",
+          "displayTitle": "English",
+          "extendedDisplayTitle": "English (PGS)"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "Image": [
+     {
+      "alt": "alt 712",
+      "type": "coverPoster",
+      "url": "/library/metadata/4516/thumb/1790131437"
+     },
+     {
+      "alt": "alt 713",
+      "type": "snapshot",
+      "url": "/library/metadata/4619/thumb/1790131474"
+     },
+     {
+      "alt": "alt 714",
+      "type": "background",
+      "url": "/library/metadata/4516/art/1790131437"
+     },
+     {
+      "alt": "alt 715",
+      "type": "clearLogo",
+      "url": "/library/metadata/4516/clearLogo/1790131437"
+     },
+     {
+      "alt": "alt 716",
+      "type": "backgroundSquare",
+      "url": "/library/metadata/4516/squareArt/1790131437"
+     }
+    ],
+    "UltraBlurColors": {
+     "topLeft": "390a18",
+     "topRight": "3a0b1a",
+     "bottomRight": "9a2849",
+     "bottomLeft": "651f4e"
+    },
+    "Guid": [
+     {
+      "id": "imdb://tt0000717"
+     },
+     {
+      "id": "imdb://tt0000718"
+     },
+     {
+      "id": "imdb://tt0000719"
+     }
+    ],
+    "Rating": [
+     {
+      "image": "imdb://image.rating",
+      "value": 8.4,
+      "type": "audience"
+     },
+     {
+      "image": "themoviedb://image.rating",
+      "value": 7.1,
+      "type": "audience"
+     }
+    ],
+    "Director": [
+     {
+      "id": 46796,
+      "filter": "director=46796",
+      "tag": "Person 720",
+      "tagKey": "5ec4183890c7f60040812401"
+     },
+     {
+      "id": 27011,
+      "filter": "director=27011",
+      "tag": "Person 721",
+      "tagKey": "5d77684d85719b001f3a7e87",
+      "thumb": "https://example.invalid/person.jpg"
+     }
+    ],
+    "Writer": [
+     {
+      "id": 18891,
+      "filter": "writer=18891",
+      "tag": "Person 722",
+      "tagKey": "5d776aa296b655001fdf466d",
+      "thumb": "https://example.invalid/person.jpg"
+     },
+     {
+      "id": 11516,
+      "filter": "writer=11516",
+      "tag": "Person 723",
+      "tagKey": "5d776c7596b655001fe31478"
+     }
+    ],
+    "Role": [
+     {
+      "id": 10386,
+      "filter": "actor=10386",
+      "tag": "Person 724",
+      "tagKey": "5d77682ee6d55c002040bce6",
+      "role": "Character 725",
+      "thumb": "https://example.invalid/person.jpg"
+     },
+     {
+      "id": 8834,
+      "filter": "actor=8834",
+      "tag": "Person 726",
+      "tagKey": "5d7768256f4521001ea989ff",
+      "role": "Character 727",
+      "thumb": "https://example.invalid/person.jpg"
+     }
+    ],
+    "Producer": [
+     {
+      "id": 46797,
+      "filter": "producer=46797",
+      "tag": "Person 728",
+      "tagKey": "5e1635e62d4d84003e4916da"
+     }
+    ],
+    "Chapter": [
+     {
+      "id": 4,
+      "filter": "thumb=4",
+      "index": 1,
+      "startTimeOffset": 0,
+      "endTimeOffset": 25358,
+      "thumb": "/library/media/23804/chapterImages/1"
+     },
+     {
+      "id": 4,
+      "filter": "thumb=4",
+      "index": 2,
+      "startTimeOffset": 25358,
+      "endTimeOffset": 673131,
+      "thumb": "/library/media/23804/chapterImages/2"
+     },
+     {
+      "id": 4,
+      "filter": "thumb=4",
+      "index": 3,
+      "startTimeOffset": 673131,
+      "endTimeOffset": 707049,
+      "thumb": "/library/media/23804/chapterImages/3"
+     }
+    ]
+   }
+  ]
+ }
+}

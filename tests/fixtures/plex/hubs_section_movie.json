@@ -1,0 +1,1318 @@
+{
+ "MediaContainer": {
+  "size": 7,
+  "allowSync": true,
+  "identifier": "com.plexapp.plugins.library",
+  "librarySectionID": 1,
+  "librarySectionTitle": "Movies",
+  "librarySectionUUID": "00000000-0000-4000-8000-000000000238",
+  "Hub": [
+   {
+    "hubKey": "/library/metadata/24339",
+    "key": "/hubs/sections/1/continueWatching/items",
+    "title": "Continue Watching",
+    "type": "movie",
+    "hubIdentifier": "movie.inprogress.1",
+    "context": "hub.movie.inprogress",
+    "size": 1,
+    "more": false,
+    "style": "shelf",
+    "Metadata": [
+     {
+      "ratingKey": "24339",
+      "key": "/library/metadata/24339",
+      "guid": "plex://item/0000000000000000000000ef",
+      "slug": "slug-240",
+      "studio": "studio 241",
+      "type": "movie",
+      "title": "title 242",
+      "titleSort": "titleSort 243",
+      "librarySectionTitle": "Movies",
+      "librarySectionID": 1,
+      "librarySectionKey": "/library/sections/1",
+      "contentRating": "G",
+      "contentRatingAge": 7,
+      "summary": "summary 244",
+      "rating": 9.7,
+      "audienceRating": 8.8,
+      "viewOffset": 3559000,
+      "viewCount": 1,
+      "lastViewedAt": 1790000245,
+      "year": 1995,
+      "tagline": "tagline 246",
+      "thumb": "/library/metadata/24339/thumb/1787303570",
+      "art": "/library/metadata/24339/art/1787303570",
+      "duration": 5840710,
+      "originallyAvailableAt": "1995-05-19",
+      "addedAt": 1790000247,
+      "updatedAt": 1790000248,
+      "audienceRatingImage": "rottentomatoes://image.rating.upright",
+      "primaryExtraKey": "/library/metadata/24344",
+      "ratingImage": "rottentomatoes://image.rating.ripe",
+      "Media": [
+       {
+        "id": 151542,
+        "duration": 5840710,
+        "bitrate": 10233,
+        "width": 1920,
+        "height": 1080,
+        "aspectRatio": 1.78,
+        "audioChannels": 2,
+        "audioCodec": "eac3",
+        "videoCodec": "h264",
+        "videoResolution": "1080",
+        "container": "mkv",
+        "videoFrameRate": "24p",
+        "videoProfile": "high",
+        "hasVoiceActivity": false,
+        "Part": [
+         {
+          "id": 154063,
+          "key": "/library/parts/154063/1758441077/file.mkv",
+          "duration": 5840710,
+          "file": "/media/library/file-249.mkv",
+          "size": 7471145952,
+          "container": "mkv",
+          "videoProfile": "high"
+         }
+        ]
+       }
+      ],
+      "Image": [
+       {
+        "alt": "alt 250",
+        "type": "coverPoster",
+        "url": "/library/metadata/24339/thumb/1787303570"
+       },
+       {
+        "alt": "alt 251",
+        "type": "background",
+        "url": "/library/metadata/24339/art/1787303570"
+       },
+       {
+        "alt": "alt 252",
+        "type": "clearLogo",
+        "url": "/library/metadata/24339/clearLogo/1787303570"
+       },
+       {
+        "alt": "alt 253",
+        "type": "backgroundSquare",
+        "url": "/library/metadata/24339/squareArt/1787303570"
+       }
+      ],
+      "UltraBlurColors": {
+       "topLeft": "43250f",
+       "topRight": "38210d",
+       "bottomRight": "301a0a",
+       "bottomLeft": "874c2d"
+      },
+      "Genre": [
+       {
+        "tag": "Family"
+       },
+       {
+        "tag": "Drama"
+       }
+      ],
+      "Country": [
+       {
+        "tag": "United States of America"
+       }
+      ],
+      "Director": [
+       {
+        "tag": "Person 254"
+       }
+      ],
+      "Writer": [
+       {
+        "tag": "Person 255"
+       },
+       {
+        "tag": "Person 256"
+       }
+      ],
+      "Role": [
+       {
+        "tag": "Person 257"
+       },
+       {
+        "tag": "Person 258"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "hubKey": "/library/metadata/25676",
+    "key": "/library/sections/1/all?sort=originallyAvailableAt:desc&originallyAvailableAt>=-1y",
+    "title": "Recently Released Movies",
+    "type": "movie",
+    "hubIdentifier": "movie.recentlyreleased.1",
+    "context": "hub.movie.recentlyreleased",
+    "size": 1,
+    "more": false,
+    "style": "shelf",
+    "Metadata": [
+     {
+      "ratingKey": "25676",
+      "key": "/library/metadata/25676",
+      "guid": "plex://item/000000000000000000000103",
+      "slug": "slug-260",
+      "studio": "studio 261",
+      "type": "movie",
+      "title": "title 262",
+      "librarySectionTitle": "Movies",
+      "librarySectionID": 1,
+      "librarySectionKey": "/library/sections/1",
+      "contentRating": "PG-13",
+      "contentRatingAge": 14,
+      "summary": "summary 263",
+      "rating": 1.7,
+      "audienceRating": 8.2,
+      "year": 2025,
+      "tagline": "tagline 264",
+      "thumb": "/library/metadata/25676/thumb/1789898090",
+      "art": "/library/metadata/25676/art/1789898090",
+      "duration": 6246907,
+      "originallyAvailableAt": "2025-12-03",
+      "addedAt": 1790000265,
+      "updatedAt": 1790000266,
+      "audienceRatingImage": "rottentomatoes://image.rating.upright",
+      "primaryExtraKey": "/library/metadata/25677",
+      "ratingImage": "rottentomatoes://image.rating.rotten",
+      "Media": [
+       {
+        "id": 166520,
+        "duration": 6246907,
+        "bitrate": 24917,
+        "width": 3836,
+        "height": 1912,
+        "aspectRatio": 1.85,
+        "audioChannels": 6,
+        "audioCodec": "eac3",
+        "videoCodec": "hevc",
+        "videoResolution": "4k",
+        "container": "mkv",
+        "videoFrameRate": "24p",
+        "audioProfile": "dolby digital plus + dolby atmos",
+        "videoProfile": "main 10",
+        "hasVoiceActivity": false,
+        "Part": [
+         {
+          "id": 169041,
+          "key": "/library/parts/169041/1770280788/file.mkv",
+          "duration": 6246907,
+          "file": "/media/library/file-267.mkv",
+          "size": 19457098579,
+          "audioProfile": "dolby digital plus + dolby atmos",
+          "container": "mkv",
+          "videoProfile": "main 10"
+         }
+        ]
+       }
+      ],
+      "Image": [
+       {
+        "alt": "alt 268",
+        "type": "coverPoster",
+        "url": "/library/metadata/25676/thumb/1789898090"
+       },
+       {
+        "alt": "alt 269",
+        "type": "background",
+        "url": "/library/metadata/25676/art/1789898090"
+       },
+       {
+        "alt": "alt 270",
+        "type": "clearLogo",
+        "url": "/library/metadata/25676/clearLogo/1789898090"
+       },
+       {
+        "alt": "alt 271",
+        "type": "backgroundSquare",
+        "url": "/library/metadata/25676/squareArt/1789898090"
+       }
+      ],
+      "UltraBlurColors": {
+       "topLeft": "4a1f0e",
+       "topRight": "4f1f0e",
+       "bottomRight": "5e2a11",
+       "bottomLeft": "8c441a"
+      },
+      "Genre": [
+       {
+        "tag": "Horror"
+       },
+       {
+        "tag": "Mystery"
+       }
+      ],
+      "Country": [
+       {
+        "tag": "United States of America"
+       }
+      ],
+      "Director": [
+       {
+        "tag": "Person 272"
+       }
+      ],
+      "Writer": [
+       {
+        "tag": "Person 273"
+       }
+      ],
+      "Role": [
+       {
+        "tag": "Person 274"
+       },
+       {
+        "tag": "Person 275"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "hubKey": "/library/metadata/29124,29141,27835",
+    "key": "/library/sections/1/all?sort=addedAt:desc",
+    "title": "Recently Added in Movies",
+    "type": "movie",
+    "hubIdentifier": "movie.recentlyadded.1",
+    "context": "hub.movie.recentlyadded",
+    "size": 3,
+    "more": true,
+    "style": "shelf",
+    "promoted": true,
+    "Metadata": [
+     {
+      "ratingKey": "29124",
+      "key": "/library/metadata/29124",
+      "guid": "plex://item/000000000000000000000114",
+      "slug": "slug-277",
+      "studio": "studio 278",
+      "type": "movie",
+      "title": "title 279",
+      "titleSort": "titleSort 280",
+      "librarySectionTitle": "Movies",
+      "librarySectionID": 1,
+      "librarySectionKey": "/library/sections/1",
+      "contentRating": "PG-13",
+      "contentRatingAge": 13,
+      "summary": "summary 281",
+      "rating": 3.2,
+      "audienceRating": 8.4,
+      "viewCount": 2,
+      "lastViewedAt": 1790000282,
+      "year": 2004,
+      "tagline": "tagline 283",
+      "thumb": "/library/metadata/29124/thumb/1789779968",
+      "art": "/library/metadata/29124/art/1789779968",
+      "duration": 8464351,
+      "originallyAvailableAt": "2004-12-10",
+      "addedAt": 1790000284,
+      "updatedAt": 1790000285,
+      "audienceRatingImage": "rottentomatoes://image.rating.upright",
+      "chapterSource": "media",
+      "primaryExtraKey": "/library/metadata/29125",
+      "ratingImage": "rottentomatoes://image.rating.rotten",
+      "Media": [
+       {
+        "id": 218294,
+        "duration": 8464351,
+        "bitrate": 9634,
+        "width": 3840,
+        "height": 1544,
+        "aspectRatio": 2.35,
+        "audioChannels": 6,
+        "audioCodec": "eac3",
+        "videoCodec": "hevc",
+        "videoResolution": "4k",
+        "container": "mkv",
+        "videoFrameRate": "24p",
+        "videoProfile": "main 10",
+        "hasVoiceActivity": false,
+        "Part": [
+         {
+          "id": 220815,
+          "key": "/library/parts/220815/1789779584/file.mkv",
+          "duration": 8464351,
+          "file": "/media/library/file-286.mkv",
+          "size": 10195181950,
+          "container": "mkv",
+          "videoProfile": "main 10"
+         }
+        ]
+       }
+      ],
+      "Image": [
+       {
+        "alt": "alt 287",
+        "type": "coverPoster",
+        "url": "/library/metadata/29124/thumb/1789779968"
+       },
+       {
+        "alt": "alt 288",
+        "type": "background",
+        "url": "/library/metadata/29124/art/1789779968"
+       },
+       {
+        "alt": "alt 289",
+        "type": "clearLogo",
+        "url": "/library/metadata/29124/clearLogo/1789779968"
+       },
+       {
+        "alt": "alt 290",
+        "type": "backgroundSquare",
+        "url": "/library/metadata/29124/squareArt/1789779968"
+       }
+      ],
+      "UltraBlurColors": {
+       "topLeft": "4d1c17",
+       "topRight": "844030",
+       "bottomRight": "882530",
+       "bottomLeft": "343132"
+      },
+      "Genre": [
+       {
+        "tag": "Musical"
+       },
+       {
+        "tag": "Drama"
+       }
+      ],
+      "Country": [
+       {
+        "tag": "United Kingdom"
+       }
+      ],
+      "Director": [
+       {
+        "tag": "Person 291"
+       }
+      ],
+      "Writer": [
+       {
+        "tag": "Person 292"
+       },
+       {
+        "tag": "Person 293"
+       }
+      ],
+      "Role": [
+       {
+        "tag": "Person 294"
+       },
+       {
+        "tag": "Person 295"
+       }
+      ]
+     },
+     {
+      "ratingKey": "29141",
+      "key": "/library/metadata/29141",
+      "guid": "plex://item/000000000000000000000128",
+      "slug": "slug-297",
+      "studio": "studio 298",
+      "type": "movie",
+      "title": "title 299",
+      "librarySectionTitle": "Movies",
+      "librarySectionID": 1,
+      "librarySectionKey": "/library/sections/1",
+      "originalTitle": "originalTitle 300",
+      "contentRating": "R",
+      "contentRatingAge": 16,
+      "summary": "summary 301",
+      "rating": 8.8,
+      "audienceRating": 9.0,
+      "year": 1988,
+      "tagline": "tagline 302",
+      "thumb": "/library/metadata/29141/thumb/1789241012",
+      "duration": 7486496,
+      "originallyAvailableAt": "1988-07-16",
+      "addedAt": 1790000303,
+      "updatedAt": 1790000304,
+      "audienceRatingImage": "rottentomatoes://image.rating.upright",
+      "primaryExtraKey": "/library/metadata/28565",
+      "ratingImage": "rottentomatoes://image.rating.ripe",
+      "Media": [
+       {
+        "id": 218322,
+        "duration": 7486496,
+        "bitrate": 14382,
+        "width": 3840,
+        "height": 2074,
+        "aspectRatio": 1.85,
+        "audioChannels": 8,
+        "audioCodec": "truehd",
+        "videoCodec": "hevc",
+        "videoResolution": "4k",
+        "container": "mkv",
+        "videoFrameRate": "24p",
+        "audioProfile": "dolby truehd + dolby atmos",
+        "videoProfile": "main 10",
+        "hasVoiceActivity": false,
+        "Part": [
+         {
+          "id": 220843,
+          "key": "/library/parts/220843/1782927974/file.mkv",
+          "duration": 7486496,
+          "file": "/media/library/file-305.mkv",
+          "size": 13529228691,
+          "audioProfile": "dolby truehd + dolby atmos",
+          "container": "mkv",
+          "videoProfile": "main 10"
+         }
+        ]
+       }
+      ],
+      "Image": [
+       {
+        "alt": "alt 306",
+        "type": "coverPoster",
+        "url": "/library/metadata/29141/thumb/1789241012"
+       },
+       {
+        "alt": "alt 307",
+        "type": "clearLogo",
+        "url": "/library/metadata/29141/clearLogo/1789241012"
+       },
+       {
+        "alt": "alt 308",
+        "type": "backgroundSquare",
+        "url": "/library/metadata/29141/squareArt/1789241012"
+       }
+      ],
+      "UltraBlurColors": {
+       "topLeft": "511711",
+       "topRight": "7e1403",
+       "bottomRight": "5f0404",
+       "bottomLeft": "652123"
+      },
+      "Genre": [
+       {
+        "tag": "Science Fiction"
+       },
+       {
+        "tag": "Anime"
+       }
+      ],
+      "Country": [
+       {
+        "tag": "Japan"
+       }
+      ],
+      "Director": [
+       {
+        "tag": "Person 309"
+       }
+      ],
+      "Writer": [
+       {
+        "tag": "Person 310"
+       },
+       {
+        "tag": "Person 311"
+       }
+      ],
+      "Role": [
+       {
+        "tag": "Person 312"
+       },
+       {
+        "tag": "Person 313"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "hubKey": "/library/metadata/24518,470,626",
+    "key": "/library/sections/1/all?unwatched=1&genre=297&audienceRating>=7.0",
+    "title": "Top Movies in Family",
+    "type": "movie",
+    "hubIdentifier": "movie.genre.1.297",
+    "context": "hub.movie.genre",
+    "size": 3,
+    "more": true,
+    "style": "shelf",
+    "Metadata": [
+     {
+      "ratingKey": "24518",
+      "key": "/library/metadata/24518",
+      "guid": "plex://item/00000000000000000000013a",
+      "slug": "slug-315",
+      "studio": "studio 316",
+      "type": "movie",
+      "title": "title 317",
+      "titleSort": "titleSort 318",
+      "librarySectionTitle": "Movies",
+      "librarySectionID": 1,
+      "librarySectionKey": "/library/sections/1",
+      "contentRating": "G",
+      "contentRatingAge": 5,
+      "summary": "summary 319",
+      "rating": 9.2,
+      "audienceRating": 7.3,
+      "year": 1998,
+      "tagline": "tagline 320",
+      "thumb": "/library/metadata/24518/thumb/1787303579",
+      "art": "/library/metadata/24518/art/1787303579",
+      "duration": 5694379,
+      "originallyAvailableAt": "1998-11-20",
+      "addedAt": 1790000321,
+      "updatedAt": 1790000322,
+      "audienceRatingImage": "rottentomatoes://image.rating.upright",
+      "chapterSource": "media",
+      "primaryExtraKey": "/library/metadata/24527",
+      "ratingImage": "rottentomatoes://image.rating.ripe",
+      "Media": [
+       {
+        "id": 151974,
+        "duration": 5694379,
+        "bitrate": 75749,
+        "width": 3840,
+        "height": 2160,
+        "aspectRatio": 1.78,
+        "audioChannels": 8,
+        "audioCodec": "truehd",
+        "videoCodec": "hevc",
+        "videoResolution": "4k",
+        "container": "mkv",
+        "videoFrameRate": "24p",
+        "audioProfile": "dolby truehd + dolby atmos",
+        "videoProfile": "main 10",
+        "hasVoiceActivity": false,
+        "Part": [
+         {
+          "id": 154495,
+          "key": "/library/parts/154495/1744491157/file.mkv",
+          "duration": 5694379,
+          "file": "/media/library/file-323.mkv",
+          "size": 53917841801,
+          "audioProfile": "dolby truehd + dolby atmos",
+          "container": "mkv",
+          "hasThumbnail": "1",
+          "videoProfile": "main 10"
+         }
+        ]
+       }
+      ],
+      "Image": [
+       {
+        "alt": "alt 324",
+        "type": "coverPoster",
+        "url": "/library/metadata/24518/thumb/1787303579"
+       },
+       {
+        "alt": "alt 325",
+        "type": "background",
+        "url": "/library/metadata/24518/art/1787303579"
+       },
+       {
+        "alt": "alt 326",
+        "type": "clearLogo",
+        "url": "/library/metadata/24518/clearLogo/1787303579"
+       },
+       {
+        "alt": "alt 327",
+        "type": "backgroundSquare",
+        "url": "/library/metadata/24518/squareArt/1787303579"
+       }
+      ],
+      "UltraBlurColors": {
+       "topLeft": "233406",
+       "topRight": "295421",
+       "bottomRight": "43620d",
+       "bottomLeft": "172c04"
+      },
+      "Genre": [
+       {
+        "tag": "Comedy"
+       },
+       {
+        "tag": "Animation"
+       }
+      ],
+      "Country": [
+       {
+        "tag": "United States of America"
+       }
+      ],
+      "Director": [
+       {
+        "tag": "Person 328"
+       }
+      ],
+      "Writer": [
+       {
+        "tag": "Person 329"
+       },
+       {
+        "tag": "Person 330"
+       }
+      ],
+      "Role": [
+       {
+        "tag": "Person 331"
+       },
+       {
+        "tag": "Person 332"
+       }
+      ]
+     },
+     {
+      "ratingKey": "470",
+      "key": "/library/metadata/470",
+      "guid": "plex://item/00000000000000000000014d",
+      "slug": "slug-334",
+      "studio": "studio 335",
+      "type": "movie",
+      "title": "title 336",
+      "librarySectionTitle": "Movies",
+      "librarySectionID": 1,
+      "librarySectionKey": "/library/sections/1",
+      "contentRating": "PG-13",
+      "contentRatingAge": 12,
+      "summary": "summary 337",
+      "rating": 4.6,
+      "audienceRating": 8.3,
+      "year": 2022,
+      "tagline": "tagline 338",
+      "thumb": "/library/metadata/470/thumb/1788171569",
+      "art": "/library/metadata/470/art/1788171569",
+      "duration": 8560480,
+      "originallyAvailableAt": "2022-04-06",
+      "addedAt": 1790000339,
+      "updatedAt": 1790000340,
+      "audienceRatingImage": "rottentomatoes://image.rating.upright",
+      "chapterSource": "media",
+      "loudnessAnalysisVersion": "0.02",
+      "primaryExtraKey": "/library/metadata/517",
+      "ratingImage": "rottentomatoes://image.rating.rotten",
+      "Media": [
+       {
+        "id": 1149,
+        "duration": 8560480,
+        "bitrate": 72011,
+        "width": 3840,
+        "height": 2160,
+        "aspectRatio": 1.78,
+        "audioChannels": 8,
+        "audioCodec": "truehd",
+        "videoCodec": "hevc",
+        "videoResolution": "4k",
+        "container": "mkv",
+        "videoFrameRate": "24p",
+        "audioProfile": "dolby truehd + dolby atmos",
+        "videoProfile": "main 10",
+        "hasVoiceActivity": false,
+        "Part": [
+         {
+          "id": 1149,
+          "key": "/library/parts/1149/1657428419/file.mkv",
+          "duration": 8560480,
+          "file": "/media/library/file-341.mkv",
+          "size": 77056083142,
+          "audioProfile": "dolby truehd + dolby atmos",
+          "container": "mkv",
+          "videoProfile": "main 10"
+         }
+        ]
+       }
+      ],
+      "Image": [
+       {
+        "alt": "alt 342",
+        "type": "coverPoster",
+        "url": "/library/metadata/470/thumb/1788171569"
+       },
+       {
+        "alt": "alt 343",
+        "type": "background",
+        "url": "/library/metadata/470/art/1788171569"
+       },
+       {
+        "alt": "alt 344",
+        "type": "clearLogo",
+        "url": "/library/metadata/470/clearLogo/1788171569"
+       },
+       {
+        "alt": "alt 345",
+        "type": "backgroundSquare",
+        "url": "/library/metadata/470/squareArt/1788171569"
+       }
+      ],
+      "UltraBlurColors": {
+       "topLeft": "163525",
+       "topRight": "214834",
+       "bottomRight": "2b6775",
+       "bottomLeft": "0c2116"
+      },
+      "Genre": [
+       {
+        "tag": "Fantasy"
+       },
+       {
+        "tag": "Adventure"
+       }
+      ],
+      "Country": [
+       {
+        "tag": "United Kingdom"
+       },
+       {
+        "tag": "United States of America"
+       }
+      ],
+      "Director": [
+       {
+        "tag": "Person 346"
+       }
+      ],
+      "Writer": [
+       {
+        "tag": "Person 347"
+       },
+       {
+        "tag": "Person 348"
+       }
+      ],
+      "Role": [
+       {
+        "tag": "Person 349"
+       },
+       {
+        "tag": "Person 350"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "key": "/library/sections/1/all?unwatched=1&director=10149&sort=audienceRating:desc",
+    "title": "Top Movies by Person 351",
+    "type": "movie",
+    "hubIdentifier": "movie.by.actor.or.director.1.10149",
+    "context": "hub.movie.by.actor.or.director",
+    "size": 0,
+    "more": false,
+    "random": true,
+    "style": "shelf"
+   },
+   {
+    "hubKey": "/library/metadata/24443,23980,29152",
+    "key": "/library/sections/1/all?unwatched=1&audienceRating>=7.0&sort=audienceRating:desc",
+    "title": "Top Unwatched Movies",
+    "type": "movie",
+    "hubIdentifier": "movie.topunwatched.1",
+    "context": "hub.movie.topunwatched",
+    "size": 3,
+    "more": true,
+    "random": true,
+    "style": "shelf",
+    "Metadata": [
+     {
+      "ratingKey": "24443",
+      "key": "/library/metadata/24443",
+      "guid": "plex://item/000000000000000000000160",
+      "slug": "slug-353",
+      "studio": "studio 354",
+      "type": "movie",
+      "title": "title 355",
+      "librarySectionTitle": "Movies",
+      "librarySectionID": 1,
+      "librarySectionKey": "/library/sections/1",
+      "contentRating": "R",
+      "contentRatingAge": 16,
+      "summary": "summary 356",
+      "rating": 7.9,
+      "audienceRating": 7.7,
+      "year": 2022,
+      "tagline": "tagline 357",
+      "thumb": "/library/metadata/24443/thumb/1787303576",
+      "art": "/library/metadata/24443/art/1787303576",
+      "duration": 6937856,
+      "originallyAvailableAt": "2022-09-28",
+      "addedAt": 1790000358,
+      "updatedAt": 1790000359,
+      "audienceRatingImage": "rottentomatoes://image.rating.upright",
+      "primaryExtraKey": "/library/metadata/24452",
+      "ratingImage": "rottentomatoes://image.rating.ripe",
+      "Media": [
+       {
+        "id": 151781,
+        "duration": 6937856,
+        "bitrate": 81314,
+        "width": 3840,
+        "height": 2160,
+        "aspectRatio": 1.78,
+        "audioChannels": 8,
+        "audioCodec": "truehd",
+        "videoCodec": "hevc",
+        "videoResolution": "4k",
+        "container": "mkv",
+        "videoFrameRate": "24p",
+        "audioProfile": "dolby truehd + dolby atmos",
+        "videoProfile": "main 10",
+        "hasVoiceActivity": false,
+        "Part": [
+         {
+          "id": 154302,
+          "key": "/library/parts/154302/1751450371/file.mkv",
+          "duration": 6937856,
+          "file": "/media/library/file-360.mkv",
+          "size": 70518103367,
+          "audioProfile": "dolby truehd + dolby atmos",
+          "container": "mkv",
+          "hasThumbnail": "1",
+          "videoProfile": "main 10"
+         }
+        ]
+       }
+      ],
+      "Image": [
+       {
+        "alt": "alt 361",
+        "type": "coverPoster",
+        "url": "/library/metadata/24443/thumb/1787303576"
+       },
+       {
+        "alt": "alt 362",
+        "type": "background",
+        "url": "/library/metadata/24443/art/1787303576"
+       },
+       {
+        "alt": "alt 363",
+        "type": "clearLogo",
+        "url": "/library/metadata/24443/clearLogo/1787303576"
+       },
+       {
+        "alt": "alt 364",
+        "type": "backgroundSquare",
+        "url": "/library/metadata/24443/squareArt/1787303576"
+       }
+      ],
+      "UltraBlurColors": {
+       "topLeft": "4b1d1c",
+       "topRight": "141c03",
+       "bottomRight": "091507",
+       "bottomLeft": "933e4a"
+      },
+      "Genre": [
+       {
+        "tag": "Horror"
+       },
+       {
+        "tag": "Mystery"
+       }
+      ],
+      "Country": [
+       {
+        "tag": "United States of America"
+       }
+      ],
+      "Director": [
+       {
+        "tag": "Person 365"
+       }
+      ],
+      "Writer": [
+       {
+        "tag": "Person 366"
+       }
+      ],
+      "Role": [
+       {
+        "tag": "Person 367"
+       },
+       {
+        "tag": "Person 368"
+       }
+      ]
+     },
+     {
+      "ratingKey": "23980",
+      "key": "/library/metadata/23980",
+      "guid": "plex://item/000000000000000000000171",
+      "slug": "slug-370",
+      "studio": "studio 371",
+      "type": "movie",
+      "title": "title 372",
+      "librarySectionTitle": "Movies",
+      "librarySectionID": 1,
+      "librarySectionKey": "/library/sections/1",
+      "originalTitle": "originalTitle 373",
+      "contentRating": "Not Rated",
+      "summary": "summary 374",
+      "rating": 9.7,
+      "audienceRating": 8.9,
+      "year": 1950,
+      "tagline": "tagline 375",
+      "thumb": "/library/metadata/23980/thumb/1789990585",
+      "art": "/library/metadata/23980/art/1789990585",
+      "duration": 5761824,
+      "originallyAvailableAt": "1950-09-29",
+      "addedAt": 1790000376,
+      "updatedAt": 1790000377,
+      "audienceRatingImage": "rottentomatoes://image.rating.upright",
+      "primaryExtraKey": "/library/metadata/24144",
+      "ratingImage": "rottentomatoes://image.rating.ripe",
+      "Media": [
+       {
+        "id": 150712,
+        "duration": 5761824,
+        "bitrate": 10352,
+        "width": 1440,
+        "height": 1080,
+        "aspectRatio": 1.33,
+        "audioChannels": 2,
+        "audioCodec": "ac3",
+        "videoCodec": "h264",
+        "videoResolution": "1080",
+        "container": "mkv",
+        "videoFrameRate": "24p",
+        "videoProfile": "high",
+        "hasVoiceActivity": false,
+        "Part": [
+         {
+          "id": 153233,
+          "key": "/library/parts/153233/1727136053/file.mkv",
+          "duration": 5761824,
+          "file": "/media/library/file-378.mkv",
+          "size": 7456115834,
+          "container": "mkv",
+          "videoProfile": "high"
+         }
+        ]
+       }
+      ],
+      "Image": [
+       {
+        "alt": "alt 379",
+        "type": "coverPoster",
+        "url": "/library/metadata/23980/thumb/1789990585"
+       },
+       {
+        "alt": "alt 380",
+        "type": "background",
+        "url": "/library/metadata/23980/art/1789990585"
+       },
+       {
+        "alt": "alt 381",
+        "type": "clearLogo",
+        "url": "/library/metadata/23980/clearLogo/1789990585"
+       },
+       {
+        "alt": "alt 382",
+        "type": "backgroundSquare",
+        "url": "/library/metadata/23980/squareArt/1789990585"
+       }
+      ],
+      "UltraBlurColors": {
+       "topLeft": "4d1e03",
+       "topRight": "963f27",
+       "bottomRight": "9a3b22",
+       "bottomLeft": "4a1d04"
+      },
+      "Genre": [
+       {
+        "tag": "Drama"
+       },
+       {
+        "tag": "Fantasy"
+       }
+      ],
+      "Country": [
+       {
+        "tag": "France"
+       }
+      ],
+      "Director": [
+       {
+        "tag": "Person 383"
+       }
+      ],
+      "Writer": [
+       {
+        "tag": "Person 384"
+       }
+      ],
+      "Role": [
+       {
+        "tag": "Person 385"
+       },
+       {
+        "tag": "Person 386"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "hubKey": "/library/metadata/29124,398,400",
+    "key": "/library/sections/1/all?sort=lastViewedAt:desc&unwatched=0&viewOffset=0",
+    "title": "Recently Watched Movies",
+    "type": "movie",
+    "hubIdentifier": "movie.recentlyviewed.1",
+    "context": "hub.movie.recentlyviewed",
+    "size": 3,
+    "more": true,
+    "style": "shelf",
+    "Metadata": [
+     {
+      "ratingKey": "29124",
+      "key": "/library/metadata/29124",
+      "guid": "plex://item/000000000000000000000183",
+      "slug": "slug-388",
+      "studio": "studio 389",
+      "type": "movie",
+      "title": "title 390",
+      "titleSort": "titleSort 391",
+      "librarySectionTitle": "Movies",
+      "librarySectionID": 1,
+      "librarySectionKey": "/library/sections/1",
+      "contentRating": "PG-13",
+      "contentRatingAge": 13,
+      "summary": "summary 392",
+      "rating": 3.2,
+      "audienceRating": 8.4,
+      "viewCount": 2,
+      "lastViewedAt": 1790000393,
+      "year": 2004,
+      "tagline": "tagline 394",
+      "thumb": "/library/metadata/29124/thumb/1789779968",
+      "art": "/library/metadata/29124/art/1789779968",
+      "duration": 8464351,
+      "originallyAvailableAt": "2004-12-10",
+      "addedAt": 1790000395,
+      "updatedAt": 1790000396,
+      "audienceRatingImage": "rottentomatoes://image.rating.upright",
+      "chapterSource": "media",
+      "primaryExtraKey": "/library/metadata/29125",
+      "ratingImage": "rottentomatoes://image.rating.rotten",
+      "Media": [
+       {
+        "id": 218294,
+        "duration": 8464351,
+        "bitrate": 9634,
+        "width": 3840,
+        "height": 1544,
+        "aspectRatio": 2.35,
+        "audioChannels": 6,
+        "audioCodec": "eac3",
+        "videoCodec": "hevc",
+        "videoResolution": "4k",
+        "container": "mkv",
+        "videoFrameRate": "24p",
+        "videoProfile": "main 10",
+        "hasVoiceActivity": false,
+        "Part": [
+         {
+          "id": 220815,
+          "key": "/library/parts/220815/1789779584/file.mkv",
+          "duration": 8464351,
+          "file": "/media/library/file-397.mkv",
+          "size": 10195181950,
+          "container": "mkv",
+          "videoProfile": "main 10"
+         }
+        ]
+       }
+      ],
+      "Image": [
+       {
+        "alt": "alt 398",
+        "type": "coverPoster",
+        "url": "/library/metadata/29124/thumb/1789779968"
+       },
+       {
+        "alt": "alt 399",
+        "type": "background",
+        "url": "/library/metadata/29124/art/1789779968"
+       },
+       {
+        "alt": "alt 400",
+        "type": "clearLogo",
+        "url": "/library/metadata/29124/clearLogo/1789779968"
+       },
+       {
+        "alt": "alt 401",
+        "type": "backgroundSquare",
+        "url": "/library/metadata/29124/squareArt/1789779968"
+       }
+      ],
+      "UltraBlurColors": {
+       "topLeft": "4d1c17",
+       "topRight": "844030",
+       "bottomRight": "882530",
+       "bottomLeft": "343132"
+      },
+      "Genre": [
+       {
+        "tag": "Musical"
+       },
+       {
+        "tag": "Drama"
+       }
+      ],
+      "Country": [
+       {
+        "tag": "United Kingdom"
+       }
+      ],
+      "Director": [
+       {
+        "tag": "Person 402"
+       }
+      ],
+      "Writer": [
+       {
+        "tag": "Person 403"
+       },
+       {
+        "tag": "Person 404"
+       }
+      ],
+      "Role": [
+       {
+        "tag": "Person 405"
+       },
+       {
+        "tag": "Person 406"
+       }
+      ]
+     },
+     {
+      "ratingKey": "398",
+      "key": "/library/metadata/398",
+      "guid": "plex://item/000000000000000000000197",
+      "slug": "slug-408",
+      "studio": "studio 409",
+      "type": "movie",
+      "title": "title 410",
+      "librarySectionTitle": "Movies",
+      "librarySectionID": 1,
+      "librarySectionKey": "/library/sections/1",
+      "contentRating": "R",
+      "contentRatingAge": 16,
+      "summary": "summary 411",
+      "rating": 9.0,
+      "audienceRating": 9.1,
+      "viewCount": 3,
+      "lastViewedAt": 1790000412,
+      "year": 1991,
+      "tagline": "tagline 413",
+      "thumb": "/library/metadata/398/thumb/1788170879",
+      "art": "/library/metadata/398/art/1788170879",
+      "duration": 5961109,
+      "originallyAvailableAt": "1991-04-17",
+      "addedAt": 1790000414,
+      "updatedAt": 1790000415,
+      "audienceRatingImage": "rottentomatoes://image.rating.upright",
+      "loudnessAnalysisVersion": "0.02",
+      "primaryExtraKey": "/library/metadata/406",
+      "ratingImage": "rottentomatoes://image.rating.ripe",
+      "Media": [
+       {
+        "id": 994,
+        "duration": 5961109,
+        "bitrate": 7353,
+        "width": 1920,
+        "height": 1040,
+        "aspectRatio": 1.85,
+        "audioChannels": 2,
+        "audioCodec": "aac",
+        "videoCodec": "h264",
+        "videoResolution": "1080",
+        "container": "mkv",
+        "videoFrameRate": "24p",
+        "audioProfile": "lc",
+        "videoProfile": "high",
+        "hasVoiceActivity": false,
+        "Part": [
+         {
+          "id": 994,
+          "key": "/library/parts/994/1689540994/file.mkv",
+          "duration": 5961109,
+          "file": "/media/library/file-416.mkv",
+          "size": 5479299813,
+          "audioProfile": "lc",
+          "container": "mkv",
+          "videoProfile": "high"
+         }
+        ]
+       }
+      ],
+      "Image": [
+       {
+        "alt": "alt 417",
+        "type": "coverPoster",
+        "url": "/library/metadata/398/thumb/1788170879"
+       },
+       {
+        "alt": "alt 418",
+        "type": "background",
+        "url": "/library/metadata/398/art/1788170879"
+       },
+       {
+        "alt": "alt 419",
+        "type": "clearLogo",
+        "url": "/library/metadata/398/clearLogo/1788170879"
+       },
+       {
+        "alt": "alt 420",
+        "type": "backgroundSquare",
+        "url": "/library/metadata/398/squareArt/1788170879"
+       }
+      ],
+      "UltraBlurColors": {
+       "topLeft": "050310",
+       "topRight": "0f0202",
+       "bottomRight": "050310",
+       "bottomLeft": "0f0203"
+      },
+      "Genre": [
+       {
+        "tag": "Comedy"
+       },
+       {
+        "tag": "Crime"
+       }
+      ],
+      "Country": [
+       {
+        "tag": "France"
+       }
+      ],
+      "Director": [
+       {
+        "tag": "Person 421"
+       },
+       {
+        "tag": "Person 422"
+       }
+      ],
+      "Writer": [
+       {
+        "tag": "Person 423"
+       },
+       {
+        "tag": "Person 424"
+       }
+      ],
+      "Role": [
+       {
+        "tag": "Person 425"
+       },
+       {
+        "tag": "Person 426"
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}

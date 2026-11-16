@@ -1,0 +1,30 @@
+{
+ "http_status": 200,
+ "body": {
+  "STATUS": {
+   "RESULT": "SUCCESS",
+   "DETAIL": "Success"
+  },
+  "URI": "/menu_native/dynamic/tv_settings/devices/current_input",
+  "PARAMETERS": {
+   "HASHONLY": "FALSE",
+   "FLAT": "TRUE",
+   "HELPTEXT": "FALSE"
+  },
+  "ITEMS": [
+   {
+    "CNAME": "current_input",
+    "TYPE": "T_STRING_V1",
+    "NAME": "Current Input",
+    "VALUE": "SMARTCAST",
+    "ENABLED": "FALSE",
+    "HIDDEN": "TRUE",
+    "HASHVAL": 2023834057
+   }
+  ],
+  "HASHLIST": [
+   75664591,
+   1293177092
+  ]
+ }
+}

@@ -1,0 +1,83 @@
+{
+ "http_status": 200,
+ "body": {
+  "STATUS": {
+   "RESULT": "SUCCESS",
+   "DETAIL": "Success"
+  },
+  "URI": "/menu_native/dynamic/tv_settings/devices/name_input",
+  "PARAMETERS": {
+   "HASHONLY": "FALSE",
+   "FLAT": "TRUE",
+   "HELPTEXT": "FALSE"
+  },
+  "ITEMS": [
+   {
+    "CNAME": "cast",
+    "TYPE": "T_DEVICE_V1",
+    "NAME": "CAST",
+    "VALUE": {
+     "METADATA": "",
+     "NAME": "SMARTCAST"
+    },
+    "READONLY": "TRUE",
+    "ENABLED": "FALSE",
+    "HASHVAL": 1541296275
+   },
+   {
+    "CNAME": "hdmi1",
+    "TYPE": "T_DEVICE_V1",
+    "NAME": "HDMI-1",
+    "VALUE": {
+     "METADATA": "",
+     "NAME": "HDMI-1"
+    },
+    "ENABLED": "FALSE",
+    "HASHVAL": 1118785733
+   },
+   {
+    "CNAME": "hdmi2",
+    "TYPE": "T_DEVICE_V1",
+    "NAME": "HDMI-2",
+    "VALUE": {
+     "METADATA": "",
+     "NAME": "Fire TV Stick"
+    },
+    "ENABLED": "FALSE",
+    "HASHVAL": 1901031198
+   },
+   {
+    "CNAME": "comp",
+    "TYPE": "T_DEVICE_V1",
+    "NAME": "COMP",
+    "VALUE": {
+     "METADATA": "",
+     "NAME": "COMP"
+    },
+    "ENABLED": "FALSE",
+    "HASHVAL": 3372802964
+   },
+   {
+    "CNAME": "tuner",
+    "TYPE": "T_DEVICE_V1",
+    "NAME": "TV",
+    "VALUE": {
+     "METADATA": "",
+     "NAME": "TV"
+    },
+    "READONLY": "TRUE",
+    "ENABLED": "FALSE",
+    "HASHVAL": 3845225872
+   }
+  ],
+  "NAME": "Name Input",
+  "TYPE": "T_MENU_V1",
+  "CNAME": "name_input",
+  "GROUP": "G_DEVICES",
+  "HASHLIST": [
+   2751099448,
+   75664591,
+   1293177092
+  ]
+ }
+}

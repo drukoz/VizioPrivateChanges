@@ -1,0 +1,110 @@
+{
+ "MediaContainer": {
+  "size": 4,
+  "allowSync": false,
+  "title1": "Plex Library",
+  "Directory": [
+   {
+    "allowSync": false,
+    "filters": true,
+    "refreshing": false,
+    "key": "1",
+    "type": "movie",
+    "title": "Movies",
+    "agent": "tv.plex.agents.movie",
+    "scanner": "Plex Movie",
+    "language": "en-US",
+    "metadataAgentProviderGroupId": 1,
+    "uuid": "00000000-0000-4000-8000-000000000001",
+    "updatedAt": 1790000002,
+    "createdAt": 1790000003,
+    "scannedAt": 1790000004,
+    "content": true,
+    "directory": true,
+    "contentChangedAt": 1790000005,
+    "hidden": 0,
+    "Location": [
+     {
+      "id": 1,
+      "path": "/media/library/6"
+     }
+    ]
+   },
+   {
+    "allowSync": false,
+    "filters": true,
+    "refreshing": false,
+    "key": "3",
+    "type": "show",
+    "title": "Anime",
+    "agent": "tv.plex.agents.series",
+    "scanner": "Plex TV Series",
+    "language": "en-US",
+    "uuid": "00000000-0000-4000-8000-000000000007",
+    "updatedAt": 1790000008,
+    "createdAt": 1790000009,
+    "scannedAt": 1790000010,
+    "content": true,
+    "directory": true,
+    "contentChangedAt": 1790000011,
+    "hidden": 0,
+    "Location": [
+     {
+      "id": 3,
+      "path": "/media/library/12"
+     }
+    ]
+   },
+   {
+    "allowSync": false,
+    "filters": true,
+    "refreshing": false,
+    "key": "2",
+    "type": "show",
+    "title": "TV Shows",
+    "agent": "tv.plex.agents.series",
+    "scanner": "Plex TV Series",
+    "language": "en-US",
+    "uuid": "00000000-0000-4000-8000-000000000013",
+    "updatedAt": 1790000014,
+    "createdAt": 1790000015,
+    "scannedAt": 1790000016,
+    "content": true,
+    "directory": true,
+    "contentChangedAt": 1790000017,
+    "hidden": 0,
+    "Location": [
+     {
+      "id": 2,
+      "path": "/media/library/18"
+     }
+    ]
+   },
+   {
+    "allowSync": false,
+    "filters": true,
+    "refreshing": false,
+    "key": "4",
+    "type": "artist",
+    "title": "Music",
+    "agent": "tv.plex.agents.music",
+    "scanner": "Plex Music",
+    "language": "en-US",
+    "uuid": "00000000-0000-4000-8000-000000000019",
+    "updatedAt": 1790000020,
+    "createdAt": 1790000021,
+    "scannedAt": 1790000022,
+    "content": true,
+    "directory": true,
+    "contentChangedAt": 1790000023,
+    "hidden": 0,
+    "Location": [
+     {
+      "id": 4,
+      "path": "/media/library/24"
+     }
+    ]
+   }
+  ]
+ }
+}

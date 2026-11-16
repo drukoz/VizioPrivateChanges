@@ -1,0 +1,199 @@
+{
+ "MediaContainer": {
+  "size": 1,
+  "allowSync": true,
+  "identifier": "com.plexapp.plugins.library",
+  "librarySectionID": 3,
+  "librarySectionTitle": "Anime",
+  "librarySectionUUID": "00000000-0000-4000-8000-000000000787",
+  "mediaTagPrefix": "/system/bundle/media/flags/",
+  "mediaTagVersion": 1792751798,
+  "Metadata": [
+   {
+    "ratingKey": "4516",
+    "key": "/library/metadata/4516/children",
+    "guid": "plex://item/000000000000000000000314",
+    "slug": "slug-789",
+    "studio": "studio 790",
+    "type": "show",
+    "title": "title 791",
+    "librarySectionTitle": "Anime",
+    "librarySectionID": 3,
+    "librarySectionKey": "/library/sections/3",
+    "contentRating": "TV-PG",
+    "contentRatingAge": 10,
+    "summary": "summary 792",
+    "index": 1,
+    "audienceRating": 8.5,
+    "viewCount": 440,
+    "skipCount": 27,
+    "lastViewedAt": 1790000793,
+    "year": 2010,
+    "thumb": "/library/metadata/4516/thumb/1790131437",
+    "art": "/library/metadata/4516/art/1790131437",
+    "theme": "/library/metadata/4516/theme/1790131437",
+    "duration": 660000,
+    "originallyAvailableAt": "2010-04-05",
+    "leafCount": 292,
+    "viewedLeafCount": 148,
+    "childCount": 11,
+    "seasonCount": 10,
+    "addedAt": 1790000794,
+    "updatedAt": 1790000795,
+    "audienceRatingImage": "themoviedb://image.rating",
+    "primaryExtraKey": "/library/metadata/7120",
+    "Image": [
+     {
+      "alt": "alt 796",
+      "type": "coverPoster",
+      "url": "/library/metadata/4516/thumb/1790131437"
+     },
+     {
+      "alt": "alt 797",
+      "type": "background",
+      "url": "/library/metadata/4516/art/1790131437"
+     },
+     {
+      "alt": "alt 798",
+      "type": "clearLogo",
+      "url": "/library/metadata/4516/clearLogo/1790131437"
+     },
+     {
+      "alt": "alt 799",
+      "type": "backgroundSquare",
+      "url": "/library/metadata/4516/squareArt/1790131437"
+     }
+    ],
+    "UltraBlurColors": {
+     "topLeft": "0c2f50",
+     "topRight": "356c36",
+     "bottomRight": "1a6175",
+     "bottomLeft": "214d69"
+    },
+    "Genre": [
+     {
+      "id": 298,
+      "filter": "genre=298",
+      "tag": "Fantasy"
+     },
+     {
+      "id": 5,
+      "filter": "genre=5",
+      "tag": "Adventure"
+     },
+     {
+      "id": 296,
+      "filter": "genre=296",
+      "tag": "Animation"
+     },
+     {
+      "id": 109,
+      "filter": "genre=109",
+      "tag": "Action"
+     },
+     {
+      "id": 6,
+      "filter": "genre=6",
+      "tag": "Comedy"
+     },
+     {
+      "id": 297,
+      "filter": "genre=297",
+      "tag": "Family"
+     },
+     {
+      "id": 7,
+      "filter": "genre=7",
+      "tag": "Science Fiction"
+     },
+     {
+      "id": 10380,
+      "filter": "genre=10380",
+      "tag": "Sci-Fi & Fantasy"
+     },
+     {
+      "id": 11215,
+      "filter": "genre=11215",
+      "tag": "Children"
+     }
+    ],
+    "Country": [
+     {
+      "id": 87,
+      "filter": "country=87",
+      "tag": "United States of America"
+     }
+    ],
+    "Guid": [
+     {
+      "id": "imdb://tt0000800"
+     },
+     {
+      "id": "imdb://tt0000801"
+     },
+     {
+      "id": "imdb://tt0000802"
+     }
+    ],
+    "Rating": [
+     {
+      "image": "imdb://image.rating",
+      "value": 8.7,
+      "type": "audience"
+     },
+     {
+      "image": "rottentomatoes://image.rating.ripe",
+      "value": 10.0,
+      "type": "critic"
+     },
+     {
+      "image": "rottentomatoes://image.rating.upright",
+      "value": 9.4,
+      "type": "audience"
+     },
+     {
+      "image": "themoviedb://image.rating",
+      "value": 8.5,
+      "type": "audience"
+     }
+    ],
+    "Role": [
+     {
+      "id": 10386,
+      "filter": "actor=10386",
+      "tag": "Person 803",
+      "tagKey": "5d77682ee6d55c002040bce6",
+      "role": "Character 804",
+      "thumb": "https://example.invalid/person.jpg"
+     },
+     {
+      "id": 8834,
+      "filter": "actor=8834",
+      "tag": "Person 805",
+      "tagKey": "5d7768256f4521001ea989ff",
+      "role": "Character 806",
+      "thumb": "https://example.invalid/person.jpg"
+     }
+    ],
+    "CommonSenseMedia": [
+     {
+      "id": 45560,
+      "oneLiner": "oneLiner 807",
+      "AgeRating": [
+       {
+        "type": "official",
+        "rating": 5,
+        "age": 10
+       }
+      ]
+     }
+    ],
+    "Location": [
+     {
+      "path": "/media/library/808"
+     }
+    ]
+   }
+  ]
+ }
+}

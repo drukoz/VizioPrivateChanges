@@ -1,6 +1,9 @@
 # VizioPrivateChanges
 
-Software that switches off tracking and ads on the owner's VIZIO SmartCast TV without touching its firmware. It changes the TV's own privacy settings through its local SmartCast API, and opts the TV's built-in Google Cast out of crash and usage reporting. One household uses it. The owner runs the commands, or the CTO runs them in a live session with the owner at the TV.
+Software for the owner's VIZIO SmartCast TV that never touches its firmware. One household uses it. The owner runs the commands, or the CTO runs them in a live session with the owner at the TV. It has two parts:
+
+1. **Privacy settings** (done, merged in PR #1): switches off tracking and ads through the TV's local SmartCast API, and opts the TV's built-in Google Cast out of crash and usage reporting.
+2. **Dashboard** (in progress, program RUK-2394, branch `feat/tv-dashboard`): the household's own home screen in place of VIZIO's. It shows Continue Watching and suggestions from their Plex server, plus a row of chosen apps. The page runs in the TV's built-in web-app runtime, is served from the owner's Mac, and the remote drives it. Design: [docs/dashboard/](docs/dashboard/) (`system-map.md`, `reuse-ledger.md`, `plan.md`; the plan holds the page ↔ server contract).
 
 The owner chose software only: no DNS blocker (no Pi-hole, no router changes) and no extra device. Do not add blocklists or network tooling.
 
@@ -22,9 +25,17 @@ The owner chose software only: no DNS blocker (no Pi-hole, no router changes) an
   - `targets.py`: which settings count as tracking or ads, and the private value of each.
   - `settings.py`: walks the settings tree and sets the matched items (`harden`).
   - `cli.py` and `__main__.py`: the command line.
-  - `api.py` and `cast.py` are the only modules that open sockets.
+  - Dashboard (being built; the plan's module table says which task adds what): `plex.py` (Plex client), `apps.py` (app launch table), `dashboard/` (`model.py` contract, `service.py`, `server.py`, `watcher.py`, `static/` page).
+  - `api.py`, `cast.py` and `plex.py` open sockets, as does the dashboard server. Each takes a transport argument, so tests can pass a fake.
 - `tests/`: `unittest` tests. The unit tests never open a socket; they pass a fake transport or a fake TV (`tests/fakes.py`). `tests/test_e2e.py` runs the command line over real HTTP(S) against a mock TV (`tests/mock_tv.py`) on `127.0.0.1` only, and is skipped when `openssl` is missing.
-- `docs/`: protocol reference.
+- `tests/fixtures/`: real answers captured by the CTO on 2026-11-16. `tv/` holds the TV's answers. `plex/` holds the Plex server's, with every title, name, file path and server identifier replaced by a placeholder. Fakes must answer with these files, never with made-up shapes. Only the CTO recaptures them.
+- `docs/`: protocol reference (`smartcast-api.md`) and the dashboard design (`dashboard/`).
+
+## The Plex server
+
+- Plex Media Server 1.43.5 on the owner's TrueNAS box, LAN address `192.168.1.196:32400`. Libraries: 1 Movies, 2 TV Shows, 3 Anime (shows), 4 Music.
+- It lets the owner's Mac read without a token (the server allows the LAN). Ask for JSON with `Accept: application/json`. The calls the dashboard uses, and the play-queue body, are in `docs/dashboard/system-map.md`.
+- The dashboard server runs on the owner's Mac, `192.168.1.45` (macOS firewall off), on port 8790.
 
 ## Commands (run from the repository root)
 
@@ -51,5 +62,6 @@ Python 3.9 or newer, standard library only: no pip installs and no `requirements
 ## Dangers
 
 - **This repository is public.** Never commit an auth token, a token file, or the TV's identifiers (serial number, MAC address, ESN, `TVAD_ID`, `uma_client_id`). Token files live in `~/.vizio-privacy/`, outside the repository.
-- **Never contact the real TV from tests or engineer tasks.** Starting a pairing puts a PIN on the owner's screen, and a settings write changes their TV. Only the CTO runs commands against `192.168.1.130`, in a session agreed with the owner.
+- **Never commit the household's Plex data**: titles, people, summaries, file paths, the server's `machineIdentifier` or `*.plex.direct` host, or any Plex token. Tests use only `tests/fixtures/plex/`.
+- **Never contact the real TV or the real Plex server from tests or engineer tasks.** Starting a pairing puts a PIN on the owner's screen, launching an app takes over their TV, and a settings write changes it. Only the CTO runs commands against `192.168.1.130` or `192.168.1.196`, in a session agreed with the owner. Tests bind only to `127.0.0.1`.
 - **Never change the network.** No DNS, DHCP or router changes, and no traffic interception (ARP spoofing, proxies).

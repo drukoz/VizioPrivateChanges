@@ -1,0 +1,9 @@
+HTTP/1.0 200 OK
+Content-Type: plex/media-server
+Host: 00000000000000000000000000000000.plex.direct
+Name: plexserver
+Port: 32400
+Resource-Identifier: 0123456789abcdef0123456789abcdef01234567
+Updated-At: 1790000000
+Version: 1.43.5.11079-b3b13e506
+
