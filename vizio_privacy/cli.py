@@ -18,9 +18,9 @@ import socket
 import time
 import urllib.error
 import urllib.request
-from typing import Callable, Dict, List, Optional, Tuple
+from typing import Any, Callable, Dict, List, Optional, Tuple
 
-from vizio_privacy import plex_discovery, settings, targets, tokenstore
+from vizio_privacy import firetv, plex_discovery, settings, targets, tokenstore
 from vizio_privacy.api import (
     AppConfig,
     ResultStatus,
@@ -124,6 +124,44 @@ def build_parser() -> argparse.ArgumentParser:
     dopen.add_argument(
         "--app-id", default="1", help='the APP_ID to launch (default "1")'
     )
+
+    firetvp = sub.add_parser(
+        "firetv",
+        help="the Fire TV Stick's Amazon packages (status, harden, undo) over ADB",
+    )
+    firetvp.add_argument(
+        "--device",
+        default=os.environ.get("FIRETV_DEVICE"),
+        help="the stick's address, for example 192.168.1.60:5555 (or set FIRETV_DEVICE)",
+    )
+    firetvp.add_argument("--adb", default="adb", help="the adb executable (default adb)")
+    firetvp.add_argument(
+        "--adb-home",
+        default=os.environ.get("VIZIO_ADB_HOME"),
+        help="HOME for adb, so it uses the key that trusts the stick (or set VIZIO_ADB_HOME)",
+    )
+    firetvp.add_argument(
+        "--adb-port", type=int, default=5038, help="the adb server port (default 5038)"
+    )
+    fsub = firetvp.add_subparsers(dest="firetv_command", required=True)
+    fsub.add_parser(
+        "status", help="list the plan's packages and the protected ones with their state"
+    )
+    fhard = fsub.add_parser(
+        "harden", help="plan package changes (a dry run unless --apply)"
+    )
+    fhard.add_argument("--apply", action="store_true", help="disable the packages on the stick")
+    fhard.add_argument(
+        "--batch",
+        type=int,
+        choices=[1, 2],
+        default=1,
+        help="batch 1 is proved on this stick; batch 2 is reported safe for Fire TV (default 1)",
+    )
+    fhard.add_argument("--package", default=None, help="only this package (it must be in the plan)")
+    fundo = fsub.add_parser("undo", help="re-enable disabled packages")
+    fundo.add_argument("--apply", action="store_true", help="enable the packages on the stick")
+    fundo.add_argument("--package", default=None, help="only this package (it must be in the plan)")
     return parser
 
 
@@ -381,9 +419,12 @@ def main(
     argv: Optional[List[str]] = None,
     client_factory: Optional[Callable[..., SmartCastClient]] = None,
     cast_factory: Optional[Callable[..., CastClient]] = None,
+    firetv_runner_factory: Optional[Callable[[argparse.Namespace], Any]] = None,
 ) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
+    if args.command == "firetv":
+        return firetv.run_command(args, firetv_runner_factory)
     if client_factory is None:
         client_factory = lambda host, auth_token=None: SmartCastClient(
             host, auth_token=auth_token
