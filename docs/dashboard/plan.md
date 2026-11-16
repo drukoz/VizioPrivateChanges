@@ -38,7 +38,7 @@ TV (Conjure web runtime)                Mac: python3 -m vizio_privacy dashboard 
 | `vizio_privacy/apps.py` | `AppId` and the pinned launch table | M1-T4 (RUK-2460) |
 | `vizio_privacy/dashboard/service.py` | Builds `Home` from Plex and apps; runs actions | M1-T6 (RUK-2465); Plex playback after S2 |
 | `vizio_privacy/dashboard/server.py` | `ThreadingHTTPServer`: `/`, `/static/*`, `/api/home`, `/api/action`, `/img` | M1-T7 (RUK-2466) |
-| `vizio_privacy/dashboard/static/` | `index.html`, `app.js`, `app.css`: rows, focus, keys | M1, after S1 |
+| `vizio_privacy/dashboard/static/` | `index.html`, `app.js`, `app.css`: rows, focus, keys | M1-T8 (RUK-2479) |
 | `cli.py` | `dashboard serve`, `dashboard open` (M1); `install`, `uninstall`, `status` (M2) | M1/M2 |
 | `vizio_privacy/dashboard/watcher.py`, `launchd.py` | Takeover loop; LaunchAgent | M2 |
 
@@ -88,9 +88,9 @@ A media player (Plex plays). A Plex sign-in, until S2 says it's needed. Settings
 | T5 Plex discovery `plex_discovery.py` (RUK-2461) | — | Started 2026-11-16 |
 | T6 Service `dashboard/service.py` (RUK-2465) | T1-T4 | Merged 2026-11-16. Rows, app tiles and app/input actions. Without a `play` callable, OK on a Plex tile opens the Plex app; the S2 route is passed in as `play` later |
 | T7 Server `dashboard/server.py` (RUK-2466) | T3 | Merged 2026-11-16, built against a fake service |
-| T8 Page `static/` | T3, S1 | Language level from S1's user agent |
+| T8 Page `static/` (RUK-2479) | T3, T7 | Started 2026-11-16 without waiting for S1: written in ES5 with `XMLHttpRequest`, which any TV web runtime runs, so S1's user agent can't invalidate it. If S1 fails, only this page is wasted |
 | T9 CLI `dashboard serve` / `open` (RUK-2477) | T6, T7 | Merged 2026-11-16. `open` launches `NAME_SPACE` 4, `APP_ID` "1" with our URL (both options, so S1 can try 2), reads `/app/current` back and exits 1 if the TV did not switch |
-| T10 End-to-end test (RUK-2478): mock TV + fake Plex + real HTTP on 127.0.0.1 | T9 | Started 2026-11-16 (QA Engineer). Runs `serve` and `open` in-process; T8 and Plex playback extend the same file |
+| T10 End-to-end test (RUK-2478): mock TV + fake Plex + real HTTP on 127.0.0.1 | T9 | Merged 2026-11-16. Runs `serve` and `open` in-process; Plex playback extends the same file |
 | Live check with the owner | T10 | CTO only |
 
 **M2 — It replaces VIZIO's home** (branch `feat/tv-dashboard-m2`, cut from M1's). It covers:
