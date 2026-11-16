@@ -414,6 +414,16 @@
     if (!tile || !tile.action) {
       return;
     }
+    if (window.TvHome && window.TvHome.action) {
+      var reply = null;
+      try {
+        reply = JSON.parse(window.TvHome.action(JSON.stringify(tile.action)));
+      } catch (e) {
+        reply = null;
+      }
+      showToast(reply && typeof reply.message === "string" ? reply.message : "Couldn't open that.");
+      return;
+    }
     actionPending = true;
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "/api/action", true);
