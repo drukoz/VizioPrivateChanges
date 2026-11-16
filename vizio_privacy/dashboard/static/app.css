@@ -144,7 +144,7 @@ html, body {
   margin-left: -20vw;
   text-align: center;
   padding: 1vw;
-  background: rgba(0, 0, 0, .8);
+  background: #000;
   font-size: 1.4vw;
   opacity: 0;
   transition: opacity .2s;
