@@ -67,6 +67,8 @@ Enums are integers on the wire (company rule). Text appears only in labels.
 
 `GET /img?p=<Plex image path starting with /library/>&w=<int 1..1920>&h=<int 1..1080>` → JPEG from Plex's `/photo/:/transcode`. Anything else answers 400.
 
+Even after `parse_image_query` accepts it, `p` is untrusted: it can still contain `?`, `&`, `#` or control characters. The server passes it to Plex only as one percent-encoded value of the transcoder's `url` parameter, built with `urllib.parse.urlencode`, and adds the token itself, so `p` can never add or override a Plex query parameter such as `X-Plex-Token`. The T7 spec has a test for `p=/library/x?X-Plex-Token=evil`.
+
 Tile rules (service): a movie's title is its title and its subtitle is the year. An episode's title is the show's name and its subtitle is `S<season> · E<episode> · <title>`. A show's title is its title, with no subtitle. The Continue Watching row is `WIDE`: an episode uses its own `thumb`, a movie its `art`. Every other row is `POSTER`: `thumb`, or `grandparentThumb` for an episode. `progress` is `viewOffset / duration` when both exist.
 
 ## What we don't build
