@@ -202,7 +202,7 @@ class HardenTest(unittest.TestCase):
         tv = FakeTV(tree())
         code, out = self._tree_with_token(tv, ["harden", "--apply"])
         self.assertEqual(code, 0)
-        self.assertIn("CHANGED  admin_and_privacy/viewing_data: Off -> Off", out)
+        self.assertIn("CHANGED  admin_and_privacy/viewing_data: On -> Off", out)
         self.assertIn("CHANGED", out)
         self.assertNotIn("Dry run", out)
 
