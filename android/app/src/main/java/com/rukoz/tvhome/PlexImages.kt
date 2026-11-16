@@ -15,7 +15,12 @@ class HttpBytesFetcher(
     private val maxBytes: Int = 5 * 1024 * 1024,
 ) : BytesFetcher {
     override fun get(url: String): Pair<String, ByteArray>? {
-        val connection = URL(url).openConnection() as HttpURLConnection
+        // /img has no try/catch in ApiHandlers, so nothing may escape into shouldInterceptRequest.
+        val connection = try {
+            URL(url).openConnection() as HttpURLConnection
+        } catch (e: IOException) {
+            return null
+        }
         try {
             connection.requestMethod = "GET"
             connection.connectTimeout = connectTimeoutMs
