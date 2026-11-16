@@ -25,7 +25,7 @@ The owner chose software only: no DNS blocker (no Pi-hole, no router changes). D
 
 ## Android toolchain (for `android/`)
 
-Pinned and proved on this Mac on 2026-11-16: Gradle 9.4.1 (wrapper), Android Gradle Plugin 9.2.1, JDK 17, compileSdk 37, targetSdk 37, minSdk 25, `androidx.webkit:webkit` 1.14.0, JUnit 4.13.2 and `org.json:json` 20180813 for unit tests. AGP 9 compiles Kotlin itself: never apply `org.jetbrains.kotlin.android` or `kotlin-android`, and add no `kotlinOptions` block. `source scripts/android-env.sh` selects the JDK, the SDK and the Gradle home under `/Volumes/Storage/paperclip/toolchains/` (task F1 adds it, with the build and test commands below).
+Pinned and proved on this Mac on 2026-11-16: Gradle 9.4.1 (wrapper), Android Gradle Plugin 9.2.1, JDK 17, compileSdk 37, targetSdk 37, minSdk 25, `androidx.webkit:webkit` 1.14.0, JUnit 4.13.2 and `org.json:json` 20180813 for unit tests. AGP 9 compiles Kotlin itself: never apply `org.jetbrains.kotlin.android` or `kotlin-android`, and add no `kotlinOptions` block. `source scripts/android-env.sh` selects the JDK, the SDK and the Gradle home under `/Volumes/Storage/paperclip/toolchains/`; the commands are under Commands.
 
 ## Layout
 
@@ -41,6 +41,7 @@ Pinned and proved on this Mac on 2026-11-16: Gradle 9.4.1 (wrapper), Android Gra
 - `tests/`: `unittest` tests. The unit tests never open a socket; they pass a fake transport or a fake TV (`tests/fakes.py`). `tests/test_e2e.py` runs the command line over real HTTP(S) against a mock TV (`tests/mock_tv.py`) on `127.0.0.1` only, and is skipped when `openssl` is missing.
 - `tests/fixtures/`: real answers captured by the CTO on 2026-11-16. `tv/` holds the TV's answers. `plex/` holds the Plex server's, with every title, name, file path and server identifier replaced by a placeholder. Fakes must answer with these files, never with made-up shapes. Only the CTO recaptures them.
 - `docs/`: protocol reference (`smartcast-api.md`) and the dashboard design (`dashboard/`).
+- `android/`: the TV Home app for the Fire TV Stick (Kotlin, Gradle). `app/src/main/java/com/rukoz/tvhome/` holds the code; its assets are `vizio_privacy/dashboard/static/` (the same page the Python server serves). `scripts/emulator-smoke.sh` runs it on a headless emulator.
 
 ## The Plex server
 
@@ -53,6 +54,9 @@ Pinned and proved on this Mac on 2026-11-16: Gradle 9.4.1 (wrapper), Android Gra
 - Tests: `python3 -m unittest discover -s tests -v`
 - CLI: `python3 -m vizio_privacy --help`. For example `python3 -m vizio_privacy --host 192.168.1.130 harden` is a dry run, and `harden --apply` writes.
 - Dashboard: `python3 -m vizio_privacy --host 192.168.1.130 dashboard serve` (keep it running), then `dashboard open` in a second terminal.
+- Android setup, once per shell: `source scripts/android-env.sh`.
+- Android build and unit tests: `(cd android && ./gradlew --no-daemon assembleDebug testDebugUnitTest)`.
+- Android smoke test on an emulator: `bash android/scripts/emulator-smoke.sh tvhome-<task id> 5610 "$PWD/android/build/smoke" "$PWD/android/app/build/outputs/apk/debug/app-debug.apk"` (prints PASS or FAIL lines, deletes its emulator).
 
 ## Toolchain
 
