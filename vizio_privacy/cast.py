@@ -16,7 +16,7 @@ from __future__ import annotations
 import http.client
 import json
 from dataclasses import dataclass
-from typing import Any, Callable, Dict, Optional, Tuple
+from typing import Callable, Dict, Optional, Tuple
 from urllib.parse import urlsplit
 
 # The body of the opt-out write. A 200 OK proves nothing (the device answers
