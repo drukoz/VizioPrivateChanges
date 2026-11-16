@@ -31,10 +31,11 @@ TV (Conjure web runtime)                Mac: python3 -m vizio_privacy dashboard 
 
 | Module | Holds | Status |
 |---|---|---|
-| `vizio_privacy/api.py` | + `PowerState`, `RemoteKey`, `AppConfig`, `InputState`; `power_state`, `current_app`, `launch_app`, `press_key`, `current_input`, `set_input`, `list_inputs` | M1-T1 |
-| `vizio_privacy/plex.py` | GDM discovery; `PlexClient` (identity, libraries, continue watching, section hubs, item, next episode, play queue, image URL); `PlexItem`, `Hub`, `Library`, enums | M1-T2 |
-| `vizio_privacy/dashboard/model.py` | The contract below: enums, dataclasses, JSON both ways | M1-T3 |
-| `vizio_privacy/apps.py` | `AppId` and the pinned launch table | M1-T4 |
+| `vizio_privacy/api.py` | + `PowerState`, `RemoteKey`, `AppConfig`, `InputState`; `power_state`, `current_app`, `launch_app`, `press_key`, `current_input`, `set_input`, `list_inputs` | M1-T1 (RUK-2456) |
+| `vizio_privacy/plex.py` | `PlexClient` (identity, libraries, continue watching, section hubs, item, next episode via `includeOnDeck`, play queue, image URL); `PlexItem`, `Hub`, `Library`, enums | M1-T2 (RUK-2458) |
+| `vizio_privacy/plex_discovery.py` | GDM discovery: `ServerInfo`, `parse_gdm_reply`, `discover` | M1-T5 (RUK-2461) |
+| `vizio_privacy/dashboard/model.py` | The contract below: enums, dataclasses, JSON both ways | M1-T3 (RUK-2459) |
+| `vizio_privacy/apps.py` | `AppId` and the pinned launch table | M1-T4 (RUK-2460) |
 | `vizio_privacy/dashboard/service.py` | Builds `Home` from Plex and apps; runs actions | M1, after S1/S2 |
 | `vizio_privacy/dashboard/server.py` | `ThreadingHTTPServer`: `/`, `/static/*`, `/api/home`, `/api/action`, `/img` | M1, after S1 |
 | `vizio_privacy/dashboard/static/` | `index.html`, `app.js`, `app.css`: rows, focus, keys | M1, after S1 |
@@ -74,20 +75,21 @@ A media player (Plex plays). A Plex sign-in, until S2 says it's needed. Settings
 
 ## Milestones
 
-**M1 — Your home screen on the TV** (branch `feat/tv-dashboard-m1`). End state: `python3 -m vizio_privacy --host 192.168.1.130 dashboard serve` on the Mac, then `dashboard open`, shows the rows and apps on the TV. The remote moves around, and OK resumes a show or opens an app.
+**M1 — Your home screen on the TV** (RUK-2455, branch `feat/tv-dashboard-m1`). End state: `python3 -m vizio_privacy --host 192.168.1.130 dashboard serve` on the Mac, then `dashboard open`, shows the rows and apps on the TV. The remote moves around, and OK resumes a show or opens an app.
 
 | Task | Depends on | Notes |
 |---|---|---|
-| T1 TV control calls in `api.py` | — | Now |
-| T2 Plex client `plex.py` | — | Now |
-| T3 Contract `dashboard/model.py` | — | Now |
-| T4 App table `apps.py` | — | Now |
-| T5 Service `dashboard/service.py` | T1-T4, S2 | Play route chosen by S2 |
-| T6 Server `dashboard/server.py` | T3 | Built against a fake service |
-| T7 Page `static/` | T3, S1 | Language level from S1's user agent |
-| T8 CLI `dashboard serve` / `open` | T5, T6 | |
-| T9 End-to-end test: mock TV + fake Plex + real HTTP on 127.0.0.1 | T8 | QA Engineer or Test Writer |
-| Live check with the owner | T9 | CTO only |
+| T1 TV control calls in `api.py` (RUK-2456) | — | Started 2026-11-16 |
+| T2 Plex client `plex.py` (RUK-2458) | — | Started 2026-11-16 |
+| T3 Contract `dashboard/model.py` (RUK-2459) | — | Started 2026-11-16 |
+| T4 App table `apps.py` (RUK-2460) | — | Started 2026-11-16 |
+| T5 Plex discovery `plex_discovery.py` (RUK-2461) | — | Started 2026-11-16 |
+| T6 Service `dashboard/service.py` | T1-T4, S2 | Play route chosen by S2 |
+| T7 Server `dashboard/server.py` | T3 | Built against a fake service |
+| T8 Page `static/` | T3, S1 | Language level from S1's user agent |
+| T9 CLI `dashboard serve` / `open` | T6, T7 | |
+| T10 End-to-end test: mock TV + fake Plex + real HTTP on 127.0.0.1 | T9 | QA Engineer or Test Writer |
+| Live check with the owner | T10 | CTO only |
 
 **M2 — It replaces VIZIO's home** (branch `feat/tv-dashboard-m2`, cut from M1's). It covers:
 - the watcher: on power-on, or when the current app is VIZIO's home, it launches the dashboard, and it leaves HDMI inputs and other apps alone;
