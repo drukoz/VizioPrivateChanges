@@ -86,10 +86,10 @@ A media player (Plex plays). A Plex sign-in, until S2 says it's needed. Settings
 | T3 Contract `dashboard/model.py` (RUK-2459) | — | Started 2026-11-16 |
 | T4 App table `apps.py` (RUK-2460) | — | Started 2026-11-16 |
 | T5 Plex discovery `plex_discovery.py` (RUK-2461) | — | Started 2026-11-16 |
-| T6 Service `dashboard/service.py` (RUK-2465) | T1-T4 | Rows, app tiles and app/input actions, started 2026-11-16. Without a `play` callable, OK on a Plex tile opens the Plex app; the S2 route is passed in as `play` later |
-| T7 Server `dashboard/server.py` (RUK-2466) | T3 | Built against a fake service, started 2026-11-16 |
+| T6 Service `dashboard/service.py` (RUK-2465) | T1-T4 | Merged 2026-11-16. Rows, app tiles and app/input actions. Without a `play` callable, OK on a Plex tile opens the Plex app; the S2 route is passed in as `play` later |
+| T7 Server `dashboard/server.py` (RUK-2466) | T3 | Merged 2026-11-16, built against a fake service |
 | T8 Page `static/` | T3, S1 | Language level from S1's user agent |
-| T9 CLI `dashboard serve` / `open` | T6, T7 | |
+| T9 CLI `dashboard serve` / `open` (RUK-2477) | T6, T7 | Started 2026-11-16. `open` launches `NAME_SPACE` 4, `APP_ID` "1" with our URL (both options, so S1 can try 2), reads `/app/current` back and exits 1 if the TV did not switch |
 | T10 End-to-end test: mock TV + fake Plex + real HTTP on 127.0.0.1 | T9 | QA Engineer or Test Writer |
 | Live check with the owner | T10 | CTO only |
 
