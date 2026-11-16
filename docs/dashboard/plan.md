@@ -89,8 +89,8 @@ A media player (Plex plays). A Plex sign-in, until S2 says it's needed. Settings
 | T6 Service `dashboard/service.py` (RUK-2465) | T1-T4 | Merged 2026-11-16. Rows, app tiles and app/input actions. Without a `play` callable, OK on a Plex tile opens the Plex app; the S2 route is passed in as `play` later |
 | T7 Server `dashboard/server.py` (RUK-2466) | T3 | Merged 2026-11-16, built against a fake service |
 | T8 Page `static/` | T3, S1 | Language level from S1's user agent |
-| T9 CLI `dashboard serve` / `open` (RUK-2477) | T6, T7 | Started 2026-11-16. `open` launches `NAME_SPACE` 4, `APP_ID` "1" with our URL (both options, so S1 can try 2), reads `/app/current` back and exits 1 if the TV did not switch |
-| T10 End-to-end test: mock TV + fake Plex + real HTTP on 127.0.0.1 | T9 | QA Engineer or Test Writer |
+| T9 CLI `dashboard serve` / `open` (RUK-2477) | T6, T7 | Merged 2026-11-16. `open` launches `NAME_SPACE` 4, `APP_ID` "1" with our URL (both options, so S1 can try 2), reads `/app/current` back and exits 1 if the TV did not switch |
+| T10 End-to-end test (RUK-2478): mock TV + fake Plex + real HTTP on 127.0.0.1 | T9 | Started 2026-11-16 (QA Engineer). Runs `serve` and `open` in-process; T8 and Plex playback extend the same file |
 | Live check with the owner | T10 | CTO only |
 
 **M2 — It replaces VIZIO's home** (branch `feat/tv-dashboard-m2`, cut from M1's). It covers:
