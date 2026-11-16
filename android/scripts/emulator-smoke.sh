@@ -24,7 +24,7 @@ done
 echo "booted after about $((i * 4)) s"
 adb -s "$SERIAL" install -r "$APK" || { echo "FAIL install"; exit 1; }
 adb -s "$SERIAL" logcat -c
-adb -s "$SERIAL" shell am start -W -n com.rukoz.tvhome/.HomeActivity
+adb -s "$SERIAL" shell am start -W -n com.rukoz.tvhome/.HomeActivity --es plexBaseUrl http://127.0.0.1:9
 sleep 15
 adb -s "$SERIAL" exec-out screencap -p >"$OUT/home.png"
 adb -s "$SERIAL" shell input keyevent KEYCODE_DPAD_RIGHT
