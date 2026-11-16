@@ -1,0 +1,15 @@
+# Paperclip run data (agent homes, OpenCode snapshots)
+.paperclip-runtime/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Pairing tokens and local state: never commit
+.vizio-privacy/
+*.token.json
+
+# macOS
+.DS_Store
