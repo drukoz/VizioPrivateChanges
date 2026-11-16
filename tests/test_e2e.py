@@ -72,7 +72,9 @@ class EndToEndTest(unittest.TestCase):
         client_factory = lambda host, auth_token=None: SmartCastClient(
             host, auth_token=auth_token, port=smartcast_port
         )
-        cast_factory = lambda host: CastClient(host, port=self.tv.cast_port)
+        cast_factory = lambda host: CastClient(
+            host, port=self.tv.cast_port, secure_port=self.tv.cast_secure_port
+        )
         buffer = io.StringIO()
         with mock.patch("builtins.input", return_value=pin), contextlib.redirect_stdout(buffer):
             code = main(
@@ -327,21 +329,18 @@ class EndToEndTest(unittest.TestCase):
         self.assertEqual(code, 0)
         self.assertIn("crash/stats reporting now off", out)
         self.assertEqual(self.tv.opt_in, {"crash": False, "opencast": False, "stats": False})
-        posts = [
-            (method, path, body)
-            for method, path, body in self.tv.cast_requests
-            if method == "POST"
-        ]
         self.assertEqual(
-            posts,
+            self.tv.cast_secure_requests,
             [("POST", "/setup/set_eureka_info", {"opt_in": {"crash": False, "stats": False}})],
         )
+        plain_posts = [method for method, _path, _body in self.tv.cast_requests if method == "POST"]
+        self.assertEqual(plain_posts, [])
         self.assertNotIn(MAC, out)
 
     def test_cast_optout_reports_an_ignored_write(self) -> None:
         self.tv.cast_applies_writes = False
         code, out = self.run_cli("cast-optout")
-        self.assertEqual(code, 0)
+        self.assertEqual(code, 1)
         self.assertIn("TV did not apply the change (status 200); crash=on stats=on", out)
         self.assertEqual(self.tv.opt_in, {"crash": True, "opencast": False, "stats": True})
 

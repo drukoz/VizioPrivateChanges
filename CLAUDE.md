@@ -17,7 +17,7 @@ The owner chose software only: no DNS blocker (no Pi-hole, no router changes) an
 
 - `vizio_privacy/`: Python package.
   - `api.py`: SmartCast client (port 7345), response envelope and enums.
-  - `cast.py`: Google Cast opt-out (port 8008).
+  - `cast.py`: Google Cast opt-out: reads over HTTP on port 8008, the write over HTTPS on port 8443.
   - `pairing.py` and `tokenstore.py`: PIN pairing, and the auth token saved under `~/.vizio-privacy/`.
   - `targets.py`: which settings count as tracking or ads, and the private value of each.
   - `settings.py`: walks the settings tree and sets the matched items (`harden`).

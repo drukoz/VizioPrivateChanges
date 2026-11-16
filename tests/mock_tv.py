@@ -213,7 +213,10 @@ class SmartCastHandler(_QuietHandler):
 
 
 class CastHandler(_QuietHandler):
-    """The Google Cast setup server (plain HTTP on 8008)."""
+    """The Google Cast setup server on plain HTTP (the TV's port 8008).
+
+    Like the real TV, it answers reads and refuses every write with 403.
+    """
 
     def do_GET(self) -> None:  # noqa: N802 (BaseHTTPRequestHandler API)
         tv = self.server.tv  # type: ignore[attr-defined]
@@ -229,10 +232,25 @@ class CastHandler(_QuietHandler):
         tv = self.server.tv  # type: ignore[attr-defined]
         body = self._body()
         tv.cast_requests.append(("POST", self.path, body))
+        return self._send_empty(403)
+
+
+class CastSecureHandler(_QuietHandler):
+    """The Google Cast setup server on HTTPS (the TV's port 8443).
+
+    Only the opt-out write is modelled. The real TV answers it 200 with an
+    empty body, and applies it.
+    """
+
+    def do_POST(self) -> None:  # noqa: N802 (BaseHTTPRequestHandler API)
+        tv = self.server.tv  # type: ignore[attr-defined]
+        body = self._body()
+        tv.cast_secure_requests.append(("POST", self.path, body))
         path = urllib.parse.urlsplit(self.path).path
-        if path == SET_EUREKA_INFO_PATH:
-            if tv.cast_applies_writes and body == CAST_OPT_OUT_BODY:
-                tv.opt_in.update(body["opt_in"])
+        if path != SET_EUREKA_INFO_PATH:
+            return self._send_empty(404)
+        if tv.cast_applies_writes and body == CAST_OPT_OUT_BODY:
+            tv.opt_in.update(body["opt_in"])
         return self._send_empty(200)
 
 
@@ -254,10 +272,13 @@ class MockTV:
         self.opt_in = {"crash": True, "opencast": False, "stats": True}  # type: Dict[str, bool]
         self.requests = []  # type: List[Tuple[str, str, Dict[str, Optional[str]], Any]]
         self.cast_requests = []  # type: List[Tuple[str, str, Any]]
+        self.cast_secure_requests = []  # type: List[Tuple[str, str, Any]]
         self._smartcast = None  # type: Optional[http.server.ThreadingHTTPServer]
         self._cast = None  # type: Optional[http.server.ThreadingHTTPServer]
+        self._cast_secure = None  # type: Optional[http.server.ThreadingHTTPServer]
         self.smartcast_port = 0
         self.cast_port = 0
+        self.cast_secure_port = 0
 
     def start(self) -> None:
         self._smartcast = http.server.ThreadingHTTPServer(("127.0.0.1", 0), SmartCastHandler)
@@ -265,13 +286,16 @@ class MockTV:
         ctx.load_cert_chain(self.cert, self.key)
         self._smartcast.socket = ctx.wrap_socket(self._smartcast.socket, server_side=True)
         self._cast = http.server.ThreadingHTTPServer(("127.0.0.1", 0), CastHandler)
-        for server in (self._smartcast, self._cast):
+        self._cast_secure = http.server.ThreadingHTTPServer(("127.0.0.1", 0), CastSecureHandler)
+        self._cast_secure.socket = ctx.wrap_socket(self._cast_secure.socket, server_side=True)
+        for server in (self._smartcast, self._cast, self._cast_secure):
             server.tv = self  # the handlers reach the MockTV as self.server.tv
             threading.Thread(target=server.serve_forever, daemon=True).start()
         self.smartcast_port = self._smartcast.server_address[1]
         self.cast_port = self._cast.server_address[1]
+        self.cast_secure_port = self._cast_secure.server_address[1]
 
     def stop(self) -> None:
-        for server in (self._smartcast, self._cast):
+        for server in (self._smartcast, self._cast, self._cast_secure):
             server.shutdown()
             server.server_close()

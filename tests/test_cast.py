@@ -79,8 +79,33 @@ class OptOutTests(unittest.TestCase):
 
         post = transport.find("POST")
         self.assertIsNotNone(post)
-        self.assertIn("/setup/set_eureka_info", post[1])
+        self.assertEqual(post[1], "https://192.0.2.10:8443/setup/set_eureka_info")
         self.assertEqual(json.loads(post[3]), SET_OPT_IN_BODY)
+        gets = [call[1] for call in transport.calls if call[0] == "GET"]
+        self.assertEqual(len(gets), 2)
+        for url in gets:
+            self.assertTrue(url.startswith("http://192.0.2.10:8008/setup/eureka_info"), url)
+        self.assertTrue(result.reporting_off)
+
+    def test_opt_out_uses_the_given_ports(self):
+        transport = FakeTransport(
+            [
+                (200, _eureka({"crash": True, "stats": True})),  # before
+                (200, ""),  # POST
+                (200, _eureka({"crash": False, "stats": False})),  # after
+            ]
+        )
+        client = CastClient("192.0.2.10", transport=transport, port=18008, secure_port=18443)
+        client.opt_out()
+        urls = [(call[0], call[1]) for call in transport.calls]
+        self.assertEqual(
+            urls,
+            [
+                ("GET", "http://192.0.2.10:18008/setup/eureka_info?params=opt_in,device_info"),
+                ("POST", "https://192.0.2.10:18443/setup/set_eureka_info"),
+                ("GET", "http://192.0.2.10:18008/setup/eureka_info?params=opt_in,device_info"),
+            ],
+        )
 
     def test_opt_out_rejected_404(self):
         transport = FakeTransport(
@@ -93,6 +118,7 @@ class OptOutTests(unittest.TestCase):
         client = CastClient("192.0.2.10", transport=transport)
         result = client.opt_out()  # must not raise
         self.assertFalse(result.changed)
+        self.assertFalse(result.reporting_off)
         self.assertEqual(result.posted_status, 404)
         summary = result.summary()
         self.assertIn("rejected", summary)
@@ -125,7 +151,20 @@ class OptOutTests(unittest.TestCase):
         client = CastClient("192.0.2.10", transport=transport)
         result = client.opt_out()
         self.assertFalse(result.changed)
+        self.assertTrue(result.reporting_off)
         self.assertIn("already off", result.summary())
+
+    def test_reporting_off_is_false_when_the_after_read_failed(self):
+        transport = FakeTransport(
+            [
+                (200, _eureka({"crash": True, "stats": True})),  # before
+                (200, ""),  # POST
+                (200, "not json"),  # after-read unparseable
+            ]
+        )
+        result = CastClient("192.0.2.10", transport=transport).opt_out()
+        self.assertEqual(result.after, {})
+        self.assertFalse(result.reporting_off)
 
 
 if __name__ == "__main__":

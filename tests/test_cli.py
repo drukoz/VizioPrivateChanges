@@ -8,7 +8,7 @@ import os
 import stat
 import tempfile
 import unittest
-from typing import Any, Optional, Tuple
+from typing import Any, Dict, Optional, Tuple
 from unittest import mock
 
 from vizio_privacy import tokenstore
@@ -72,15 +72,19 @@ def pair_routes(method: str, url: str) -> Any:
 
 
 class FakeCast:
-    def __init__(self) -> None:
+    def __init__(
+        self, after: Optional[Dict[str, bool]] = None, posted_status: int = 200
+    ) -> None:
         self.opt_out_calls = 0
+        self.after = {"crash": False, "stats": False} if after is None else after
+        self.posted_status = posted_status
 
     def opt_out(self) -> OptOutResult:
         self.opt_out_calls += 1
         return OptOutResult(
             before={"crash": True, "stats": True},
-            after={"crash": False, "stats": False},
-            posted_status=200,
+            after=dict(self.after),
+            posted_status=self.posted_status,
         )
 
 
@@ -221,6 +225,12 @@ class CastOptOutTest(unittest.TestCase):
         self.assertEqual(code, 0)
         self.assertEqual(cast.opt_out_calls, 1)
         self.assertIn("crash/stats reporting now off", out)
+
+    def test_cast_optout_returns_1_when_reporting_stays_on(self) -> None:
+        cast = FakeCast(after={"crash": True, "stats": True}, posted_status=403)
+        code, out = run_main(["--host", "127.0.0.1", "cast-optout"], cast_factory=lambda host: cast)
+        self.assertEqual(code, 1)
+        self.assertIn("TV rejected the change (status 403); crash=on stats=on", out)
 
 
 class GlobalFailureTest(unittest.TestCase):
