@@ -1,0 +1,273 @@
+{
+  "offline": {
+    "notices": [
+      "Plex is not answering; showing apps only."
+    ],
+    "rows": []
+  },
+  "online": {
+    "notices": [],
+    "rows": [
+      {
+        "id": "continueWatching",
+        "kind": 0,
+        "tiles": [
+          {
+            "action": {
+              "kind": 0,
+              "target": "4617"
+            },
+            "id": "plex:4617",
+            "image": "/img?p=%2Flibrary%2Fmetadata%2F4617%2Fthumb%2F1790131474&w=384&h=216",
+            "progress": 0.769,
+            "shape": 1,
+            "subtitle": "S4 · E4 · title 30",
+            "title": "grandparentTitle 31"
+          },
+          {
+            "action": {
+              "kind": 0,
+              "target": "17346"
+            },
+            "id": "plex:17346",
+            "image": "/img?p=%2Flibrary%2Fmetadata%2F17346%2Fthumb%2F1762429158&w=384&h=216",
+            "progress": 0.344,
+            "shape": 1,
+            "subtitle": "S5 · E3 · title 55",
+            "title": "grandparentTitle 56"
+          },
+          {
+            "action": {
+              "kind": 0,
+              "target": "24339"
+            },
+            "id": "plex:24339",
+            "image": "/img?p=%2Flibrary%2Fmetadata%2F24339%2Fart%2F1787303570&w=384&h=216",
+            "progress": 0.609,
+            "shape": 1,
+            "subtitle": "1995",
+            "title": "title 75"
+          }
+        ],
+        "title": "Continue Watching"
+      },
+      {
+        "id": "hub:movie.recentlyadded.1",
+        "kind": 1,
+        "tiles": [
+          {
+            "action": {
+              "kind": 0,
+              "target": "29124"
+            },
+            "id": "plex:29124",
+            "image": "/img?p=%2Flibrary%2Fmetadata%2F29124%2Fthumb%2F1789779968&w=240&h=360",
+            "progress": null,
+            "shape": 0,
+            "subtitle": "2004",
+            "title": "title 279"
+          },
+          {
+            "action": {
+              "kind": 0,
+              "target": "29141"
+            },
+            "id": "plex:29141",
+            "image": "/img?p=%2Flibrary%2Fmetadata%2F29141%2Fthumb%2F1789241012&w=240&h=360",
+            "progress": null,
+            "shape": 0,
+            "subtitle": "1988",
+            "title": "title 299"
+          }
+        ],
+        "title": "Recently Added in Movies"
+      },
+      {
+        "id": "hub:tv.recentlyadded.2",
+        "kind": 1,
+        "tiles": [
+          {
+            "action": {
+              "kind": 0,
+              "target": "34150"
+            },
+            "id": "plex:34150",
+            "image": "/img?p=%2Flibrary%2Fmetadata%2F34150%2Fthumb%2F1794097303&w=240&h=360",
+            "progress": null,
+            "shape": 0,
+            "subtitle": null,
+            "title": "title 514"
+          },
+          {
+            "action": {
+              "kind": 0,
+              "target": "33968"
+            },
+            "id": "plex:33968",
+            "image": "/img?p=%2Flibrary%2Fmetadata%2F33968%2Fthumb%2F1794088201&w=240&h=360",
+            "progress": null,
+            "shape": 0,
+            "subtitle": null,
+            "title": "title 536"
+          }
+        ],
+        "title": "Recently Added in TV Shows"
+      },
+      {
+        "id": "hub:tv.startwatching.2",
+        "kind": 1,
+        "tiles": [
+          {
+            "action": {
+              "kind": 0,
+              "target": "19258"
+            },
+            "id": "plex:19258",
+            "image": "/img?p=%2Flibrary%2Fmetadata%2F19258%2Fthumb%2F1788782065&w=240&h=360",
+            "progress": null,
+            "shape": 0,
+            "subtitle": null,
+            "title": "title 557"
+          },
+          {
+            "action": {
+              "kind": 0,
+              "target": "20979"
+            },
+            "id": "plex:20979",
+            "image": null,
+            "progress": null,
+            "shape": 0,
+            "subtitle": null,
+            "title": "title 568"
+          }
+        ],
+        "title": "Start Watching · TV Shows"
+      },
+      {
+        "id": "hub:movie.topunwatched.1",
+        "kind": 1,
+        "tiles": [
+          {
+            "action": {
+              "kind": 0,
+              "target": "24443"
+            },
+            "id": "plex:24443",
+            "image": "/img?p=%2Flibrary%2Fmetadata%2F24443%2Fthumb%2F1787303576&w=240&h=360",
+            "progress": null,
+            "shape": 0,
+            "subtitle": "2022",
+            "title": "title 355"
+          },
+          {
+            "action": {
+              "kind": 0,
+              "target": "23980"
+            },
+            "id": "plex:23980",
+            "image": "/img?p=%2Flibrary%2Fmetadata%2F23980%2Fthumb%2F1789990585&w=240&h=360",
+            "progress": null,
+            "shape": 0,
+            "subtitle": "1950",
+            "title": "title 372"
+          }
+        ],
+        "title": "Top Unwatched Movies"
+      },
+      {
+        "id": "hub:tv.moreingenre.2",
+        "kind": 1,
+        "tiles": [
+          {
+            "action": {
+              "kind": 0,
+              "target": "1937"
+            },
+            "id": "plex:1937",
+            "image": "/img?p=%2Flibrary%2Fmetadata%2F1937%2Fthumb%2F1788782033&w=240&h=360",
+            "progress": null,
+            "shape": 0,
+            "subtitle": null,
+            "title": "title 604"
+          },
+          {
+            "action": {
+              "kind": 0,
+              "target": "1735"
+            },
+            "id": "plex:1735",
+            "image": "/img?p=%2Flibrary%2Fmetadata%2F1735%2Fthumb%2F1788782032&w=240&h=360",
+            "progress": null,
+            "shape": 0,
+            "subtitle": null,
+            "title": "title 619"
+          }
+        ],
+        "title": "More in Fantasy · TV Shows"
+      },
+      {
+        "id": "hub:movie.genre.1.297",
+        "kind": 1,
+        "tiles": [
+          {
+            "action": {
+              "kind": 0,
+              "target": "24518"
+            },
+            "id": "plex:24518",
+            "image": "/img?p=%2Flibrary%2Fmetadata%2F24518%2Fthumb%2F1787303579&w=240&h=360",
+            "progress": null,
+            "shape": 0,
+            "subtitle": "1998",
+            "title": "title 317"
+          },
+          {
+            "action": {
+              "kind": 0,
+              "target": "470"
+            },
+            "id": "plex:470",
+            "image": "/img?p=%2Flibrary%2Fmetadata%2F470%2Fthumb%2F1788171569&w=240&h=360",
+            "progress": null,
+            "shape": 0,
+            "subtitle": "2022",
+            "title": "title 336"
+          }
+        ],
+        "title": "Top Movies in Family"
+      },
+      {
+        "id": "hub:tv.rediscover.2",
+        "kind": 1,
+        "tiles": [
+          {
+            "action": {
+              "kind": 0,
+              "target": "3459"
+            },
+            "id": "plex:3459",
+            "image": "/img?p=%2Flibrary%2Fmetadata%2F3459%2Fthumb%2F1788782040&w=240&h=360",
+            "progress": null,
+            "shape": 0,
+            "subtitle": null,
+            "title": "title 574"
+          },
+          {
+            "action": {
+              "kind": 0,
+              "target": "15269"
+            },
+            "id": "plex:15269",
+            "image": "/img?p=%2Flibrary%2Fmetadata%2F15269%2Fthumb%2F1789898317&w=240&h=360",
+            "progress": null,
+            "shape": 0,
+            "subtitle": null,
+            "title": "title 589"
+          }
+        ],
+        "title": "Rediscover · TV Shows"
+      }
+    ]
+  }
+}
