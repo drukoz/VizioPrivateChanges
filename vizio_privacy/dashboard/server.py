@@ -173,17 +173,20 @@ class DashboardHandler(http.server.BaseHTTPRequestHandler):
 
     def _serve_static(self, raw_rel: str) -> None:
         rel = urllib.parse.unquote(raw_rel)
-        if not os.path.isdir(self.server.static_dir):
+        if (
+            not os.path.isdir(self.server.static_dir)
+            or not rel
+            or rel.startswith("/")
+            or "\\" in rel
+            or "\x00" in rel
+            or any(part == ".." for part in rel.split("/"))
+        ):
             self._send_fail(404, "not found")
             return
         root = os.path.realpath(self.server.static_dir) + os.sep
         resolved = os.path.realpath(os.path.join(self.server.static_dir, rel))
         if (
-            not rel
-            or rel.startswith("/")
-            or "\\" in rel
-            or any(part == ".." for part in rel.split("/"))
-            or not resolved.startswith(root)
+            not resolved.startswith(root)
             or not os.path.isfile(resolved)
             or os.path.splitext(rel)[1].lower() not in CONTENT_TYPES
         ):
@@ -224,7 +227,7 @@ class DashboardHandler(http.server.BaseHTTPRequestHandler):
 
     def _handle_action(self) -> None:
         raw_length = self.headers.get("Content-Length")
-        if raw_length is None or not raw_length.isdigit():
+        if raw_length is None or not (raw_length.isascii() and raw_length.isdigit()):
             self._send_fail(411, "Content-Length required")
             return
         length = int(raw_length)

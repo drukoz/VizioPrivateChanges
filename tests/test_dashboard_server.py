@@ -240,6 +240,12 @@ class ActionTests(ServerTestCase):
         )
         self.assertIn("411", first)
 
+    def test_non_ascii_digit_content_length_is_411(self) -> None:
+        first = self.status_line(
+            self.raw_post(b"Content-Length: \xb2\r\nConnection: close\r\n")
+        )
+        self.assertIn("411", first)
+
 
 class ImageTests(ServerTestCase):
     def test_img_serves_the_artwork(self) -> None:
@@ -290,6 +296,7 @@ class StaticTests(ServerTestCase):
             "/static/missing.css",
             "/static/..%2Fsecret.txt",
             "/static/%2Fetc%2Fpasswd",
+            "/static/app%00.js",
             "/static/",
             "/nope",
         ):
